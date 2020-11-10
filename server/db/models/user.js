@@ -3,15 +3,35 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const User = db.define('user', {
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
   email: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      isEmail: true
+    }
   },
   password: {
     type: Sequelize.STRING,
     // Making `.password` act like a func hides it when serializing to JSON.
     // This is a hack to get around Sequelize's lack of a "private" option.
+    validate: {
+      len: [6, 20]
+    },
     get() {
       return () => this.getDataValue('password')
     }
@@ -26,6 +46,23 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
+  },
+  imageUrl: {
+    type: Sequelize.STRING,
+    defaultValue:
+      'https://massdrop-s3.imgix.net/product-images/dwarf-factory-terrarium-resin-artisan-keycap/FP/x6FjobibQkG6ZCoxVPLJ_pc.png?auto=format&fm=jpg&fit=fill&w=820&h=547&bg=f0f0f0&dpr=2&q=35'
+  },
+  userType: {
+    type: Sequelize.ENUM('guest', 'loggedIn', 'admin'),
+    defaultValue: 'guest'
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
+  isLoggedIn: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 
