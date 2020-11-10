@@ -1,4 +1,4 @@
-const {db} = require('./db')
+const db = require('./db')
 const Sequelize = require('sequelize')
 // register models
 const {User, Order, Product, Category} = require('./models')
