@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const db = require('./db/db')
+const db = require('../db')
 
 // READ ME: defining product model
 
@@ -21,7 +21,10 @@ const Product = db.define('product', {
     type: Sequelize.INT
   },
   quantity: {
-    type: Sequelize.INT
+    type: Sequelize.INT,
+    validate: {
+      min: 0.0
+    }
   },
   imageURL: {
     type: Sequelize.ARRAY(Sequelize.STRING),
