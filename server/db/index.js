@@ -1,4 +1,4 @@
-const db = require('./db')
+const {db} = require('./db')
 const Sequelize = require('sequelize')
 // register models
 const {User, Order, Product, Category} = require('./models')
@@ -13,8 +13,8 @@ const OrderDetail = Sequelize.define(
 
 User.hasMany(Order)
 Order.belongsTo(User)
-Product.belongsToMany(Order, {through: orderDetail})
-Order.belongsToMany(Product, {through: orderDetail})
+Product.belongsToMany(Order, {through: OrderDetail})
+Order.belongsToMany(Product, {through: OrderDetail})
 Product.belongsTo(Category)
 Category.hasMany(Product)
 
@@ -24,5 +24,5 @@ module.exports = {
   Order,
   Product,
   Category,
-  OrderDetails
+  OrderDetail
 }
