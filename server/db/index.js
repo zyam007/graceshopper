@@ -4,7 +4,7 @@ const Sequelize = require('sequelize')
 const {User, Order, Product, Category} = require('./models')
 
 const OrderDetail = Sequelize.define(
-  'OrderDetail',
+  'orderDetail',
   {
     productQuantity: Sequelize.INTEGER
   },
@@ -13,8 +13,8 @@ const OrderDetail = Sequelize.define(
 
 User.hasMany(Order)
 Order.belongsTo(User)
-Product.belongsToMany(Order, {through: OrderDetail})
-Order.belongsToMany(Product, {through: OrderDetail})
+Product.belongsToMany(Order, {through: orderDetail})
+Order.belongsToMany(Product, {through: orderDetail})
 Product.belongsTo(Category)
 Category.hasMany(Product)
 
