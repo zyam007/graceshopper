@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import {fetchAllProducts} from '../store/reducers/allProducts'
 
-export class Home extends Component {
+export class AllProducts extends Component {
   componentDidMount() {
     console.log('mounting')
     this.props.getAllProducts()
@@ -18,7 +18,7 @@ export class Home extends Component {
         {allProducts.map(product => {
           return (
             <div key={product.id}>
-              <img src={product.imageURL} alt="no image" />
+              <img src={product.imageUrl} alt="no image" />
               <h2>{product.name}</h2>
             </div>
           )
@@ -39,6 +39,6 @@ const mapDispatch = dispatch => {
     getAllProducts: () => dispatch(fetchAllProducts())
   }
 }
-const ConnectedHome = connect(mapState, mapDispatch)(Home)
+const ConnectedAllProducts = connect(mapState, mapDispatch)(AllProducts)
 //export default connect(mapState, mapDispatch)(Home)
-export default ConnectedHome
+export default ConnectedAllProducts

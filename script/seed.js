@@ -26,7 +26,7 @@ async function seed() {
   for (let i = 0; i < categoryList.length; i++) {
     await Category.create({
       name: categoryList[i],
-      imageURL: categoryImage[i]
+      imageUrl: categoryImage[i]
     })
   }
 
@@ -38,7 +38,7 @@ async function seed() {
       price: Faker.random.float(),
       numOfSales: 0,
       quantity: Faker.random.number(),
-      imageURL: [Faker.image.abstract(), Faker.image.abstract()],
+      imageUrl: [Faker.image.abstract(), Faker.image.abstract()],
       categoryId: Math.floor(Math.random() * (7 - 1) + 1)
     })
   }
