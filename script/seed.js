@@ -1,18 +1,63 @@
 'use strict'
 
-const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {db} = require('../server/db')
+
+const User = require('../server/db/models/user')
+const Product = require('../server/db/models/product')
+const Category = require('../server/db/models/category')
+const Order = require('../server/db/models/order')
+const Faker = require('faker')
+
+const categoryList = ['food', 'fauna', 'flora', 'movie_tv', 'games', 'holiday']
+const categoryImage = [
+  `${Faker.image.food()}`,
+  `${Faker.image.animals()}`,
+  `${Faker.image.nature()}`,
+  `${Faker.image.abstract()}`,
+  `${Faker.image.sports()}`,
+  `${Faker.image.nightlife()}`
+]
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
-  const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
-  ])
+  //CATEGORY MODEL
+  for (let i = 0; i < categoryList.length; i++) {
+    await Category.create({
+      name: categoryList[i],
+      imageURL: categoryImage[i]
+    })
+  }
 
-  console.log(`seeded ${users.length} users`)
+  //PRODUCT MODEL
+  for (let i = 0; i < 30; i++) {
+    await Product.create({
+      name: Faker.commerce.productName(),
+      description: Faker.commerce.productDescription(),
+      price: Faker.random.float(),
+      numOfSales: 0,
+      quantity: Faker.random.number(),
+      imageURL: [Faker.image.abstract(), Faker.image.abstract()]
+    })
+  }
+
+  //USER MODEL
+  for (let i = 0; i < 5; i++) {
+    await User.create({
+      firstName: Faker.name.firstName(),
+      lastName: Faker.name.lastName(),
+      email: Faker.internet.email(),
+      password: '1234567',
+      imageUrl: Faker.image.avatar()
+    })
+  }
+
+  await Order.create({
+    totalAmount: 25.99,
+    isComplete: false
+  })
+
   console.log(`seeded successfully`)
 }
 
