@@ -1,20 +1,7 @@
 const router = require('express').Router()
 const {User} = require('../db/models')
+const isAdminMiddleware = require('./adminMiddleware')
 module.exports = router
-
-const isAdminMiddleware = (req, res, next) => {
-  if (!req.user) {
-    const err = new Error('Please sign up or long in')
-    err.status = 401
-    next(err)
-  } else if (!req.user.isAdmin) {
-    const err = new Error('You are not authorized to perform this action')
-    err.status = 401
-    next(err)
-  } else {
-    next()
-  }
-}
 
 router.get('/', isAdminMiddleware, async (req, res, next) => {
   try {
@@ -22,7 +9,7 @@ router.get('/', isAdminMiddleware, async (req, res, next) => {
       // explicitly select only the id and email fields - even though
       // users' passwords are encrypted, it won't help if we just
       // send everything to anyone who asks!
-      attributes: ['firstName', 'lastName', 'id', 'email']
+      attributes: ['id', 'email']
     })
     res.json(users)
   } catch (err) {
@@ -36,6 +23,15 @@ router.get('/:id', isAdminMiddleware, async (req, res, next) => {
 
     if (!user) return res.sendStatus(404)
     res.json(user)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.post('/', async (req, res, next) => {
+  try {
+    await User.create(req.body)
+    res.send(201)
   } catch (err) {
     next(err)
   }

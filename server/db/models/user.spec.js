@@ -18,7 +18,9 @@ describe('User model', () => {
           firstName: 'Cody',
           lastName: 'Pup',
           email: 'cody@puppybook.com',
-          password: 'bones!'
+          password: 'bones!',
+          userType: 'admin',
+          isAdmin: true
         })
       })
 
@@ -39,7 +41,9 @@ describe('User model', () => {
         firstName: 'Cody',
         lastName: 'Pup',
         email: 'cody@puppybook.com',
-        password: 'bones!'
+        password: 'bones!',
+        userType: 'admin',
+        isAdmin: true
       })
     })
 
@@ -64,7 +68,9 @@ describe('User model', () => {
         firstName: 'Cody',
         lastName: 'Pup',
         email: 'cody@puppybook.com',
-        password: 'bones!'
+        password: 'bones!',
+        userType: 'admin',
+        isAdmin: true
       })
     })
 
