@@ -38,7 +38,7 @@ async function seed() {
       price: Faker.random.float(),
       numOfSales: 0,
       quantity: Faker.random.number(),
-      imageUrl: [Faker.image.abstract(), Faker.image.abstract()],
+      imageUrl: [Faker.image.image(), Faker.image.abstract()],
       categoryId: Math.floor(Math.random() * (7 - 1) + 1)
     })
   }
