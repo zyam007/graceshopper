@@ -61,6 +61,7 @@ form div {
 :root {
   --mainDark: #343a40;
   --mainWhite: #ffffff;
-  --mainGrey: #61666c;
+  --mainGrey: #535659;
   --mainLightGrey: #a8aeb6;
+  --mainLightPurple: #a94ae8;
 }

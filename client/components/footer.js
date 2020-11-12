@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -9,21 +10,29 @@ const Footer = () => {
         <div className="Container">
           <div className="row">
             {/* Column 1 */}
-            <div className="col-md-3 col-sm-6">
-              <h5>Contact Us</h5>
+            <div className="col-md-5 col-sm-6">
+              <h5 className="title-column">Contact Us</h5>
               <ul className="list-unstyled">
                 <li>Email: allcaps@gh.com</li>
                 <li>Tel: 123.456.7890</li>
-                <li>GitHub</li>
+                <li>
+                  <a href="/">GitHub</a>
+                </li>
               </ul>
             </div>
             {/* Column 2 */}
-            <div className="col-md-3 col-sm-6">
-              <h5>Team Members</h5>
+            <div className="col-md-6 col-sm-6">
+              <h5 className="title-column">Team Members</h5>
               <ul className="list-unstyled">
-                <li>Yanna Skorokhodova</li>
-                <li>Kade Cahe</li>
-                <li>Virginie Bonnet</li>
+                <li>
+                  <a href="/">Yanna Skorokhodova</a>
+                </li>
+                <li>
+                  <a href="/">Kade Cahe</a>
+                </li>
+                <li>
+                  <a href="/">Virginie Bonnet</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -49,9 +58,27 @@ const FooterContainer = styled.footer`
     padding-left: 30rem;
     color: var(--mainLightGrey);
     font-family: sans-serif;
+    font-size: 14px;
+    display: flex;
+    position: relative;
+    alignitems: center;
   }
+
   .footer-bottom {
     padding-top: 1rem;
     padding-bottom: 1rem;
+    align-item: center;
+  }
+
+  ul li a {
+    color: var(--mainLightGrey);
+  }
+  ul li a:hover {
+    color: var(--mainLightPurple);
+  }
+
+  .title-column {
+    font-size: 18px;
+    text-align: center;
   }
 `
