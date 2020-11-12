@@ -3,29 +3,78 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import {Nav, NavItem, NavLink, Navbar as BootstrapNavbar} from 'react-bootstrap'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faCartArrowDown} from '@fortawesome/free-solid-svg-icons'
+
+const cartStyle = {
+  fontSize: '24px'
+}
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>BOILERMAKER</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
-  </div>
+  <>
+    <BootstrapNavbar variant="dark" bg="dark" id="flex">
+      <BootstrapNavbar.Brand>
+        <img src="logo.png" alt="ALL_CAPS" className="logo" />
+      </BootstrapNavbar.Brand>
+      <Nav>
+        {isLoggedIn ? (
+          <div>
+            <Nav>
+              {/* The navbar will show these links after you log in */}
+              <NavItem>
+                <NavLink href="/home">Home</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/allproducts">Products</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/" onClick={handleClick}>
+                  Logout
+                </NavLink>
+              </NavItem>
+              <NavItem className="center">
+                <NavLink href="/cart">
+                  <FontAwesomeIcon icon={faCartArrowDown} style={cartStyle} />
+                  <span className="badge badge-warning" id="lblCartCount">
+                    5
+                  </span>
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </div>
+        ) : (
+          <div>
+            {/* The navbar will show these links before you log in */}
+            <Nav>
+              <NavItem>
+                <NavLink href="/home">Home</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/allproducts">Products</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/login">Login</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/signup" onClick={handleClick}>
+                  Sign Up
+                </NavLink>
+              </NavItem>
+              <NavItem className="center">
+                <NavLink href="/cart">
+                  <FontAwesomeIcon icon={faCartArrowDown} style={cartStyle} />
+                  <span className="badge badge-warning" id="lblCartCount">
+                    5
+                  </span>
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </div>
+        )}
+      </Nav>
+    </BootstrapNavbar>
+  </>
 )
 
 /**
