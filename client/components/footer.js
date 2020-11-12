@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="Container">
           <div className="row">
             {/* Column 1 */}
-            <div className="col-md-5 col-sm-6">
+            <div className="col-md-6 col-sm-3">
               <h5 className="title-column">Contact Us</h5>
               <ul className="list-unstyled">
                 <li>Email: allcaps@gh.com</li>
@@ -21,7 +21,7 @@ const Footer = () => {
               </ul>
             </div>
             {/* Column 2 */}
-            <div className="col-md-6 col-sm-6">
+            <div className="col-md-6 col-sm-3">
               <h5 className="title-column">Team Members</h5>
               <ul className="list-unstyled">
                 <li>
@@ -55,19 +55,16 @@ const FooterContainer = styled.footer`
   .footer-middle {
     background: var(--mainDark);
     padding-top: 1rem;
-    padding-left: 30rem;
     color: var(--mainLightGrey);
     font-family: sans-serif;
     font-size: 14px;
     display: flex;
-    position: relative;
-    alignitems: center;
+    justify-content: center;
   }
 
   .footer-bottom {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    align-item: center;
   }
 
   ul li a {
@@ -79,6 +76,6 @@ const FooterContainer = styled.footer`
 
   .title-column {
     font-size: 18px;
-    text-align: center;
+    text-align: left;
   }
 `

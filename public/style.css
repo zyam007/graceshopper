@@ -57,7 +57,6 @@ form div {
   align-self: center;
 }
 
-
 /* All Products Component */
 
 #productsView {
@@ -121,14 +120,19 @@ form div {
 
 #price {
   margin-left: 10px;
-
 }
 
-/* Styled-Components.com */
+/* Styled-Components.com FOOTER */
 :root {
   --mainDark: #343a40;
   --mainWhite: #ffffff;
   --mainGrey: #535659;
   --mainLightGrey: #a8aeb6;
   --mainLightPurple: #a94ae8;
+}
+
+.main-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
