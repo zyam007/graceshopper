@@ -53,8 +53,6 @@ describe('Associations', () => {
 
     it('eager loads all products in each category', () => {
       let firstProducts = category[0].products
-      // let result = product.filter(item => item.name === 'Key Cap');
-      console.log(firstProducts)
       expect(Array.isArray(firstProducts)).to.be.equal(true)
       expect(firstProducts).to.have.lengthOf(2)
     })
