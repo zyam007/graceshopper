@@ -2,7 +2,21 @@ const router = require('express').Router()
 const {User} = require('../db/models')
 module.exports = router
 
-router.get('/', async (req, res, next) => {
+const isAdminMiddleware = (req, res, next) => {
+  if (!req.user) {
+    const err = new Error('Please sign up or long in')
+    err.status = 401
+    next(err)
+  } else if (!req.user.isAdmin) {
+    const err = new Error('You are not authorized to perform this action')
+    err.status = 401
+    next(err)
+  } else {
+    next()
+  }
+}
+
+router.get('/', isAdminMiddleware, async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the id and email fields - even though
@@ -16,7 +30,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', isAdminMiddleware, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id)
 
