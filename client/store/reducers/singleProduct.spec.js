@@ -1,12 +1,11 @@
 /* global describe beforeEach afterEach it */
 
 import {expect} from 'chai'
-import {setProduct, fetchProduct} from '../reducers/singleproduct'
+import {fetchProduct} from '../reducers/singleproduct'
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import configureMockStore from 'redux-mock-store'
 import thunkMiddleware from 'redux-thunk'
-import history from '../history'
 
 const middlewares = [thunkMiddleware]
 const mockStore = configureMockStore(middlewares)
@@ -27,24 +26,38 @@ describe('thunk creators', () => {
     store.clearActions()
   })
 
-  describe('me', () => {
+  describe('setProduct', () => {
     it('eventually dispatches the SET PRODUCT action', async () => {
-      const fakeProduct = {email: 'Cody'}
-      mockAxios.onGet('/auth/me').replyOnce(200, fakeUser)
-      await store.dispatch(me())
+      const fakeProduct = {
+        id: 1,
+        name: 'Yoda Cap',
+        description: 'Baby Yoda at your finger',
+        price: 19.99,
+        numOfSales: 0,
+        quantity: 1,
+        categoryId: 1
+      }
+      mockAxios.onGet('/api/allproducts/1').replyOnce(200, fakeProduct)
+      await store.dispatch(fetchProduct(1))
       const actions = store.getActions()
-      expect(actions[0].type).to.be.equal('GET_USER')
-      expect(actions[0].user).to.be.deep.equal(fakeUser)
+      expect(actions[0].type).to.be.equal('SET_PRODUCT')
     })
-  })
 
-  describe('logout', () => {
-    it('logout: eventually dispatches the REMOVE_USER action', async () => {
-      mockAxios.onPost('/auth/logout').replyOnce(204)
-      await store.dispatch(logout())
+    it('return the product requested', async () => {
+      const fakeProduct = {
+        id: 1,
+        name: 'Yoda Cap',
+        description: 'Baby Yoda at your finger',
+        price: 19.99,
+        numOfSales: 0,
+        quantity: 1,
+        categoryId: 1
+      }
+      mockAxios.onGet('/api/allproducts/1').replyOnce(200, fakeProduct)
+      await store.dispatch(fetchProduct(1))
       const actions = store.getActions()
-      expect(actions[0].type).to.be.equal('REMOVE_USER')
-      expect(history.location.pathname).to.be.equal('/login')
+      console.log(actions)
+      expect(actions[0].product).to.be.deep.equal(fakeProduct)
     })
   })
 })
