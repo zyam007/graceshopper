@@ -56,3 +56,11 @@ form div {
 .center {
   align-self: center;
 }
+
+/* Styled-Components.com */
+:root {
+  --mainDark: #343a40;
+  --mainWhite: #ffffff;
+  --mainGrey: #61666c;
+  --mainLightGrey: #a8aeb6;
+}
