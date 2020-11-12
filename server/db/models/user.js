@@ -2,6 +2,7 @@ const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
 
+// is it worth it to store every guest on the db?
 const User = db.define('user', {
   firstName: {
     type: Sequelize.STRING,

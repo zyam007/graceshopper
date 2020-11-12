@@ -7,6 +7,7 @@ const Order = require('./models/order')
 const Product = require('./models/product')
 const Category = require('./models/category')
 
+// ProductQuantity does it need a default value, mins, maxes, etc.
 const OrderDetail = db.define(
   'orderDetail',
   {

@@ -3,6 +3,7 @@ const db = require('../db')
 
 // READ ME: defining product model
 
+// numOfSales could have a defaultValue of 0
 const Product = db.define('product', {
   name: {
     type: Sequelize.STRING,

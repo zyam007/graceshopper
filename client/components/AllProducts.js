@@ -3,6 +3,9 @@ import {connect} from 'react-redux'
 
 import {fetchAllProducts} from '../store/reducers/allProducts'
 
+
+// try to leave console logs and commented out code in your branches and remove them before merging to main
+// be careful here - I think images is an array and on line 24 we are expecting it to be a plain string
 export class AllProducts extends Component {
   componentDidMount() {
     console.log('mounting')
