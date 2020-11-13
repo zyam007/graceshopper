@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Fade from 'react-reveal/Fade'
+import {Link} from 'react-router-dom'
 
 import {fetchAllProducts} from '../store/reducers/allProducts'
 
@@ -22,7 +23,14 @@ export class AllProducts extends Component {
             {allProducts.map(product => {
               return (
                 <div key={product.id} className="single-product-card">
-                  <h6 className="product-name">{product.name}</h6>
+                  <div style={{textAlign: 'center'}}>
+                    <Link
+                      to={`/listing/${product.id}`}
+                      className="product-name"
+                    >
+                      {product.name}
+                    </Link>
+                  </div>
                   <img
                     src={product.imageUrl}
                     alt="no image"
@@ -41,6 +49,8 @@ export class AllProducts extends Component {
     )
   }
 }
+
+function handleClick() {}
 
 const mapState = state => {
   return {
