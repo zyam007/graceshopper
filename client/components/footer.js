@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -16,7 +15,12 @@ const Footer = () => {
                 <li>Email: allcaps@gh.com</li>
                 <li>Tel: 123.456.7890</li>
                 <li>
-                  <a href="/">GitHub</a>
+                  <a
+                    href="https://github.com/all-caps-GraceShopper"
+                    target="_blank"
+                  >
+                    GitHub
+                  </a>
                 </li>
               </ul>
             </div>
@@ -25,13 +29,28 @@ const Footer = () => {
               <h5 className="title-column">Team Members</h5>
               <ul className="list-unstyled">
                 <li>
-                  <a href="/">Yanna Skorokhodova</a>
+                  <a
+                    href="https://www.linkedin.com/in/yanna-skorokhodova/"
+                    target="_blank"
+                  >
+                    Yanna Skorokhodova
+                  </a>
                 </li>
                 <li>
-                  <a href="/">Kade Cahe</a>
+                  <a
+                    href="https://www.linkedin.com/in/kade-cahe-0b7b479b/"
+                    target="_blank"
+                  >
+                    Kade Cahe
+                  </a>
                 </li>
                 <li>
-                  <a href="/">Virginie Bonnet</a>
+                  <a
+                    href="https://www.linkedin.com/in/virginiebonnet/"
+                    target="_blank"
+                  >
+                    Virginie Bonnet
+                  </a>
                 </li>
               </ul>
             </div>
