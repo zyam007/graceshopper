@@ -89,8 +89,13 @@ form div {
   border-radius: 5px;
 }
 .product-name {
-  margin-top: 20px;
-  text-align: center;
+  color: inherit;
+  font-weight: bold;
+}
+
+.product-name:hover {
+  color: #a94ae8;
+  text-decoration: none;
 }
 
 .price-buy {
