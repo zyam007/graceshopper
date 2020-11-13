@@ -10,4 +10,15 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.get('/:categoryId', async (req, res, next) => {
+  const {categoryId} = req.params
+
+  try {
+    const singleCategory = await Category.findByPk(categoryId)
+    res.json(singleCategory)
+  } catch (err) {
+    next(err)
+  }
+})
+
 module.exports = router

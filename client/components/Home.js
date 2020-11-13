@@ -11,7 +11,6 @@ export class AllCategories extends Component {
 
   render() {
     const allCategories = this.props.allCategories || []
-
     return (
       <div id="categoriesView">
         <h2 id="all-cat-text">All Categories</h2>

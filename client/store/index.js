@@ -6,12 +6,14 @@ import user from './user'
 import allProductsReducer from './reducers/allProducts'
 import singleProductReducer from './reducers/singleproduct'
 import singleCategoryReducer from './reducers/singlecategory'
+import allCategoriesReducer from './reducers/allCategories'
 
 const reducer = combineReducers({
   user,
   allProducts: allProductsReducer,
   singleProduct: singleProductReducer,
-  singleCategory: singleCategoryReducer
+  singleCategory: singleCategoryReducer,
+  allCategories: allCategoriesReducer
 })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))

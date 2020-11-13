@@ -13,7 +13,6 @@ export const fetchAllCategories = () => {
   return async dispatch => {
     try {
       const {data} = await axios.get('/api/allcategory')
-      console.log('data:', data)
       dispatch(setAllCategories(data))
     } catch (err) {
       console.log(err)
@@ -24,7 +23,7 @@ export const fetchAllCategories = () => {
 const initialState = []
 const allCategoriesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_AllCATEGORIES: {
+    case SET_ALLCATEGORIES: {
       return [...action.allCategories]
     }
     default: {
