@@ -1,7 +1,6 @@
 const {expect} = require('chai')
 const request = require('supertest')
 const {db} = require('../db')
-const {encryptPassword} = require('../db/models/user')
 const app = require('../index')
 const Product = db.model('product')
 
