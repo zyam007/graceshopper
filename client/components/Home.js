@@ -6,9 +6,7 @@ import {fetchAllCategories} from '../store/reducers/allCategories'
 
 export class AllCategories extends Component {
   componentDidMount() {
-    // console.log('mounting')
     this.props.getAllCategories()
-    console.log('allcategories: ', this.props.allCategories)
   }
 
   render() {
