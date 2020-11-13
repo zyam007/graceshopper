@@ -3,7 +3,7 @@ const {User} = require('../db/models')
 const isAdminMiddleware = require('./adminMiddleware')
 module.exports = router
 
-router.get('/', isAdminMiddleware, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the id and email fields - even though

@@ -54,6 +54,17 @@ async function seed() {
     })
   }
 
+  const admins = {
+    firstName: 'Kade',
+    lastName: 'Cahe',
+    password: '1234567',
+    email: 'kadecahe@gmail.com',
+    imageUrl: Faker.image.avatar(),
+    isAdmin: true
+  }
+
+  await User.create(admins)
+
   await Order.create({
     totalAmount: 25.99,
     isComplete: false
