@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -10,28 +9,48 @@ const Footer = () => {
         <div className="Container">
           <div className="row">
             {/* Column 1 */}
-            <div className="col-md-5 col-sm-6">
+            <div className="col-md-6 col-sm-3">
               <h5 className="title-column">Contact Us</h5>
               <ul className="list-unstyled">
                 <li>Email: allcaps@gh.com</li>
                 <li>Tel: 123.456.7890</li>
                 <li>
-                  <a href="/">GitHub</a>
+                  <a
+                    href="https://github.com/all-caps-GraceShopper"
+                    target="_blank"
+                  >
+                    GitHub
+                  </a>
                 </li>
               </ul>
             </div>
             {/* Column 2 */}
-            <div className="col-md-6 col-sm-6">
+            <div className="col-md-6 col-sm-3">
               <h5 className="title-column">Team Members</h5>
               <ul className="list-unstyled">
                 <li>
-                  <a href="/">Yanna Skorokhodova</a>
+                  <a
+                    href="https://www.linkedin.com/in/yanna-skorokhodova/"
+                    target="_blank"
+                  >
+                    Yanna Skorokhodova
+                  </a>
                 </li>
                 <li>
-                  <a href="/">Kade Cahe</a>
+                  <a
+                    href="https://www.linkedin.com/in/kade-cahe-0b7b479b/"
+                    target="_blank"
+                  >
+                    Kade Cahe
+                  </a>
                 </li>
                 <li>
-                  <a href="/">Virginie Bonnet</a>
+                  <a
+                    href="https://www.linkedin.com/in/virginiebonnet/"
+                    target="_blank"
+                  >
+                    Virginie Bonnet
+                  </a>
                 </li>
               </ul>
             </div>
@@ -55,19 +74,16 @@ const FooterContainer = styled.footer`
   .footer-middle {
     background: var(--mainDark);
     padding-top: 1rem;
-    padding-left: 30rem;
     color: var(--mainLightGrey);
     font-family: sans-serif;
     font-size: 14px;
     display: flex;
-    position: relative;
-    alignitems: center;
+    justify-content: center;
   }
 
   .footer-bottom {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    align-item: center;
   }
 
   ul li a {
@@ -79,6 +95,6 @@ const FooterContainer = styled.footer`
 
   .title-column {
     font-size: 18px;
-    text-align: center;
+    text-align: left;
   }
 `

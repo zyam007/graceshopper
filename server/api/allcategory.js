@@ -19,7 +19,6 @@ router.get('/:id', async (req, res, next) => {
 
   try {
     const singleCategory = await Category.findByPk(id, {include: Product})
-
     res.json(singleCategory)
   } catch (err) {
     next(err)
