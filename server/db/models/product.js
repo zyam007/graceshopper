@@ -15,7 +15,7 @@ const Product = db.define('product', {
     type: Sequelize.STRING
   },
   price: {
-    type: Sequelize.FLOAT
+    type: Sequelize.DOUBLE
   },
   numOfSales: {
     type: Sequelize.INTEGER

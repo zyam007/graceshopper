@@ -82,7 +82,7 @@ export const cartReducer = (state = initialState, action) => {
     }
     case INCREASE_CART_ITEM: {
       state.quantity[action.product.id]++
-      let newTotal = (newTotal = state.total + action.product.price)
+      let newTotal = state.total + action.product.price
 
       return {...state, total: newTotal}
     }
