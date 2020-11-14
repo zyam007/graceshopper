@@ -2,6 +2,7 @@
 const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 const REDUCE_CART_ITEM = 'REDUCE_CART_ITEM'
+const INCREASE_CART_ITEM = 'INCREASE_CART_ITEM'
 const GET_ITEMS = 'GET_ITEMS'
 
 //ACTION CREATORS
@@ -21,6 +22,11 @@ export const reduceProduct = product => ({
   product
 })
 
+export const increaseProduct = product => ({
+  type: INCREASE_CART_ITEM,
+  product
+})
+
 const initialState = {cartItems: [], total: 0, quantity: {}}
 
 export const cartReducer = (state = initialState, action) => {
@@ -29,9 +35,7 @@ export const cartReducer = (state = initialState, action) => {
       let product = action.product
       let newTotal = 0
       //first time adding product
-      console.log('product: ', product)
       if (!state.quantity[product.id]) {
-        console.log('i am checking new add')
         state.quantity[product.id] = 1
         newTotal = state.total + action.product.price
         return {
@@ -41,7 +45,6 @@ export const cartReducer = (state = initialState, action) => {
         }
       } else {
         //adding the same product
-        console.log('i am checking the same addition')
         state.quantity[product.id]++
         newTotal = state.total + action.product.price
         return {
@@ -52,6 +55,36 @@ export const cartReducer = (state = initialState, action) => {
     }
     case GET_ITEMS: {
       return {...state}
+    }
+    case REMOVE_FROM_CART: {
+      let newTotal =
+        state.total - state.quantity[action.product.id] * action.product.price
+      delete state.quantity[action.product.id]
+      let updatedCart = state.cartItems.filter(
+        prod => prod.id !== action.product.id
+      )
+      return {
+        ...state,
+        cartItems: updatedCart,
+        total: newTotal
+      }
+    }
+    case REDUCE_CART_ITEM: {
+      let updatedCart
+      state.quantity[action.product.id]--
+      let newTotal = state.total - action.product.price
+      if (!state.quantity[action.product.id]) {
+        updatedCart = state.cartItems.filter(
+          prod => prod.id !== action.product.id
+        )
+      } else updatedCart = state.cartItems
+      return {...state, cartItems: updatedCart, total: newTotal}
+    }
+    case INCREASE_CART_ITEM: {
+      state.quantity[action.product.id]++
+      let newTotal = (newTotal = state.total + action.product.price)
+
+      return {...state, total: newTotal}
     }
     default: {
       return state

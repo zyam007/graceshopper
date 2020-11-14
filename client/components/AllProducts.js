@@ -7,9 +7,7 @@ import {fetchAllProducts} from '../store/reducers/allProducts'
 
 export class AllProducts extends Component {
   componentDidMount() {
-    console.log('mounting')
     this.props.getAllProducts()
-    console.log('allproduct: ', this.props.allProducts)
   }
 
   render() {

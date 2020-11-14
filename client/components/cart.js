@@ -1,5 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {
+  removeProduct,
+  increaseProduct,
+  reduceProduct
+} from '../store/reducers/cartManager'
 
 export class Cart extends Component {
   componentDidMount() {
@@ -26,7 +31,10 @@ export class Cart extends Component {
           return (
             <React.Fragment key={product.id}>
               <div className="product">
-                <ion-icon name="trash-outline" />
+                <ion-icon
+                  name="trash-outline"
+                  onClick={() => this.props.deleteCartItem(product)}
+                />
                 <img src={product.imageUrl} />
                 <span className="sm-hide">{product.name}</span>
               </div>
@@ -34,12 +42,14 @@ export class Cart extends Component {
               <div className="quantity">
                 <ion-icon
                   className="decrease"
-                  name="arrow-back-circle-outline"
+                  name="remove-circle-outline"
+                  onClick={() => this.props.decCartItem(product)}
                 />
                 <span>{quantity[product.id]}</span>
                 <ion-icon
-                  className="decrease"
-                  name="arrow-forward-circle-outline"
+                  className="increase"
+                  name="add-circle-outline"
+                  onClick={() => this.props.incCartItem(product)}
                 />
               </div>
               <div className="total">
@@ -53,18 +63,6 @@ export class Cart extends Component {
           <h4 className="cartTotal">{this.props.cart.total}</h4>
         </div>
       </div>
-      /* <div className="cart-display">
-          {cartItems.map((product) => {
-            return (
-              <div key={product.id} className="cart-item">
-                <p>{product.name}</p>
-                <p> Price: {product.price}</p>
-                <p> Quantity: {quantity[product.id]}</p>
-              </div>
-            )
-          })}
-        </div>
-        <p>Cart Total: {this.props.cart.total}</p> */
     )
   }
 }
@@ -77,7 +75,10 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    getCartItems: () => dispatch({type: 'GET_ITEMS'})
+    getCartItems: () => dispatch({type: 'GET_ITEMS'}),
+    deleteCartItem: product => dispatch(removeProduct(product)),
+    incCartItem: product => dispatch(increaseProduct(product)),
+    decCartItem: product => dispatch(reduceProduct(product))
   }
 }
 
