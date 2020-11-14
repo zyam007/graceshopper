@@ -63,6 +63,5 @@ const mapDispatch = dispatch => {
     getAllProducts: () => dispatch(fetchAllProducts())
   }
 }
-//const ConnectedAllProducts = connect(mapState, mapDispatch)(AllProducts)
+
 export default connect(mapState, mapDispatch)(AllProducts)
-//export default ConnectedAllProducts
