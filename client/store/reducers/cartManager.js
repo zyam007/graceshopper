@@ -21,16 +21,33 @@ export const reduceProduct = product => ({
   product
 })
 
-const initialState = {cartItems: [], total: 0}
+const initialState = {cartItems: [], total: 0, quantity: {}}
 
 export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART: {
-      let newTotal = state.total + action.product.price
-      return {
-        ...state,
-        cartItems: [...state.cartItems, action.product],
-        total: newTotal
+      let product = action.product
+      let newTotal = 0
+      //first time adding product
+      console.log('product: ', product)
+      if (!state.quantity[product.id]) {
+        console.log('i am checking new add')
+        state.quantity[product.id] = 1
+        newTotal = state.total + action.product.price
+        return {
+          ...state,
+          cartItems: [...state.cartItems, action.product],
+          total: newTotal
+        }
+      } else {
+        //adding the same product
+        console.log('i am checking the same addition')
+        state.quantity[product.id]++
+        newTotal = state.total + action.product.price
+        return {
+          ...state,
+          total: newTotal
+        }
       }
     }
     case GET_ITEMS: {

@@ -14,7 +14,6 @@ const cartStyle = {
 export class Navbar extends React.Component {
   componentDidMount() {
     this.props.getCartItems()
-    console.log('cart: ', this.props.cartItems)
   }
 
   render() {
@@ -79,7 +78,7 @@ export class Navbar extends React.Component {
                         style={cartStyle}
                       />
                       <span className="badge badge-warning" id="lblCartCount">
-                        5
+                        {this.props.cart.cartItems.length}
                       </span>
                     </Link>
                   </NavItem>
@@ -103,7 +102,7 @@ export class Navbar extends React.Component {
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
-    cartItems: state.cartItems
+    cart: state.cart
   }
 }
 

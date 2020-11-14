@@ -38,7 +38,12 @@ export class AllProducts extends Component {
                   />
                   <div className="price-buy">
                     <p id="price">${product.price}</p>
-                    <button id="add-cart">add to cart</button>
+                    <button
+                      id="add-cart"
+                      onClick={() => this.props.addToCart(product)}
+                    >
+                      add to cart
+                    </button>
                   </div>
                 </div>
               )
@@ -60,7 +65,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    getAllProducts: () => dispatch(fetchAllProducts())
+    getAllProducts: () => dispatch(fetchAllProducts()),
+    addToCart: product => dispatch({type: 'ADD_TO_CART', product})
   }
 }
 
