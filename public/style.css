@@ -190,11 +190,6 @@ form div {
 }
 
 /* Cart */
-/* .cart-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-} */
 
 .container-products {
   display: flex;
@@ -270,7 +265,7 @@ form div {
 }
 
 .product img {
-  width: 75px;
+  width: 60px;
 }
 
 .cartTotalContainer {

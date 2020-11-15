@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+
 import {
   removeProduct,
   increaseProduct,
@@ -25,7 +26,6 @@ export class Cart extends Component {
           <h5 className="quantity">QUANTITY</h5>
           <h5 className="total">TOTAL</h5>
         </div>
-        {/* place products inside here */}
 
         {cartItems.map(product => {
           return (

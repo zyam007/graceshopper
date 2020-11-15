@@ -1,7 +1,7 @@
 const Category = require('../db/models/category')
 const router = require('express').Router()
 const isAdminMiddleware = require('./adminMiddleware')
-const Product = require('./allproducts')
+const Product = require('../db/models/product')
 
 router.get('/', async (req, res, next) => {
   try {

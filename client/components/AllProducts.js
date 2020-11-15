@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Fade from 'react-reveal/Fade'
 import {Link} from 'react-router-dom'
-
 import {fetchAllProducts} from '../store/reducers/allProducts'
 
 export class AllProducts extends Component {
