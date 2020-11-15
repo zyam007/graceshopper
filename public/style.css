@@ -293,3 +293,8 @@ form div {
 .cartTotal {
   width: 10%;
 }
+
+#home {
+  width: 25%;
+  height: 25%;
+}

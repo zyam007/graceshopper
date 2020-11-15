@@ -21,16 +21,18 @@ export class Navbar extends React.Component {
     return (
       <>
         <BootstrapNavbar variant="dark" bg="dark" id="flex">
-          <BootstrapNavbar.Brand>
+          {/* <BootstrapNavbar.Brand className="logo"> */}
+          <Link to="/">
             <img src="logo.png" alt="ALL_CAPS" className="logo" />
-          </BootstrapNavbar.Brand>
+          </Link>
+          {/* </BootstrapNavbar.Brand> */}
           <Nav>
             {isLoggedIn ? (
               <div>
                 <Nav>
                   {/* The navbar will show these links after you log in */}
                   <NavItem>
-                    <Link to="/home" className="nav-name">
+                    <Link to="/" className="nav-name">
                       Home
                     </Link>
                   </NavItem>
