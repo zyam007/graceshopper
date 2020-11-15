@@ -21,27 +21,33 @@ export class Navbar extends React.Component {
     return (
       <>
         <BootstrapNavbar variant="dark" bg="dark" id="flex">
-          <BootstrapNavbar.Brand>
+          {/* <BootstrapNavbar.Brand className="logo"> */}
+          <Link to="/">
             <img src="logo.png" alt="ALL_CAPS" className="logo" />
-          </BootstrapNavbar.Brand>
+          </Link>
+          {/* </BootstrapNavbar.Brand> */}
           <Nav>
             {isLoggedIn ? (
               <div>
                 <Nav>
                   {/* The navbar will show these links after you log in */}
                   <NavItem>
-                    <Link to="/home">Home</Link>
+                    <Link to="/" className="nav-name">
+                      Home
+                    </Link>
                   </NavItem>
                   <NavItem>
-                    <Link to="/allproducts">Products</Link>
+                    <Link to="/allproducts" className="nav-name">
+                      Products
+                    </Link>
                   </NavItem>
                   <NavItem>
-                    <Link to="/" onClick={handleClick}>
+                    <Link to="/" onClick={handleClick} className="nav-name">
                       Logout
                     </Link>
                   </NavItem>
                   <NavItem className="center">
-                    <Link to="/cart">
+                    <Link to="/cart" className="nav-name">
                       <FontAwesomeIcon
                         icon={faCartArrowDown}
                         style={cartStyle}
@@ -58,21 +64,31 @@ export class Navbar extends React.Component {
                 {/* The navbar will show these links before you log in */}
                 <Nav>
                   <NavItem>
-                    <Link to="/home">Home</Link>
+                    <Link to="/" className="nav-name">
+                      Home
+                    </Link>
                   </NavItem>
                   <NavItem>
-                    <Link to="/allproducts">Products</Link>
+                    <Link to="/allproducts" className="nav-name">
+                      Products
+                    </Link>
                   </NavItem>
                   <NavItem>
-                    <Link to="/login">Login</Link>
+                    <Link to="/login" className="nav-name">
+                      Login
+                    </Link>
                   </NavItem>
                   <NavItem>
-                    <Link to="/signup" onClick={handleClick}>
+                    <Link
+                      to="/signup"
+                      onClick={handleClick}
+                      className="nav-name"
+                    >
                       Sign Up
                     </Link>
                   </NavItem>
                   <NavItem className="center">
-                    <Link to="/cart">
+                    <Link to="/cart" className="nav-name">
                       <FontAwesomeIcon
                         icon={faCartArrowDown}
                         style={cartStyle}

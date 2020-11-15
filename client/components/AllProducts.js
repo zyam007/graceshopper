@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import Fade from 'react-reveal/Fade'
 import {Link} from 'react-router-dom'
 import {fetchAllProducts} from '../store/reducers/allProducts'
+import {Card, Button} from 'react-bootstrap'
 
 export class AllProducts extends Component {
   componentDidMount() {
@@ -16,33 +17,40 @@ export class AllProducts extends Component {
       <div id="productsView">
         <h2 id="all-prod-text">All Products</h2>
         <Fade bottom cascade>
+          {/* <Fade appear="true"> */}
           <div className="all-products">
             {allProducts.map(product => {
               return (
-                <div key={product.id} className="single-product-card">
-                  <div style={{textAlign: 'center'}}>
-                    <Link
-                      to={`/listing/${product.id}`}
-                      className="product-name"
-                    >
-                      {product.name}
-                    </Link>
-                  </div>
+                <Card
+                  key={product.id}
+                  className="shadow-sm"
+                  style={{margin: '1rem'}}
+                >
                   <img
+                    variant="top"
                     src={product.imageUrl[0]}
-                    alt="no image"
+                    alt={product.name}
                     className="image-products"
                   />
-                  <div className="price-buy">
-                    <p id="price">${product.price}</p>
-                    <button
-                      id="add-cart"
+                  <Card.Body>
+                    <Card.Text>
+                      <Link
+                        to={`/listing/${product.id}`}
+                        className="product-name"
+                      >
+                        {product.name}
+                      </Link>
+                    </Card.Text>
+                    <Card.Text>${product.price}</Card.Text>
+                    <Button
+                      type="submit"
+                      variant="secondary"
                       onClick={() => this.props.addToCart(product)}
                     >
                       add to cart
-                    </button>
-                  </div>
-                </div>
+                    </Button>
+                  </Card.Body>
+                </Card>
               )
             })}
           </div>
