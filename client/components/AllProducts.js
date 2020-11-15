@@ -29,7 +29,7 @@ export class AllProducts extends Component {
                     </Link>
                   </div>
                   <img
-                    src={product.imageUrl}
+                    src={product.imageUrl[0]}
                     alt="no image"
                     className="image-products"
                   />

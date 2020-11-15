@@ -22,7 +22,10 @@ class SingleProduct extends React.Component {
     console.log('product', product)
 
     return (
-      <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+      <div
+        style={{display: 'flex', justifyContent: 'space-evenly'}}
+        className="container-product"
+      >
         <Carousel
           style={{width: '40rem', padding: '1rem', alignSelf: 'center'}}
         >

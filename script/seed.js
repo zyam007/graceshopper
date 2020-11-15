@@ -26,32 +26,31 @@ async function seed() {
   await Category.bulkCreate([
     {
       name: 'Food',
-      imageUrl:
-        'https://i.etsystatic.com/23361137/r/il/7399e4/2571909377/il_1588xN.2571909377_2s6e.jpg'
+      imageUrl: 'https://container-ph-vd.s3.amazonaws.com/donut.jpg'
     },
     {
       name: 'Fauna',
       imageUrl:
-        'https://www.keebtalk.com/uploads/db8059/original/2X/8/82b7d5336fffeeb7de47c6c9b30a8c63eef25280.jpg'
+        'https://wallup.net/wp-content/uploads/2016/01/166113-colorful-black_background-animals-artwork-digital_art-lion-748x561.jpg'
     },
     {
       name: 'Flora',
-      imageUrl: 'https://container-ph-vd.s3.amazonaws.com/Dwarf-terrarium.jpg'
+      imageUrl: 'https://i.redd.it/679mcpkita521.png'
     },
     {
       name: 'Movie-TV',
       imageUrl:
-        'https://i.etsystatic.com/23361137/r/il/c44a98/2369527347/il_1588xN.2369527347_l4pe.jpg'
+        'https://i.pinimg.com/originals/6a/03/11/6a03112f830ef03ac6d79e404a41d91e.jpg'
     },
     {
       name: 'Games',
       imageUrl:
-        'https://i.etsystatic.com/25889819/r/il/de0b81/2685270753/il_1588xN.2685270753_bunt.jpg'
+        'https://c4.wallpaperflare.com/wallpaper/879/47/679/minimalism-abstract-colorful-digital-art-wallpaper-preview.jpg'
     },
     {
       name: 'Holidays',
       imageUrl:
-        'https://i.etsystatic.com/23361137/r/il/ec98ae/2372771521/il_1588xN.2372771521_naf1.jpg'
+        'https://i.pinimg.com/564x/db/fd/e5/dbfde5bae2eb9098da59fda88456dcb7.jpg'
     }
   ])
 
@@ -120,23 +119,23 @@ async function seed() {
       price: 27,
       quantity: 2,
       imageUrl: [
-        'https://www.picclickimg.com/d/w1600/pict/352897547977_/Salmon-Sushi-Keycap-Series-Handmade-Resin-Custom-Artisan.jpg',
         'https://container-ph-vd.s3.amazonaws.com/salmon.jpg',
-        'https://container-ph-vd.s3.amazonaws.com/sushi.jpg'
+        'https://container-ph-vd.s3.amazonaws.com/sushi.jpg',
+        'https://www.picclickimg.com/d/w1600/pict/352897547977_/Salmon-Sushi-Keycap-Series-Handmade-Resin-Custom-Artisan.jpg'
       ],
       categoryId: 1
     },
     {
-      name: 'SUN CHUBBY OWL',
+      name: 'DOGGIES',
       description:
-        'ONE WISE KEYCAP, EXTRA PLUMAGE. An eternal symbol for wisdom, knowledge, and late nights, the owl makes a great guardian for any keyboard. In the Chubby Owl artisan keycap from SUN, this wide-eyed avian takes a turn for the cute. Available in six vivid colorways, these keycaps are both playful and extra feathery. Handmade from resin with realistic detail, each one features a small owl fluffed up to the maximum. Call them chubby or call them scary—these owls are certainly a hoot. Compatible with Cherry MX switches and clones, they’re ready to roost on a keyboard near you.',
+        'Sled dogs have been used in the Arctic for at least 9,000 years and were important for transportation in Arctic areas until the introduction of semi-trailer trucks, snowmobiles and airplanes in the 20th century, hauling supplies in areas that were inaccessible by other methods. They were used with varying success in the explorations of both poles, as well as during the Alaskan gold rush.',
       price: 11,
       numOfSales: 5,
       quantity: 9,
       imageUrl: [
-        'https://massdrop-s3.imgix.net/product-images/sun-chubby-owl-artisan-keycap/FP/ezXKkJxkQB6CdnQWmq1e_CB5A5815-ccopy.jpg?auto=format&fm=jpg&fit=crop&w=512&bg=f0f0f0&dpr=1&q=70',
-        'https://massdrop-s3.imgix.net/product-images/sun-chubby-owl-artisan-keycap/FP/F7V9K1TbyZsjf10Zt0Hw_CB5A5829-copy.jpg?auto=format&fm=jpg&fit=crop&w=477.5&bg=f0f0f0&dpr=1&q=70',
-        'https://massdrop-s3.imgix.net/product-images/sun-chubby-owl-artisan-keycap/FP/nW8u6kUXSOuAK1W28rsx_CB5A5796-copy.jpg?auto=format&fm=jpg&fit=crop&w=955&bg=f0f0f0&dpr=1&q=70'
+        'https://c1.neweggimages.com/ProductImage/A6DHD200710U0GNM.jpg',
+        'https://i.etsystatic.com/21832684/r/il/7a526c/2176083442/il_794xN.2176083442_97dg.jpg',
+        'https://i.etsystatic.com/21832684/r/il/943db0/2176083472/il_794xN.2176083472_myca.jpg'
       ],
       categoryId: 2
     },
@@ -155,16 +154,16 @@ async function seed() {
       categoryId: 2
     },
     {
-      name: 'BUBBLE KEY GROUNDHOG',
+      name: 'OWL IN NEST',
       description:
-        'PUT A FURRY FRIEND ON YOUR KEYBOARD. Groundhog day may have passed, but that doesn’t mean Punxsutawney Phil doesn’t still want a spot on your keyboard. This furry little groundhog keycap is a cute companion for any work day. It’s got big buck teeth, perky eyes, chubby cheeks, and a button nose you’ll want to press over and over. Available in four different colors, the keycap is handmade from resin and compatible with Cherry MX switches and clones.',
+        'This keycap features a mama owl seemingly attempting to peck her way out from her resin prison! There are two white eggs and a single brown egg hidden in her nest. When will they hatch we wonder? Handcrafted by clay and resin; Compatible with Cherry MX switches; The price is just for 1 resin keycap (the keyboard is NOT included)Note: Every keycap is handmade and they do not have traditional profiles. Please refer closely to the pictures!',
       price: 9,
       numOfSales: 5,
       quantity: 4,
       imageUrl: [
-        'https://massdrop-s3.imgix.net/product-images/artisan-ph/FP/K4Xq9o6uShWaHZWTyzj9_Dusty.jpg?auto=format&fm=jpg&fit=crop&w=512&bg=f0f0f0&dpr=1&q=70',
-        'https://massdrop-s3.imgix.net/product-images/artisan-ph/FP/zxzWRmbCTIWuT10exwnr_363A0925.jpg?auto=format&fm=jpg&fit=crop&w=477.5&bg=f0f0f0&dpr=1&q=70',
-        'https://massdrop-s3.imgix.net/product-images/artisan-ph/FP/39C65cCrSfO9KR6g3nSo_363A0944.jpg?auto=format&fm=jpg&fit=crop&w=477.5&bg=f0f0f0&dpr=1&q=70'
+        'https://i.etsystatic.com/23097501/r/il/41b7eb/2521216228/il_1588xN.2521216228_eh06.jpg',
+        'https://i.etsystatic.com/23097501/r/il/104f6b/2568877431/il_794xN.2568877431_pm9k.jpg',
+        'https://i.etsystatic.com/23097501/r/il/bc6bbe/2568883627/il_794xN.2568883627_am5u.jpg'
       ],
       categoryId: 2
     },
@@ -190,9 +189,9 @@ async function seed() {
       numOfSales: 5,
       quantity: 4,
       imageUrl: [
-        'https://massdrop-s3.imgix.net/product-images/uniquekeycaps-lucky-cat-artisan-keycap/FP/8quf65iQSR6DqD7wErRL_3.jpg?auto=format&fm=jpg&fit=crop&w=477.5&bg=f0f0f0&dpr=1&q=70',
+        'https://massdrop-s3.imgix.net/product-images/uniquekeycaps-lucky-cat-artisan-keycap/FP/Rbqdzqo0RBm0FzcPigmG_2668.jpg?auto=format&fm=jpg&fit=crop&w=955&bg=f0f0f0&dpr=1&q=70',
         'https://massdrop-s3.imgix.net/product-images/uniquekeycaps-lucky-cat-artisan-keycap/FP/DAdopN4JSnusiX4xsWTS_5.jpg?auto=format&fm=jpg&fit=crop&w=477.5&bg=f0f0f0&dpr=1&q=70',
-        'https://massdrop-s3.imgix.net/product-images/uniquekeycaps-lucky-cat-artisan-keycap/FP/Rbqdzqo0RBm0FzcPigmG_2668.jpg?auto=format&fm=jpg&fit=crop&w=955&bg=f0f0f0&dpr=1&q=70'
+        'https://massdrop-s3.imgix.net/product-images/uniquekeycaps-lucky-cat-artisan-keycap/FP/8quf65iQSR6DqD7wErRL_3.jpg?auto=format&fm=jpg&fit=crop&w=477.5&bg=f0f0f0&dpr=1&q=70'
       ],
       categoryId: 2
     },
@@ -204,7 +203,7 @@ async function seed() {
       numOfSales: 5,
       quantity: 1,
       imageUrl: [
-        'https://massdrop-s3.imgix.net/product-images/waffle-key-rosette-artisan-keycap/AI7B8716_copy_checkout__20170613121456.jpg?auto=format&fm=jpg&fit=crop&w=512&bg=f0f0f0&dpr=1&q=70',
+        'https://massdrop-s3.imgix.net/product-images/eye-key-rose-artisan-keycap/FP/LfTTpnOSnWiYCWTLntzd_1500x1000_MEC_The_Eye_Key_Rose_Artisan_Keycap_MD-81129-TH-95.jpg?auto=format&fm=jpg&fit=fill&w=820&h=547&bg=f0f0f0&dpr=2&q=35',
         'https://massdrop-s3.imgix.net/product-images/waffle-key-rosette-artisan-keycap/AI7B8772_copy_20170613121518.jpg?auto=format&fm=jpg&fit=crop&w=955&bg=f0f0f0&dpr=1&q=70',
         'https://massdrop-s3.imgix.net/product-images/waffle-key-rosette-artisan-keycap/AI7B8833_copy_20170613121450.jpg?auto=format&fm=jpg&fit=crop&w=477.5&bg=f0f0f0&dpr=1&q=70'
       ],
@@ -232,8 +231,8 @@ async function seed() {
       numOfSales: 5,
       quantity: 10,
       imageUrl: [
-        'https://massdrop-s3.imgix.net/product-images/dwarf-factory-terrarium-resin-artisan-keycap/FP/DUgcpkamRRaMEVmI1DcU_Dwarf-%20keyboard12.jpg?auto=format&fm=jpg&fit=crop&w=955&bg=f0f0f0&dpr=1&q=70',
         'https://massdrop-s3.imgix.net/product-images/dwarf-factory-terrarium-resin-artisan-keycap/FP/tn1LkIVShOVuHYgjHbcf_1.jpg?auto=format&fm=jpg&fit=crop&w=477.5&bg=f0f0f0&dpr=1&q=70',
+        'https://massdrop-s3.imgix.net/product-images/dwarf-factory-terrarium-resin-artisan-keycap/FP/DUgcpkamRRaMEVmI1DcU_Dwarf-%20keyboard12.jpg?auto=format&fm=jpg&fit=crop&w=955&bg=f0f0f0&dpr=1&q=70',
         'https://massdrop-s3.imgix.net/product-images/dwarf-factory-terrarium-resin-artisan-keycap/FP/Apvkv9gwRyrXDjFh09hw_1.jpg?auto=format&fm=jpg&fit=crop&w=955&bg=f0f0f0&dpr=1&q=70'
       ],
       categoryId: 3
@@ -241,14 +240,14 @@ async function seed() {
     {
       name: 'CHERRY BLOSSOM SAKURA',
       description:
-        "Take your mechanical keyboard to Hanamura with this handcrafted cherry blossom keycap! This is a single key (1x) profiled for the Esc, Function, or number row.\nStem: Cherry MX*\nProfile: OEM**, 1x Fn-row\n*Each key is individually tested to function well on an original Cherry MX switch with an RGB LED. They should also function on exact clones like Gaterons, Kailh Speeds, Outemus, Zealios, Halos, Holy Pandas, etc. These keycaps will not fit on other switch types like ALPS, Matias, Topre, Razer Opto-mechanical (Huntsman), or Logitech Romer-G switches. SteelSeries Apex keyboards are incompatible due to unusually-shaped LEDs. Stems are calibrated to fit snug on a particularly narrow Cherry MX clone stem, or tightly on an original Cherry MX. These will likely take a little more force to mount than your stock keycaps--that's normal for artisan caps.",
+        "Take your mechanical keyboard to Hanamura with this handcrafted cherry blossom keycap! This is a single key (1x) profiled for the Esc, Function, or number row. Each key is individually tested to function well on an original Cherry MX switch with an RGB LED. They should also function on exact clones like Gaterons, Kailh Speeds, Outemus, Zealios, Halos, Holy Pandas, etc. These keycaps will not fit on other switch types like ALPS, Matias, Topre, Razer Opto-mechanical (Huntsman), or Logitech Romer-G switches. SteelSeries Apex keyboards are incompatible due to unusually-shaped LEDs. Stems are calibrated to fit snug on a particularly narrow Cherry MX clone stem, or tightly on an original Cherry MX. These will likely take a little more force to mount than your stock keycaps--that's normal for artisan caps.",
       price: 5,
       numOfSales: 5,
       quantity: 3,
       imageUrl: [
-        'https://massdrop-s3.imgix.net/product-images/cherry-blossoms-pbt-all-over-dye-subbed-keycap-set/361A7245_20170817111003.jpg?auto=format&fm=jpg&fit=fill&w=820&h=547&bg=f0f0f0&dpr=2&q=35',
-        'https://massdrop-s3.imgix.net/product-images/cherry-blossoms-pbt-all-over-dye-subbed-keycap-set/361A7153_20170817111002.jpg?auto=format&fm=jpg&fit=fill&w=820&h=547&bg=f0f0f0&dpr=2&q=35',
-        'https://massdrop-s3.imgix.net/product-images/cherry-blossoms-pbt-all-over-dye-subbed-keycap-set/361A7217_20170817111006.jpg?auto=format&fm=jpg&fit=fill&w=820&h=547&bg=f0f0f0&dpr=2&q=35'
+        'https://i.etsystatic.com/20356291/r/il/d1e50b/2273980567/il_1588xN.2273980567_6mq1.jpg',
+        'https://i.etsystatic.com/20356291/r/il/27c672/2226393122/il_794xN.2226393122_tsu1.jpg',
+        'https://i.etsystatic.com/20356291/r/il/7b5b8d/2273980767/il_794xN.2273980767_e8cc.jpg'
       ],
       categoryId: 3
     },
@@ -274,7 +273,7 @@ async function seed() {
       numOfSales: 5,
       quantity: 11,
       imageUrl: [
-        'https://massdrop-s3.imgix.net/product-images/xx7-megaqon-artisan-keycaps/MD-13107_20151119104927_99d320edc7350171.jpg?auto=format&fm=jpg&fit=fill&w=820&h=547&bg=f0f0f0&dpr=1&q=70',
+        'https://massdrop-s3.imgix.net/product-images/xx7-megaqon-artisan-keycaps/MD-13107_20151119104940_d1d0ec5dfe8ea44d.jpg?auto=format&fm=jpg&fit=fill&w=820&h=547&bg=f0f0f0&dpr=2&q=35',
         'https://massdrop-s3.imgix.net/product-images/xx7-megaqon-artisan-keycaps/MD-13107_20151119104936_ef9caadac59f1a2d.jpg?auto=format&fm=jpg&fit=crop&w=477.5&bg=f0f0f0&dpr=1&q=70',
         'https://massdrop-s3.imgix.net/product-images/xx7-megaqon-artisan-keycaps/MD-13107_20151119104936_59927fc37d9d5819.jpg?auto=format&fm=jpg&fit=fill&w=120&h=80&bg=f0f0f0&dpr=1&q=70'
       ],
@@ -295,30 +294,30 @@ async function seed() {
       categoryId: 4
     },
     {
-      name: 'JURASSIC PARK',
+      name: 'JOKER',
       description:
-        'Atop your keyboard, an Unidentified Species lies in wait. A dragon, perhaps—or maybe a basilisk, hydra, or yet-to-be-discovered prehistoric predator. Your fingertips may have to find out the hard way. Hand-painted and meticulously shaped by the pros at NZ Caps, the Unidentified Species artisan keycap means business. Jutting upward as though rising from the depths of your PCB, the head of this reptilian behemoth is adorned with massive fangs and empty eyes. Compatible with Cherry MX switches and clones, it makes an imposing companion on any keyboard. Type at your own risk.',
+        "Atop your keyboard, one of the most iconic villains of all times lies in wait. One of the most iconic characters in popular culture, the Joker has been listed among the greatest comic book villains and fictional characters ever created. His popularity has seen him appear on a variety of merchandise, such as clothing and collectible items, inspire real-world structures (such as theme park attractions), and be referenced in a number of media. The Joker has been adapted to serve as Batman's adversary in live-action, animated, and video game incarnations.",
       price: 18,
       numOfSales: 5,
       quantity: 2,
       imageUrl: [
-        'https://massdrop-s3.imgix.net/product-images/nz-caps-unidentified-species-artisan-keycap/FP/32undNczRW6D316oM0t0_CB5A4683-copy-pc.png?auto=format&fm=jpg&fit=fill&w=820&h=547&bg=f0f0f0&dpr=2&q=35',
-        'https://massdrop-s3.imgix.net/product-images/nz-caps-unidentified-species-artisan-keycap/FP/EpQIx011T0a01z0sEQ0t_CB5A4659-copy.jpg?auto=format&fm=jpg&fit=fill&w=820&h=547&bg=f0f0f0&dpr=2&q=35',
-        'https://massdrop-s3.imgix.net/product-images/nz-caps-unidentified-species-artisan-keycap/FP/1ZqTSTJ5SHGICve8tAqr_CB5A4704-copy.jpg?auto=format&fm=jpg&fit=fill&w=820&h=547&bg=f0f0f0&dpr=2&q=35'
+        'https://i.etsystatic.com/22749112/r/il/1ee9ac/2568057990/il_1588xN.2568057990_ocx3.jpg',
+        'https://i.etsystatic.com/22749112/r/il/c72050/2568057110/il_794xN.2568057110_gvyx.jpg',
+        'https://i.etsystatic.com/22749112/r/il/ecb50f/2606900658/il_794xN.2606900658_70v0.jpg'
       ],
       categoryId: 4
     },
     {
-      name: 'PIRATE OF THE CARIBBEAN',
+      name: 'STAR WARS BB8',
       description:
-        'A chest of gold doubloons is at your fingertips—and you don’t need a treasure map to find it. As long as you have a mechanical keyboard, and a plunderer’s affinity for artisan keycaps, the spoils are as good as yours. Handmade from brass by the experts at Moon Key, the Treasure Chest artisan keycap looks and feels just like the real thing. Plated in your choice of gold-, silver-, or copper-colored metal, it even opens and closes. Compatible with Cherry MX switches and clones, it’s a bounty worthy of any keyboard.',
+        "This keycap is only for mechanical keyboards with switches such as Cherry MX, Gateron, Kailh, etc. BB-8 is a spherical robot with a free-moving domed head. It is white, with orange and silver accents and a black optical lens on its headpiece. BB-8 also possesses multiple panels containing various tools or ports. Scanlan said of the robot's personality - We always imagined BB-8 as being quite manipulative. I think he knows he’s cute. He knows that he can win people over. And he uses that, like children do, to get his own way. In this film, he has a very important mission that he has to accomplish and so he uses his personality, his coyness, and all of those things.",
       price: 14,
       numOfSales: 5,
       quantity: 6,
       imageUrl: [
-        'https://massdrop-s3.imgix.net/product-images/moon-key-treasure-chest-artisan-keycap/FP/GOaQHZF7SqK5miboq70R_oFBbUHu.jpeg?auto=format&fm=jpg&fit=fill&w=820&h=547&bg=f0f0f0&dpr=2&q=35',
-        'https://massdrop-s3.imgix.net/product-images/moon-key-treasure-chest-artisan-keycap/FP/ld0nrPuhTQfuCykZAqEg_Obg9YY0.jpeg?auto=format&fm=jpg&fit=fill&w=820&h=547&bg=f0f0f0&dpr=2&q=35',
-        'https://massdrop-s3.imgix.net/product-images/moon-key-treasure-chest-artisan-keycap/FP/40eZBhuQ4ySGaVKFy2DX_pc.jpeg?auto=format&fm=jpg&fit=fill&w=820&h=547&bg=f0f0f0&dpr=2&q=35'
+        'https://i.etsystatic.com/23361137/r/il/835900/2322982434/il_1588xN.2322982434_pcqt.jpg',
+        'https://i.etsystatic.com/23361137/r/il/f3e336/2322982690/il_794xN.2322982690_ne7x.jpg',
+        'https://i.etsystatic.com/23361137/r/il/db3274/2370569009/il_794xN.2370569009_nvf6.jpg'
       ],
       categoryId: 4
     },
@@ -465,14 +464,14 @@ async function seed() {
     {
       name: 'MERRY CHRISTMAS',
       description:
-        'Nothing says Merry Christmas quite like a festive holiday keycap. New from the makers at MEMEDA, these Merry Christmas artisan keycaps are sure to put you in the right spirit.',
+        'To celebrate the great holiday, Goldenstar Keycap and zFrontier will bring back the festive Christmas-themed Grinch and Klaus Resin Artisan keycaps. Every keycap is handmade with care and utmost craftsmanship.',
       price: 14,
       numOfSales: 5,
       quantity: 5,
       imageUrl: [
-        'https://massdrop-s3.imgix.net/product-images/memeda-merry-christmas-artisan-keycaps/FP/teVKXxdNQ56410sp41yy_pc.png?auto=format&fm=jpg&fit=fill&w=820&h=547&bg=f0f0f0&dpr=2&q=35',
-        'https://massdrop-s3.imgix.net/product-images/memeda-merry-christmas-artisan-keycaps/FP/YqfrtMyeSt6Xv8I9Zt5A_fixed6.jpg?auto=format&fm=jpg&fit=fill&w=820&h=547&bg=f0f0f0&dpr=2&q=35',
-        'https://massdrop-s3.imgix.net/product-images/memeda-merry-christmas-artisan-keycaps/FP/n5FkMO60Sdu4vRWCwNVO_corrected.jpg?auto=format&fm=jpg&fit=fill&w=820&h=547&bg=f0f0f0&dpr=2&q=35'
+        'https://cdn.shopify.com/s/files/1/1674/0405/files/Noel_Grinch_and_Klaus_1_2048x2048.jpg?v=1576922512',
+        'https://cdn.shopify.com/s/files/1/1674/0405/files/Frozen_Grinch_and_Klaus_1_2048x2048.jpg?v=1576922538',
+        'https://cdn.shopify.com/s/files/1/1674/0405/files/Carbonized_Grinch_and_Klaus_1_2048x2048.jpg?v=1576922681'
       ],
       categoryId: 6
     }
@@ -489,16 +488,26 @@ async function seed() {
     })
   }
 
-  const admins = {
-    firstName: 'Kade',
-    lastName: 'Cahe',
-    password: '1234567',
-    email: 'kadecahe@gmail.com',
-    imageUrl: Faker.image.avatar(),
-    isAdmin: true
-  }
+  const admins = [
+    {
+      firstName: 'Kade',
+      lastName: 'Cahe',
+      password: '1234567',
+      email: 'kadecahe@gmail.com',
+      imageUrl: Faker.image.avatar(),
+      isAdmin: true
+    },
+    {
+      firstName: 'Virginie',
+      lastName: 'Bonnet',
+      password: '1234567',
+      email: 'vb@gmail.com',
+      imageUrl: Faker.image.avatar(),
+      isAdmin: true
+    }
+  ]
 
-  await User.create(admins)
+  await User.bulkCreate(admins)
 
   await Order.create({
     totalAmount: 25.99,
