@@ -26,8 +26,7 @@ async function seed() {
   await Category.bulkCreate([
     {
       name: 'Food',
-      imageUrl:
-        'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/delicious-donuts-isolated-on-colorful-em-arts.jpg'
+      imageUrl: 'https://container-ph-vd.s3.amazonaws.com/donut.jpg'
     },
     {
       name: 'Fauna',
