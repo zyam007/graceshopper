@@ -119,6 +119,9 @@ form div {
 
 #productsView {
   margin-top: 20px;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 #add-cart {
@@ -138,7 +141,7 @@ form div {
   margin-left: 10px;
 }
 
-/* Styled-Components.com FOOTER */
+/* FOOTER */
 :root {
   --mainDark: #343a40;
   --mainWhite: #ffffff;
@@ -152,36 +155,53 @@ form div {
   bottom: 0;
   width: 100%;
 }
+/* SINGLE PRODUCT VIEW */
+.container-product {
+  display: flex;
+  min-height: 100vh;
+}
 
 /* HOME/All Categories Component */
 
 #categoriesView {
   margin-left: 200px;
   margin-right: 200px;
+  padding-top: 50px;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 #all-cat-text {
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 40px;
 }
 .all-categories {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
+  padding-top: 100px;
 }
 
 .single-category-card {
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
-  width: 250px;
+  width: 400px;
+  height: 400px;
   margin-top: 15px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .image-categories {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 60%;
-  border-radius: 5px;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  object-fit: cover;
 }
 .category-name {
   margin-top: 20px;
@@ -192,12 +212,12 @@ form div {
   margin-top: 20px;
 }
 
-.button-category {
-  color: red;
-}
-
-#view-category {
-  color: red;
+.link-category {
+  color: var(--mainLightPurple);
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-top: 5px;
+  text-align: center;
 }
 
 /* Cart */

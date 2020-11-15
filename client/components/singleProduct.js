@@ -19,11 +19,9 @@ class SingleProduct extends React.Component {
   render() {
     const product = this.props.product
     if (!product.name) return <Spinner animation="border" />
-    else
-      // console.log(product.imageUrl)
-
+    
       return (
-        <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+        <div style={{display: 'flex', justifyContent: 'space-evenly'}} className="container-product">
           <Carousel
             style={{width: '40rem', padding: '1rem', alignSelf: 'center'}}
           >

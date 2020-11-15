@@ -15,7 +15,7 @@ export class AllCategories extends Component {
 
     return (
       <div id="categoriesView">
-        <h2 id="all-cat-text">Checkout Our Keycaps by Category</h2>
+        <h1 id="all-cat-text">Artisan Keycaps For Everyone.</h1>
         <Fade bottom cascade>
           <div className="all-categories">
             {allCategories.map(category => {
@@ -28,14 +28,9 @@ export class AllCategories extends Component {
                     className="image-categories"
                   />
                   <div>
-                    <Link to={`/${category.id}`} className="link-category">
-                      View Keycaps
-                    </Link>
-                  </div>
-                  <div className="button-category">
-                    <button id="view-category" type="button">
-                      View Category
-                    </button>
+                    <p className="link-category">
+                      <Link to={`/${category.id}`}>View Keycaps</Link>
+                    </p>
                   </div>
                 </div>
               )

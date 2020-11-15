@@ -28,7 +28,7 @@ export class AllProducts extends Component {
                 >
                   <img
                     variant="top"
-                    src={product.imageUrl}
+                    src={product.imageUrl[0]}
                     alt={product.name}
                     className="image-products"
                   />

@@ -54,7 +54,7 @@ Our dummy e-commerce website allows tech gear enthusiasts to browse inspiring ca
 
 ---
 
-**\*\*** REQUIREMENTS TIER 1 (OUR PRIORITY GOAL)
+------REQUIREMENTS TIER 1 (OUR PRIORITY GOAL)------
 As a customer/visitor, I want to be able to:
 [ ] access a deployed version of the website so I can browse and purchase products.
 [ ] view all available products so I can pick from a variety.
@@ -81,7 +81,7 @@ As an engineer, I want to:
 [ ] have a well-seeded database so that I am able to simulate a number of different scenarios for the user stories below.
 [ ] user data to be secure so that no one can unrightfully manipulate information.
 
-**\*\*** REQUIREMENTS TIER 2 - E-COMMERCE ESSENTIALS
+------REQUIREMENTS TIER 2 - E-COMMERCE ESSENTIALS------
 As a customer/visitor, I want to be able to:
 [ ] see all products that belong to a certain category.
 [ ] explore an aesthetically pleasing website so I can easily navigate around and enjoy the experience (UI/UX).
@@ -102,7 +102,7 @@ As an administrator, I want to be able to:
 As an engineer, I want:
 [ ] continuous integration and delivery (deployment) of the codebase so that there are lower rates of release failure.
 
-**\*\*** REQUIREMENTS TIER 3. EXTRA FEATURES & FLAIR
+------REQUIREMENTS TIER 3. EXTRA FEATURES & FLAIR------
 As an administrator, I want to be able to:
 [ ] ensure accurate product inventory so that we can be sure only available products are sold.
 [ ] offer customers discounts through promo codes so that we can incentivize purchases.
@@ -121,7 +121,7 @@ Have A User-Friendly Experience
 [ ] add products to a wishlist so that I can differentiate products I would like to purchase now (cart) versus products I might be
 [ ] interested in purchasing in the future (wishlist).
 
-**\*\*** REQUIREMENTS TIER 4: S TIER
+------REQUIREMENTS TIER 4: S TIER------
 As a customer, I want to be able to:
 [ ]post products to my social media accounts so that I can share with my friends/followers.
 [ ] receive recommended products so that I can have a customized user experience and get inspiration.
@@ -137,9 +137,13 @@ As a CEO/CTO, I want:
 
 ---
 
-4)Document big design decisions we made and why:
+4.  Document big design decisions we made and why:
 
-A) Overall design across pages:
-B) Logo design:
-C) Colors:
-D) Animations:
+A) Logo design: Kade suggested a website to build a draft of a first logo, I played with it and they integrated it on the nav bar. After that, Kade made the color and style of the nav bar match the logo, which we all liked and approved very quickly.
+
+B) Colors: After having the main color for the nav bar and the logo, Virginie followed the same style for the footer (shades of Grey and Purple) and Yanna ended up doing the same for the products page and the cart.
+
+C) Animations: Yanna started playing with React Reveal, showed the team an example of what she liked for the allproducts page: we all agreed and approved.
+
+Conclusion and Overall design implementation: the entire creative process was extremely collaborative. We each came up with a suggestion while working on the first components and the process couldn't be easier and smoother across the team. We seemed to agree on everyone's suggestion and the overall design ended up being put together in a genuine, meaningful and respectful way.
+Communication was key: We kept each other updated regularly on Slack and over Zoom while removing each others' blockers. We were efficient at assigning tasks, and tracking issues.
