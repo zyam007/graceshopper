@@ -1,7 +1,7 @@
 const Category = require('../db/models/category')
 const router = require('express').Router()
 const isAdminMiddleware = require('./adminMiddleware')
-const Product = require('./allproducts')
+const Product = require('../db/models/product')
 
 router.get('/', async (req, res, next) => {
   try {
@@ -18,7 +18,9 @@ router.get('/:id', async (req, res, next) => {
   const {id} = req.params
 
   try {
-    const singleCategory = await Category.findByPk(id, {include: Product})
+    const singleCategory = await Category.findByPk(id, {
+      include: Product
+    })
     res.json(singleCategory)
   } catch (err) {
     next(err)
