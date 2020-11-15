@@ -32,7 +32,7 @@ async function seed() {
     {
       name: 'Fauna',
       imageUrl:
-        'https://i.etsystatic.com/24793076/r/il/b79f76/2680470363/il_1588xN.2680470363_mr8s.jpg'
+        'https://www.keebtalk.com/uploads/db8059/original/2X/8/82b7d5336fffeeb7de47c6c9b30a8c63eef25280.jpg'
     },
     {
       name: 'Flora',
@@ -41,7 +41,7 @@ async function seed() {
     {
       name: 'Movie-TV',
       imageUrl:
-        'https://i.etsystatic.com/20291938/r/il/bf4e50/2374224114/il_794xN.2374224114_glij.jpg'
+        'https://i.etsystatic.com/23361137/r/il/c44a98/2369527347/il_1588xN.2369527347_l4pe.jpg'
     },
     {
       name: 'Games',
