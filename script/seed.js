@@ -27,31 +27,31 @@ async function seed() {
     {
       name: 'Food',
       imageUrl:
-        'https://i.etsystatic.com/23361137/r/il/7399e4/2571909377/il_1588xN.2571909377_2s6e.jpg'
+        'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/delicious-donuts-isolated-on-colorful-em-arts.jpg'
     },
     {
       name: 'Fauna',
       imageUrl:
-        'https://www.keebtalk.com/uploads/db8059/original/2X/8/82b7d5336fffeeb7de47c6c9b30a8c63eef25280.jpg'
+        'https://wallup.net/wp-content/uploads/2016/01/166113-colorful-black_background-animals-artwork-digital_art-lion-748x561.jpg'
     },
     {
       name: 'Flora',
-      imageUrl: 'https://container-ph-vd.s3.amazonaws.com/Dwarf-terrarium.jpg'
+      imageUrl: 'https://i.redd.it/679mcpkita521.png'
     },
     {
       name: 'Movie-TV',
       imageUrl:
-        'https://i.etsystatic.com/23361137/r/il/c44a98/2369527347/il_1588xN.2369527347_l4pe.jpg'
+        'https://i.pinimg.com/originals/6a/03/11/6a03112f830ef03ac6d79e404a41d91e.jpg'
     },
     {
       name: 'Games',
       imageUrl:
-        'https://i.etsystatic.com/25889819/r/il/de0b81/2685270753/il_1588xN.2685270753_bunt.jpg'
+        'https://c4.wallpaperflare.com/wallpaper/879/47/679/minimalism-abstract-colorful-digital-art-wallpaper-preview.jpg'
     },
     {
       name: 'Holidays',
       imageUrl:
-        'https://i.etsystatic.com/23361137/r/il/ec98ae/2372771521/il_1588xN.2372771521_naf1.jpg'
+        'https://i.pinimg.com/564x/db/fd/e5/dbfde5bae2eb9098da59fda88456dcb7.jpg'
     }
   ])
 
@@ -489,16 +489,26 @@ async function seed() {
     })
   }
 
-  const admins = {
-    firstName: 'Kade',
-    lastName: 'Cahe',
-    password: '1234567',
-    email: 'kadecahe@gmail.com',
-    imageUrl: Faker.image.avatar(),
-    isAdmin: true
-  }
+  const admins = [
+    {
+      firstName: 'Kade',
+      lastName: 'Cahe',
+      password: '1234567',
+      email: 'kadecahe@gmail.com',
+      imageUrl: Faker.image.avatar(),
+      isAdmin: true
+    },
+    {
+      firstName: 'Virginie',
+      lastName: 'Bonnet',
+      password: '1234567',
+      email: 'vb@gmail.com',
+      imageUrl: Faker.image.avatar(),
+      isAdmin: true
+    }
+  ]
 
-  await User.create(admins)
+  await User.bulkCreate(admins)
 
   await Order.create({
     totalAmount: 25.99,
