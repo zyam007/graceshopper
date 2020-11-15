@@ -64,7 +64,7 @@ export class Navbar extends React.Component {
                 {/* The navbar will show these links before you log in */}
                 <Nav>
                   <NavItem>
-                    <Link to="/home" className="nav-name">
+                    <Link to="/" className="nav-name">
                       Home
                     </Link>
                   </NavItem>
