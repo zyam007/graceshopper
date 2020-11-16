@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 import {
   removeProduct,
@@ -15,9 +16,14 @@ export class Cart extends Component {
   render() {
     const cartItems = this.props.cart.cartItems || []
     const quantity = this.props.cart.quantity || {}
-    // if (!cartItems.length) {
-    //   return <h3>Nothing in the cart</h3>
-    // }
+    if (!cartItems.length) {
+      return (
+        <div className="empty-cart">
+          <h3>Your Cart is empty</h3>
+          <Link to="/allproducts">continue shopping</Link>
+        </div>
+      )
+    }
     return (
       <div className="container-products">
         <div className="product-header">
@@ -38,7 +44,7 @@ export class Cart extends Component {
                 <img src={product.imageUrl} />
                 <span className="sm-hide">{product.name}</span>
               </div>
-              <div className="price sm-hide">${product.price}</div>
+              <div className="price sm-hide">${product.price.toFixed(2)}</div>
               <div className="quantity">
                 <ion-icon
                   className="decrease"
@@ -53,14 +59,14 @@ export class Cart extends Component {
                 />
               </div>
               <div className="total">
-                ${product.price * quantity[product.id]}
+                ${Number(product.price * quantity[product.id]).toFixed(2)}
               </div>
             </React.Fragment>
           )
         })}
         <div className="cartTotalContainer">
           <h4 className="cartTotalTitle">Cart Total</h4>
-          <h4 className="cartTotal">{this.props.cart.total}</h4>
+          <h4 className="cartTotal">${this.props.cart.total.toFixed(2)}</h4>
         </div>
       </div>
     )

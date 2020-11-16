@@ -336,4 +336,12 @@ form div {
 
 .google-signup {
   padding-left: 35%;
+
+.empty-cart {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }

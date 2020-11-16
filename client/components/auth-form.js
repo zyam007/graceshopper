@@ -8,21 +8,57 @@ import {auth} from '../store'
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-
+  console.log('display name', displayName)
   return (
     <div className="signup-container">
       <form onSubmit={handleSubmit} name={name}>
-        <div>
+        {displayName === 'Sign Up' && (
+          <div>
+            <div className="form-group">
+              <label htmlFor="firstName">
+                <small>First Name</small>
+              </label>
+              <input
+                name="firstName"
+                type="text"
+                className="form-control"
+                placeholder="Enter first name"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="lastName">
+                <small>Last Name</small>
+              </label>
+              <input
+                name="lastName"
+                type="text"
+                className="form-control"
+                placeholder="Enter last name"
+              />
+            </div>
+          </div>
+        )}
+        <div className="form-group">
           <label htmlFor="email">
             <small>Email</small>
           </label>
-          <input name="email" type="text" />
+          <input
+            name="email"
+            type="email"
+            className="form-control"
+            placeholder="Enter email"
+          />
         </div>
-        <div>
+        <div className="form-group">
           <label htmlFor="password">
             <small>Password</small>
           </label>
-          <input name="password" type="password" />
+          <input
+            name="password"
+            type="password"
+            className="form-control"
+            placeholder="Enter password"
+          />
         </div>
         <div>
           <button type="submit">{displayName}</button>
@@ -63,10 +99,18 @@ const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
       evt.preventDefault()
+      console.log('form name: ', evt.target.name)
       const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
-      dispatch(auth(email, password, formName))
+      if (formName === 'signup') {
+        const firstName = evt.target.firstName.value
+        const lastName = evt.target.lastName.value
+        console.log('dispatching')
+        dispatch(auth(email, password, formName, firstName, lastName))
+      } else {
+        dispatch(auth(email, password, formName))
+      }
     }
   }
 }
