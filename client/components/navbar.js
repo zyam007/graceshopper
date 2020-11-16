@@ -79,11 +79,7 @@ export class Navbar extends React.Component {
                     </Link>
                   </NavItem>
                   <NavItem>
-                    <Link
-                      to="/signup"
-                      onClick={handleClick}
-                      className="nav-name"
-                    >
+                    <Link to="/signup" className="nav-name">
                       Sign Up
                     </Link>
                   </NavItem>
