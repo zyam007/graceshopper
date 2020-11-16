@@ -41,7 +41,7 @@ export class Cart extends Component {
                   name="trash-outline"
                   onClick={() => this.props.deleteCartItem(product)}
                 />
-                <img src={product.imageUrl} />
+                <img src={product.imageUrl[0]} />
                 <span className="sm-hide">{product.name}</span>
               </div>
               <div className="price sm-hide">${product.price.toFixed(2)}</div>
