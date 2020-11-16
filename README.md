@@ -56,51 +56,59 @@ Our dummy e-commerce website allows tech gear enthusiasts to browse inspiring ca
 
 ------REQUIREMENTS TIER 1 (OUR PRIORITY GOAL)------
 As a customer/visitor, I want to be able to:
-[ ] access a deployed version of the website so I can browse and purchase products.
-[ ] view all available products so I can pick from a variety.
-[ ] view a single product so I can see more details.
-[ ] add a product to my cart so I can collect my desired products in one place.
-[ ] edit my cart if I change my mind:
-[ ] change the quantity of a product in my cart.
-[ ] remove a product in my cart.
-[ ] No one else should be able to edit my cart except me.
-[ ] "checkout" the items in my cart so I can purchase my desired goods.
-[ ] create an account so I can have a logged-in experience.
+
+* [ ] access a deployed version of the website so I can browse and purchase products.\*
+* [x] view all available products so I can pick from a variety.
+* [x] view a single product so I can see more details.
+* [x] add a product to my cart so I can collect my desired products in one place.
+* [x] edit my cart if I change my mind:
+* [x] change the quantity of a product in my cart.
+* [x] remove a product in my cart.
+* [ ] No one else should be able to edit my cart except me.
+* [ ] "checkout" the items in my cart so I can purchase my desired goods.
+* [ ] create an account so I can have a logged-in experience. - (missing completed form for sign up: add sequelize for email field "is unique")
 
 As a logged-in customer, I want to be able to:
-[ ] have a persistent cart so I can revisit and pick up where I left off:
-[ ] Logged-in-user across multiple devices: I'm logged in on my mobile device and add some items to my cart. When I open the browser on my laptop and log in, I want to see those items in my cart.
-[ ] No one else should be able to edit my cart except me.
+
+* [ ] have a persistent cart so I can revisit and pick up where I left off:
+* [ ] Logged-in-user across multiple devices: I'm logged in on my mobile device and add some items to my cart. When I open the browser on my laptop and log in, I want to see those items in my cart.
+* [ ] No one else should be able to edit my cart except me.
 
 As an administrator, I want to be able to:
-[ ] have validated data to ensure reliability.
-[ ] have full rights to make backend requests to add, edit, and remove products.
-[ ] view user information.
+
+* [ ] have validated data to ensure reliability. (add email is unique field)
+* [x] have full rights to make backend requests to add, edit, and remove products.
+* [ ] view user information. (almost there!)
 
 As an engineer, I want to:
-[ ] have a well-seeded database so that I am able to simulate a number of different scenarios for the user stories below.
-[ ] user data to be secure so that no one can unrightfully manipulate information.
+
+* [x] have a well-seeded database so that I am able to simulate a number of different scenarios for the user stories below.
+* [ ] user data to be secure so that no one can unrightfully manipulate information. (working on it!)
 
 ------REQUIREMENTS TIER 2 - E-COMMERCE ESSENTIALS------
 As a customer/visitor, I want to be able to:
-[ ] see all products that belong to a certain category.
-[ ] explore an aesthetically pleasing website so I can easily navigate around and enjoy the experience (UI/UX).
-[ ] have a persistent cart so I can revisit and pick up where I left off. There are two more experiences to consider here. Explore your favorite websites to see what the intended behavior is for the following:
-[ ] Guest-only: I don't want to create an account, but I want my cart to persist between browser refreshes ( Look into front-end storage for this one)
-[ ] Guest-to-logged-in-user: Initially, I'm not logged in, and I add items to my cart. When I eventually log in, I want to see those same
-items I added when I was logged in still in my cart, in addition to the items I may have had in my cart from a previous logged in session.
+
+* [ ] see all products that belong to a certain category. (almost there!)
+* [x] explore an aesthetically pleasing website so I can easily navigate around and enjoy the experience (UI/UX).
+* [ ] have a persistent cart so I can revisit and pick up where I left off. There are two more experiences to consider here. Explore your favorite websites to see what the intended behavior is for the following:
+* [x] Guest-only: I don't want to create an account, but I want my cart to persist between browser refreshes (Look into front-end storage for this one)
+* [ ] Guest-to-logged-in-user: Initially, I'm not logged in, and I add items to my cart. When I eventually log in, I want to see those same
+      items I added when I was logged in still in my cart, in addition to the items I may have had in my cart from a previous logged in session.
 
 As a logged-in customer, I want to be able to:
-[ ] see my order history so I can remember my previously purchased items and their prices at the time of purchase.
-[ ] view and edit my user profile so I can update my information when necessary.
-[ ] log in through third-party authentication so I can avoid creating an account specific to the website.
+
+* [ ] see my order history so I can remember my previously purchased items and their prices at the time of purchase.
+* [ ] view and edit my user profile so I can update my information when necessary.
+* [ ] log in through third-party authentication so I can avoid creating an account specific to the website.
 
 As an administrator, I want to be able to:
-[ ] allow customers to have a variety of payment method options in order to increase checkout conversion.
-[ ] edit products and manage users through a dashboard so I can easily make changes and assessments as necessary.
+
+* [ ] allow customers to have a variety of payment method options in order to increase checkout conversion.
+* [ ] edit products and manage users through a dashboard so I can easily make changes and assessments as necessary.
 
 As an engineer, I want:
-[ ] continuous integration and delivery (deployment) of the codebase so that there are lower rates of release failure.
+
+* [ ] continuous integration and delivery (deployment) of the codebase so that there are lower rates of release failure.
 
 ------REQUIREMENTS TIER 3. EXTRA FEATURES & FLAIR------
 As an administrator, I want to be able to:
