@@ -1,3 +1,4 @@
+import axios from 'axios'
 //ACTION TYPES
 const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
@@ -27,7 +28,54 @@ export const increaseProduct = product => ({
   product
 })
 
-const initialState = {cartItems: [], total: 0, quantity: {}}
+//For logged in user
+
+const GET_USER = 'SET_USER'
+
+const ADD_TO_CART_LOGGIN = 'ADD_TO_CART_LOGGIN'
+
+const RESET_CART = 'RESET_CART'
+
+export const resetCart = () => ({
+  type: RESET_CART
+})
+
+export const setCart = orderId => ({
+  type: GET_USER,
+  orderId
+})
+
+export const fetchLoggedInCart = () => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.get('api/order')
+      const orderId = data
+      console.log('in the thunk', orderId)
+      dispatch(setCart(orderId.id))
+      // if(orderId.id) {
+      //   const {data} = await axios.get('/api/cart')
+      //   const cartItems = data
+      //   console.log('in thunk for cart', cartItems)
+      //   dispatch({
+      //     type: ADD_TO_CART_LOGGIN,
+      //     product: cartItems
+      //   })
+
+      // }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
+
+//Initial State
+const initialState = {
+  cartItems: [],
+  total: 0,
+  quantity: {},
+  //added for checkout purposes-Kade
+  orderId: 0
+}
 
 export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -90,6 +138,41 @@ export const cartReducer = (state = initialState, action) => {
 
       return {...state, total: Number(newTotal.toFixed(2))}
     }
+    case RESET_CART: {
+      return {
+        cartItems: [],
+        total: 0,
+        quantity: {},
+        orderId: 0
+      }
+    }
+    case GET_USER:
+      console.log('in the cart Get user')
+      return {
+        ...state,
+        orderId: action.orderId
+      }
+    // case ADD_TO_CART_LOGGIN: {
+    //   let product = action.product
+    //   let newTotal = 0
+    //   if(!state.quantity[product.productId]) {
+    //     state.quantity[product.productId] = product.productQuantity;
+    //     newTotal = state.total + action.product.total
+    //     return {
+    //       ...state,
+    //       cartItems: [...state.cartItems, action.product],
+    //       total: state.total + Number(newTotal.toFixed(2))
+    //     }
+    //   }else {
+    //      //adding the same product
+    //      state.quantity[product.product.id] += product.productQuantity
+    //      newTotal = state.total + action.product.total
+    //      return {
+    //        ...state,
+    //        total: Number(newTotal.toFixed(2))
+    //      }
+    //     }
+    // }
     default: {
       return state
     }

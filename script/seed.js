@@ -1,6 +1,6 @@
 'use strict'
 
-const {db} = require('../server/db')
+const {db, OrderDetail} = require('../server/db')
 
 const User = require('../server/db/models/user')
 const Product = require('../server/db/models/product')
@@ -511,7 +511,15 @@ async function seed() {
 
   await Order.create({
     totalAmount: 25.99,
-    isComplete: false
+    isComplete: false,
+    userId: 6
+  })
+
+  await OrderDetail.create({
+    productQuantity: 1,
+    total: 1,
+    productId: 1,
+    orderId: 1
   })
 
   console.log(`seeded successfully`)

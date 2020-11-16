@@ -4,6 +4,7 @@ import Fade from 'react-reveal/Fade'
 import {Link} from 'react-router-dom'
 import {fetchAllProducts} from '../store/reducers/allProducts'
 import {Card, Button} from 'react-bootstrap'
+import {addProduct} from '../store/reducers/cartManager'
 
 export class AllProducts extends Component {
   componentDidMount() {
@@ -71,7 +72,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     getAllProducts: () => dispatch(fetchAllProducts()),
-    addToCart: product => dispatch({type: 'ADD_TO_CART', product})
+    addToCart: product => dispatch(addProduct(product))
   }
 }
 
