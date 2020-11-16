@@ -41,7 +41,7 @@ export const cartReducer = (state = initialState, action) => {
         return {
           ...state,
           cartItems: [...state.cartItems, action.product],
-          total: newTotal
+          total: Number(newTotal.toFixed(2))
         }
       } else {
         //adding the same product
@@ -49,7 +49,7 @@ export const cartReducer = (state = initialState, action) => {
         newTotal = state.total + action.product.price
         return {
           ...state,
-          total: newTotal
+          total: Number(newTotal.toFixed(2))
         }
       }
     }
@@ -66,7 +66,7 @@ export const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cartItems: updatedCart,
-        total: newTotal
+        total: Number(newTotal.toFixed(2))
       }
     }
     case REDUCE_CART_ITEM: {
@@ -78,13 +78,17 @@ export const cartReducer = (state = initialState, action) => {
           prod => prod.id !== action.product.id
         )
       } else updatedCart = state.cartItems
-      return {...state, cartItems: updatedCart, total: newTotal}
+      return {
+        ...state,
+        cartItems: updatedCart,
+        total: Number(newTotal.toFixed(2))
+      }
     }
     case INCREASE_CART_ITEM: {
       state.quantity[action.product.id]++
       let newTotal = state.total + action.product.price
 
-      return {...state, total: newTotal}
+      return {...state, total: Number(newTotal.toFixed(2))}
     }
     default: {
       return state
