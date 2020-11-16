@@ -8,32 +8,32 @@ import {Form, Button, Row, Col} from 'react-bootstrap'
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-  const [validated, setValidated] = useState(false)
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
-      <Form.Row>
+    <Form onSubmit={handleSubmit} className="form-signup2">
+      <Form.Row className="form-row">
         <Form.Group controlId="formGridFirstName">
-          <Form.Label htmlFor="firstName">First Name</Form.Label>
+          <Form.Label>First Name</Form.Label>
           <Form.Control required type="text" placeholder="First Name" />
           <Form.Control.Feedback>Looks Good!</Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="formGridLastName">
-          <Form.Label htmlFor="lastName">Last Name</Form.Label>
+          <Form.Label>Last Name</Form.Label>
           <Form.Control required type="text" placeholder="Last name" />
           <Form.Control.Feedback>LooksGood!</Form.Control.Feedback>
         </Form.Group>
       </Form.Row>
-      <Form.Row>
+      <Form.Row className="form-row">
         <Form.Group controlId="formGridEmail">
-          <Form.Label htmlFor="email">Email</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
+          <Form.Label>Email</Form.Label>
+          <Form.Control required type="email" placeholder="Enter email" />
         </Form.Group>
 
         <Form.Group controlId="formGridPassword">
-          <Form.Label htmlFor="password">Password</Form.Label>
+          <Form.Label>Password</Form.Label>
           <Form.Control
+            required
             type="password"
             placeholder="Password"
             aria-describedby="passwordHelpMsg"
@@ -44,7 +44,7 @@ const AuthForm = props => {
         </Form.Group>
       </Form.Row>
 
-      <Button type="submit" variant="secondary">
+      <Button type="submit" variant="secondary" className="button">
         Submit
       </Button>
     </Form>
@@ -139,11 +139,12 @@ const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
       const form = evt.currentTarget
+      console.log(form)
       if (form.checkvalidity() === false) {
         evt.preventDefault()
         evt.stopPropagation()
       }
-      setValidated(true)
+
       evt.preventDefault()
       const formName = evt.target.name
       const email = evt.target.email.value
