@@ -29,8 +29,8 @@ export class Cart extends Component {
         <div className="product-header">
           <h5 className="product-title">PRODUCT</h5>
           <h5 className="price-title">PRICE</h5>
-          <h5 className="quantity">QUANTITY</h5>
-          <h5 className="total">TOTAL</h5>
+          <h5 className="quantity-title">QUANTITY</h5>
+          <h5 className="total-title">TOTAL</h5>
         </div>
 
         {cartItems.map(product => {
