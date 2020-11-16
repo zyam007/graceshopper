@@ -174,7 +174,7 @@ export const cartReducer = (state = initialState, action) => {
     //     }
     // }
     default: {
-      return initialState
+      return state
     }
   }
 }
