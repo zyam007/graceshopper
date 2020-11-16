@@ -140,7 +140,7 @@ async function seed() {
       categoryId: 2
     },
     {
-      name: 'POISON DART FROG',
+      name: 'POISON FROG',
       description:
         'A POISON DART FROG YOU CAN TOUCH. Poison dart frogs may be beautiful—but in the wild, the number one rule for these colorful amphibians is: look, don’t touch. On your keyboard, it’s a different story. New from Moon Key, the Luxury Poison Dart Frog artisan keycap is an opulent take on nature’s most dazzling hopper. If you thought dart frogs couldn’t get any more stunning, think again. This one is covered in studded gems and stands atop a metallic tree branch. Handmade and available in five different colorways, this artisan keycap is compatible with Cherry MX switches and clones.',
       price: 10.5,
@@ -154,7 +154,7 @@ async function seed() {
       categoryId: 2
     },
     {
-      name: 'OWL IN NEST',
+      name: 'OWL',
       description:
         'This keycap features a mama owl seemingly attempting to peck her way out from her resin prison! There are two white eggs and a single brown egg hidden in her nest. When will they hatch we wonder? Handcrafted by clay and resin; Compatible with Cherry MX switches; The price is just for 1 resin keycap (the keyboard is NOT included)Note: Every keycap is handmade and they do not have traditional profiles. Please refer closely to the pictures!',
       price: 9.99,
@@ -168,7 +168,7 @@ async function seed() {
       categoryId: 2
     },
     {
-      name: 'LANDCAPS PIGGY BANK',
+      name: 'PIGGY BANK',
       description:
         'CLICKITY CLANK ON YOUR CLICKITY CLACK. You may never find a better opportunity to break out your leftover change. These chunky little ham hocks look just like a piggy bank—only now you can keep them on your favorite keyboard instead of your nightstand. They come in six colors, whether you want to go with a classic pink or blue, or you want to switch it up and try yellow, green, orange, or purple. Handmade from resin, the piggies have a surprised expression and big black eyes. Pop them onto your Cherry MX–compatible keyboard.',
       price: 21.99,
@@ -196,7 +196,7 @@ async function seed() {
       categoryId: 2
     },
     {
-      name: 'STUDIO ROSETTE',
+      name: 'ROSETTE',
       description:
         'Handmade roses to make your keyboard look like a tiny garden.',
       price: 17.25,
@@ -210,7 +210,7 @@ async function seed() {
       categoryId: 3
     },
     {
-      name: 'THE EYE KEY ROSE',
+      name: 'EYEKEY ROSE',
       description:
         'ROSES: A KEYBOARD’S BEST FRIEND. Add a classy touch to your favorite keyboard with these dignified Eye Key Rose artisan keycaps. This run, the keycaps are even better than before. They feature brand-new colorways with smoother edges. Like last run, they come in your choice of SA or OEM profile. Each keycap is made from clay and resin and depicts a beautiful rose suspended in a storm of color. The exterior has a glassy, transparent look that complements the white base. Compatible with Cherry MX switches, the caps come in a wooden box if you want to gift one to a friend.',
       price: 13.22,
@@ -224,7 +224,7 @@ async function seed() {
       categoryId: 3
     },
     {
-      name: 'DWARF TERRARIUM',
+      name: 'TERRARIUM',
       description:
         'TYPE ATOP A TINY GARDEN. Bringing the beauty of a carefully cultivated plantscape to your keyboard, Dwarf Factory has created the lush Terrarium artisan keycap. Handmade with attention to detail Mother Nature herself would be proud of, each keycap features a collection of colorful plants inside a decorative basket encased in transparent resin. Skip the watering and enjoy six different styles, each sporting succulents, cacti, and flora of different shapes, sizes, and colors. Look closely and you’ll even see small rocks and soil within each keycap. Available in both DOM and SA R1 profiles, these artisan keycaps are compatible with Cherry MX switches and clones.',
       price: 15.35,
@@ -238,7 +238,7 @@ async function seed() {
       categoryId: 3
     },
     {
-      name: 'CHERRY BLOSSOM SAKURA',
+      name: 'CHERRY BLOSSOM',
       description:
         "Take your mechanical keyboard to Hanamura with this handcrafted cherry blossom keycap! This is a single key (1x) profiled for the Esc, Function, or number row. Each key is individually tested to function well on an original Cherry MX switch with an RGB LED. They should also function on exact clones like Gaterons, Kailh Speeds, Outemus, Zealios, Halos, Holy Pandas, etc. These keycaps will not fit on other switch types like ALPS, Matias, Topre, Razer Opto-mechanical (Huntsman), or Logitech Romer-G switches. SteelSeries Apex keyboards are incompatible due to unusually-shaped LEDs. Stems are calibrated to fit snug on a particularly narrow Cherry MX clone stem, or tightly on an original Cherry MX. These will likely take a little more force to mount than your stock keycaps--that's normal for artisan caps.",
       price: 5.55,
@@ -252,7 +252,7 @@ async function seed() {
       categoryId: 3
     },
     {
-      name: 'BY THE RIVER',
+      name: 'RIVER',
       description:
         'Handmade by peerless keycap artists at The Eye Key, the Immortal River Artisan Keycap is more than a styled keycap. It’s an entire landscape. Adorn your key with the Immortal River and its shores meticulously crafted with colored clay and set inside a transparent resin casing. Durable and brilliant, this landscape will stay undisturbed through years of keystrokes. Compatible with Cherry MX switches and clones, the Immortal River Artisan Keycap  can be added to any setup with ease. It’s available in both SA and OEM profiles, each with seven color options to choose from. Find the ideal river landscape and bring a flourish of unique detail to your keys.',
       price: 9.5,
@@ -266,7 +266,7 @@ async function seed() {
       categoryId: 3
     },
     {
-      name: 'XX7 MEGATRON',
+      name: 'MEGATRON',
       description:
         'Transform your keyboard with these MEGATRQN keycaps. 3D-printed by XX7, and voted on by 600 members of the Mech Keys Community, they’re made of nylon plastic and finished by hand. Each key-size bust is highly textured, not only with the curves and contours of the robot’s face but also with the sandpapery grain of the plastic itself',
       price: 8.77,
@@ -308,7 +308,7 @@ async function seed() {
       categoryId: 4
     },
     {
-      name: 'STAR WARS BB8',
+      name: 'BB8',
       description:
         "This keycap is only for mechanical keyboards with switches such as Cherry MX, Gateron, Kailh, etc. BB-8 is a spherical robot with a free-moving domed head. It is white, with orange and silver accents and a black optical lens on its headpiece. BB-8 also possesses multiple panels containing various tools or ports. Scanlan said of the robot's personality - We always imagined BB-8 as being quite manipulative. I think he knows he’s cute. He knows that he can win people over. And he uses that, like children do, to get his own way. In this film, he has a very important mission that he has to accomplish and so he uses his personality, his coyness, and all of those things.",
       price: 14.99,
@@ -336,7 +336,7 @@ async function seed() {
       categoryId: 4
     },
     {
-      name: 'HANDHELD GAMING',
+      name: 'HANDHELD GAME',
       description:
         'STEP YOUR GAME UP. Take a trip back to simpler times, when your biggest source of stress was saving Princess Peach, or defeating the final trainer of the Elite Four. From M.7, the Handheld Gaming Aluminum Artisan Keycap looks just like the portable machine that took over many of our lives for years. Complete with two buttons, a directional pad, and a shine-through screen with a digital heart, this cap brings back all the nostalgia of the late ‘90s. Just like the device it’s based on, the keycap comes in a wide range of colors. Get one to match your favorite Cherry MX–compatible keyboard.',
       price: 30.25,
@@ -364,7 +364,7 @@ async function seed() {
       categoryId: 5
     },
     {
-      name: 'GEN.S PROCESSOR',
+      name: 'PROCESSOR',
       description:
         'PUT YOUR KEYBOARD INTO OVERDRIVE. From the same folks behind the Prism and Monitor Screen artisan keycaps, the Gen.S Processor artisan also takes inspiration from the world of computers. Styled like a microchip full of precious connections, it looks like something you’d find on a motherboard. The resin used to make it is fully translucent, which means backlit keyboards will take this keycap to whole new heights. Get the Processor in your choice of five styles, all compatible with Cherry MX switches.',
       price: 21.78,
@@ -378,7 +378,7 @@ async function seed() {
       categoryId: 5
     },
     {
-      name: 'HOLYOOPS GAMEPAD',
+      name: 'GAMEPAD',
       description:
         'GIVE YOUR BOARD SOME VINTAGE VIDEO-GAME CRED. You may have graduated from the console to the computer, but there’s no denying the feel-good nostalgia of a handheld controller. Bringing back beloved memories without compromising your current keyboard, the Gamepad artisan keycap from Holyoops is one throwback button you’ll love to press. CNC’d from aluminum and hand-painted with stunning detail, this keycap looks just like the console controllers of yesteryear. Each colored button is shine-through and made from silica gel for an authentic glow and feel. Available in four styles, the Gamepad artisan keycap measures 1.75 units to fit the CapsLock key or other same-sized spaces on your board.',
       price: 21.65,
@@ -392,7 +392,7 @@ async function seed() {
       categoryId: 5
     },
     {
-      name: 'MARIO',
+      name: 'MARIO BROS',
       description:
         'Give your keyboard a super boost with this fun Cherry MX-compatible artisan. Made from  aluminum, the keycap features a pile of bricks with a cap on top in your choice of four colors—which may remind you of a certain cart-driving, party-loving, brawl-seeking brother with a mustache. The hat on top actually spins when you flick it, like your giving the keycap extra life. Hit the bricks and who knows, you might just find some treasure inside.',
       price: 16.99,
@@ -462,7 +462,7 @@ async function seed() {
       categoryId: 6
     },
     {
-      name: 'MERRY CHRISTMAS',
+      name: 'MERRY XMAS',
       description:
         'To celebrate the great holiday, Goldenstar Keycap and zFrontier will bring back the festive Christmas-themed Grinch and Klaus Resin Artisan keycaps. Every keycap is handmade with care and utmost craftsmanship.',
       price: 14.55,
