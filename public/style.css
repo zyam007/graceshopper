@@ -358,10 +358,23 @@ form div {
 
 .signup-container {
   display: flex;
+  flex-wrap: nowrap;
   min-height: 100vh;
   flex-direction: column;
 }
+.form-signup {
+  padding-left: 25%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  white-space: nowrap;
+}
 
-/* .google-signup {
-  padding-left: 35%;
-} */
+.google-signup {
+  white-space: nowrap;
+  border: thin solid #888;
+  background: white;
+  color: #444;
+  width: 190px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px grey;
+}
