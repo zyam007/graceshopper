@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 import {
   removeProduct,
@@ -18,7 +19,7 @@ export class Cart extends Component {
     if (!cartItems.length) {
       return (
         <div className="empty-cart">
-          <h3>Your Cart is empty</h3>
+          <h3>Your Cart is Empty.</h3>
           <Link to="/allproducts">continue shopping</Link>
         </div>
       )
