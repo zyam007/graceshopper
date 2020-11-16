@@ -318,3 +318,11 @@ form div {
   width: 25%;
   height: 25%;
 }
+
+.empty-cart {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
