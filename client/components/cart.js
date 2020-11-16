@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 
 import {
   removeProduct,
@@ -28,7 +27,7 @@ export class Cart extends Component {
       <div className="container-products">
         <div className="product-header">
           <h5 className="product-title">PRODUCT</h5>
-          <h5 className="price sm-hide">PRICE</h5>
+          <h5 className="price-title">PRICE</h5>
           <h5 className="quantity">QUANTITY</h5>
           <h5 className="total">TOTAL</h5>
         </div>
@@ -44,7 +43,7 @@ export class Cart extends Component {
                 <img src={product.imageUrl} />
                 <span className="sm-hide">{product.name}</span>
               </div>
-              <div className="price sm-hide">${product.price.toFixed(2)}</div>
+              <div className="price sm-hide">${product.price}</div>
               <div className="quantity">
                 <ion-icon
                   className="decrease"
@@ -59,14 +58,14 @@ export class Cart extends Component {
                 />
               </div>
               <div className="total">
-                ${Number(product.price * quantity[product.id]).toFixed(2)}
+                ${product.price * quantity[product.id]}
               </div>
             </React.Fragment>
           )
         })}
         <div className="cartTotalContainer">
           <h4 className="cartTotalTitle">Cart Total</h4>
-          <h4 className="cartTotal">${this.props.cart.total.toFixed(2)}</h4>
+          <h4 className="cartTotal">{this.props.cart.total}</h4>
         </div>
       </div>
     )
