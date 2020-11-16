@@ -12,22 +12,16 @@ router.put('/', async (req, res, next) => {
       }
     })
 
-    req.body.forEach(async cartItem => {
-      const total = await Product.findByPk(cartItem.productId)
-      total.update({quantity: total.quantity - cartItem.quantity})
+    req.body.cart.cartItems.forEach(async cartItem => {
+      const item = await Product.findByPk(cartItem.productId)
+      item.update({quantity: item.quantity - cartItem.quantity})
     })
 
-    req.body.forEach(async cartItem => {
-      const order = await OrderDetails.findOne({
-        where: {
-          productId: cartItem.productId,
-          orderId: cartItem.orderId
-        }
-      })
-      order.update({price: cartItem.product.price})
+    cart.update({
+      totalAmount: req.body.cart.total,
+      isComplete: true
     })
 
-    cart.update({isComplete: true})
     res.json(cart)
   } catch (error) {
     next(error)

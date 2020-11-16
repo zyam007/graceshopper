@@ -10,7 +10,10 @@ const Category = require('./models/category')
 const OrderDetail = db.define(
   'orderDetail',
   {
-    productQuantity: Sequelize.INTEGER
+    productQuantity: Sequelize.INTEGER,
+    total: {
+      type: Sequelize.INTEGER
+    }
   },
   {timestamp: false}
 )

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Fade from 'react-reveal/Fade'
+import {Link} from 'react-router-dom'
 
 import {fetchAllCategories} from '../store/reducers/allCategories'
 
@@ -11,9 +12,10 @@ export class AllCategories extends Component {
 
   render() {
     const allCategories = this.props.allCategories || []
+
     return (
       <div id="categoriesView">
-        <h2 id="all-cat-text">All Categories</h2>
+        <h1 id="all-cat-text">Artisan Keycaps For Everyone.</h1>
         <Fade bottom cascade>
           <div className="all-categories">
             {allCategories.map(category => {
@@ -25,10 +27,10 @@ export class AllCategories extends Component {
                     alt="no image"
                     className="image-categories"
                   />
-                  <div className="button-category">
-                    <button id="view-category" type="button">
-                      View Category
-                    </button>
+                  <div>
+                    <p className="link-category">
+                      <Link to={`/${category.id}`}>View Keycaps</Link>
+                    </p>
                   </div>
                 </div>
               )

@@ -7,19 +7,42 @@ import allProductsReducer from './reducers/allProducts'
 import singleProductReducer from './reducers/singleproduct'
 import singleCategoryReducer from './reducers/singlecategory'
 import allCategoriesReducer from './reducers/allCategories'
+import cartReducer from './reducers/cartManager'
+
+function saveToLocalStorage(state) {
+  try {
+    const savedState = JSON.stringify(state)
+    localStorage.setItem('cart', savedState)
+  } catch (e) {
+    console.warn(e)
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const savedState = localStorage.getItem('cart')
+    if (savedState === null) return undefined
+    return JSON.parse(savedState)
+  } catch (e) {
+    console.warn(e)
+    return undefined
+  }
+}
 
 const reducer = combineReducers({
   user,
   allProducts: allProductsReducer,
   singleProduct: singleProductReducer,
   singleCategory: singleCategoryReducer,
-  allCategories: allCategoriesReducer
-
+  allCategories: allCategoriesReducer,
+  cart: cartReducer
 })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
-const store = createStore(reducer, middleware)
+const store = createStore(reducer, loadFromLocalStorage(), middleware)
+
+store.subscribe(() => saveToLocalStorage(store.getState()))
 
 export default store
 export * from './user'
