@@ -8,46 +8,69 @@ import {Form, Button, Row, Col} from 'react-bootstrap'
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-
+  console.log(displayName, 'display')
   return (
-    <Form onSubmit={handleSubmit} className="form-signup2">
-      <Form.Row className="form-row">
-        <Form.Group controlId="formGridFirstName">
-          <Form.Label>First Name</Form.Label>
-          <Form.Control required type="text" placeholder="First Name" />
-          <Form.Control.Feedback>Looks Good!</Form.Control.Feedback>
-        </Form.Group>
+    <div className="login-signup-container">
+      <h3 className="form-name">{displayName}</h3>
+      <Form onSubmit={handleSubmit} className="form-signup2" name={name}>
+        {displayName === 'Sign Up' && (
+          <Form.Row className="form-row">
+            <Form.Group controlId="formGridFirstName">
+              <Form.Label>First Name</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="First Name"
+                name="firstName"
+              />
+              <Form.Control.Feedback>Looks Good!</Form.Control.Feedback>
+            </Form.Group>
 
-        <Form.Group controlId="formGridLastName">
-          <Form.Label>Last Name</Form.Label>
-          <Form.Control required type="text" placeholder="Last name" />
-          <Form.Control.Feedback>LooksGood!</Form.Control.Feedback>
-        </Form.Group>
-      </Form.Row>
-      <Form.Row className="form-row">
-        <Form.Group controlId="formGridEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control required type="email" placeholder="Enter email" />
-        </Form.Group>
+            <Form.Group controlId="formGridLastName">
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="Last name"
+                name="lastName"
+              />
+              <Form.Control.Feedback>LooksGood!</Form.Control.Feedback>
+            </Form.Group>
+          </Form.Row>
+        )}
 
-        <Form.Group controlId="formGridPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            required
-            type="password"
-            placeholder="Password"
-            aria-describedby="passwordHelpMsg"
-          />
-          <Form.Text id="passwordHelpMsg" muted>
-            Must be 6-20 characters long.
-          </Form.Text>
-        </Form.Group>
-      </Form.Row>
+        <Form.Row className="form-row">
+          <Form.Group controlId="formGridEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              required
+              type="email"
+              placeholder="Enter email"
+              name="email"
+            />
+          </Form.Group>
 
-      <Button type="submit" variant="secondary" className="button">
-        Submit
-      </Button>
-    </Form>
+          <Form.Group controlId="formGridPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              required
+              type="password"
+              placeholder="Password"
+              aria-describedby="passwordHelpMsg"
+              name="password"
+            />
+            <Form.Text id="passwordHelpMsg" muted>
+              Must be 6-20 characters long.
+            </Form.Text>
+          </Form.Group>
+        </Form.Row>
+
+        <Button type="submit" variant="secondary" className="button-cart">
+          Submit
+        </Button>
+        {error && error.response && <div> {error.response.data} </div>}
+      </Form>
+    </div>
   )
   // return (
   //   <div className="signup-container">
@@ -138,15 +161,15 @@ const mapSignup = state => {
 const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
-      const form = evt.currentTarget
-      console.log(form)
-      if (form.checkvalidity() === false) {
-        evt.preventDefault()
-        evt.stopPropagation()
-      }
+      const formName = evt.currentTarget.name
+
+      // if (form.checkvalidity() === false) {
+      //   evt.preventDefault()
+      //   evt.stopPropagation()
+      // }
 
       evt.preventDefault()
-      const formName = evt.target.name
+      //const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
       if (formName === 'signup') {
@@ -155,6 +178,7 @@ const mapDispatch = dispatch => {
         console.log('dispatching')
         dispatch(auth(email, password, formName, firstName, lastName))
       } else {
+        console.log('not sign up')
         dispatch(auth(email, password, formName))
       }
     }

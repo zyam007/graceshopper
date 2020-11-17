@@ -379,12 +379,13 @@ form div {
   box-shadow: 1px 1px 1px grey;
 }
 
-.form-signup2 {
+.login-signup-container {
   width: 40rem;
   margin: 0 auto;
+  padding-bottom: 20px;
 }
 
 .form-row {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
