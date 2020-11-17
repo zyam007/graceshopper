@@ -10,10 +10,33 @@ const Category = require('./models/category')
 const OrderDetail = db.define(
   'orderDetail',
   {
-    productQuantity: Sequelize.INTEGER
+    productQuantity: {
+      type: Sequelize.INTEGER
+    },
+    total: {
+      type: Sequelize.INTEGER
+    }
   },
   {timestamp: false}
 )
+
+OrderDetail.getCartItems = function(orderId) {
+  console.log('in the model', orderId)
+  return OrderDetail.findOrCreate({
+    where: {
+      orderId
+    }
+  })
+}
+
+OrderDetail.updateCartItem = function(productId, orderId) {
+  return OrderDetail.findAll({
+    where: {
+      productId,
+      orderId
+    }
+  })
+}
 
 User.hasMany(Order)
 Order.belongsTo(User)

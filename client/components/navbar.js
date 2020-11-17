@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
@@ -6,6 +6,7 @@ import {logout} from '../store'
 import {Nav, NavItem, NavLink, Navbar as BootstrapNavbar} from 'react-bootstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCartArrowDown} from '@fortawesome/free-solid-svg-icons'
+import {fetchLoggedInCart, resetCart} from '../store/reducers/cartManager'
 
 const cartStyle = {
   fontSize: '24px'
@@ -14,6 +15,22 @@ const cartStyle = {
 export class Navbar extends React.Component {
   componentDidMount() {
     this.props.getCartItems()
+    if (this.props.isLoggedIn) {
+      this.props.getOrderId()
+    }
+  }
+
+  useEffect() {
+    console.log('in the effect')
+
+    if (!this.props.isLoggedIn) {
+      console.log('in the second if effect')
+      return this.props.clearCart()
+    }
+    if (this.props.isLoggedIn) {
+      console.log('in the if effect')
+      return this.props.getOrderId()
+    }
   }
 
   render() {
@@ -53,7 +70,9 @@ export class Navbar extends React.Component {
                         style={cartStyle}
                       />
                       <span className="badge badge-warning" id="lblCartCount">
-                        5
+                        {this.props.cart.cartItems.length
+                          ? this.props.cart.cartItems.length
+                          : 0}
                       </span>
                     </Link>
                   </NavItem>
@@ -90,7 +109,9 @@ export class Navbar extends React.Component {
                         style={cartStyle}
                       />
                       <span className="badge badge-warning" id="lblCartCount">
-                        {this.props.cart.cartItems.length}
+                        {this.props.cart.cartItems.length
+                          ? this.props.cart.cartItems.length
+                          : 0}
                       </span>
                     </Link>
                   </NavItem>
@@ -115,6 +136,7 @@ const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
     cart: state.cart
+    // orderId: state.cart.orderId
   }
 }
 
@@ -123,7 +145,9 @@ const mapDispatch = dispatch => {
     handleClick() {
       dispatch(logout())
     },
-    getCartItems: () => dispatch({type: 'GET_ITEMS'})
+    getCartItems: () => dispatch({type: 'GET_ITEMS'}),
+    getOrderId: () => dispatch(fetchLoggedInCart()),
+    clearCart: () => dispatch(resetCart())
   }
 }
 

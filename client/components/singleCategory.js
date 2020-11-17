@@ -2,47 +2,49 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Fade from 'react-reveal/Fade'
 import {Link} from 'react-router-dom'
-import {fetchAllProducts} from '../store/reducers/allProducts'
+import {fetchCategory} from '../store/reducers/singleCategory'
 import {Card, Button} from 'react-bootstrap'
-import {addProduct} from '../store/reducers/cartManager'
 
-export class AllProducts extends Component {
+export class SingleCategory extends Component {
   componentDidMount() {
-    this.props.getAllProducts()
+    const id = this.props.match.params.id
+    console.log('checking ID', id)
+    this.props.getSpecificProduct(id)
   }
 
   render() {
-    const allProducts = this.props.allProducts || []
+    // console.log("CHECKING",this.props.singleCategory)
+    const allProducts = this.props.singleCategory.products || []
 
     return (
-      <div id="productsView">
-        <h2 id="all-prod-text">All Products</h2>
+      <div id="categoryView">
+        <h2 id="singlecat-text">Products From This Category:</h2>
         <Fade bottom cascade>
           {/* <Fade appear="true"> */}
-          <div className="all-products">
+          <div className="singlecat">
             {allProducts.map(product => {
               return (
                 <Card
                   key={product.id}
-                  className="shadow-sm"
+                  className="singlecat-shadow-sm"
                   style={{margin: '1rem'}}
                 >
                   <img
                     variant="top"
                     src={product.imageUrl[0]}
                     alt={product.name}
-                    className="image-products"
+                    className="image-singlecat"
                   />
                   <Card.Body>
                     <Card.Text>
                       <Link
                         to={`/listing/${product.id}`}
-                        className="product-name"
+                        className="singlecat-name"
                       >
                         {product.name}
                       </Link>
                     </Card.Text>
-                    <Card.Text>${product.price.toFixed(2)}</Card.Text>
+                    <Card.Text>${product.price}</Card.Text>
                     <Button
                       type="submit"
                       variant="secondary"
@@ -61,19 +63,17 @@ export class AllProducts extends Component {
   }
 }
 
-function handleClick() {}
-
 const mapState = state => {
   return {
-    allProducts: state.allProducts
+    singleCategory: state.singleCategory
   }
 }
 
 const mapDispatch = dispatch => {
   return {
-    getAllProducts: () => dispatch(fetchAllProducts()),
-    addToCart: product => dispatch(addProduct(product))
+    getSpecificProduct: id => dispatch(fetchCategory(id)),
+    addToCart: product => dispatch({type: 'ADD_TO_CART', product})
   }
 }
 
-export default connect(mapState, mapDispatch)(AllProducts)
+export default connect(mapState, mapDispatch)(SingleCategory)
