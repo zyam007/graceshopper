@@ -464,3 +464,12 @@ form div {
 #price {
   margin-left: 10px;
 }
+
+.checkout-form {
+  width: 50%;
+  margin: auto;
+}
+
+.contact-title {
+  text-align: center;
+}
