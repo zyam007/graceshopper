@@ -58,15 +58,15 @@ Our dummy e-commerce website allows tech gear enthusiasts to browse inspiring ca
 ------REQUIREMENTS TIER 1 (OUR PRIORITY GOAL)------
 As a customer/visitor, I want to be able to:
 
-* [ ] access a deployed version of the website so I can browse and purchase products.
+* [x] access a deployed version of the website so I can browse and purchase products.
 * [x] view all available products so I can pick from a variety.
 * [x] view a single product so I can see more details.
 * [x] add a product to my cart so I can collect my desired products in one place.
 * [x] edit my cart if I change my mind:
 * [x] change the quantity of a product in my cart.
 * [x] remove a product in my cart.
-* [ ] No one else should be able to edit my cart except me.
-* [ ] "checkout" the items in my cart so I can purchase my desired goods. (button added)
+* [x] No one else should be able to edit my cart except me.(specific to visitor user)
+* [ ] "checkout" the items in my cart so I can purchase my desired goods. (button added, almost there!)
 * [x] create an account so I can have a logged-in experience.
 
 As a logged-in customer, I want to be able to:

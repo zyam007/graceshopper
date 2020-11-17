@@ -409,15 +409,18 @@ form div {
 
 .signup-container {
   display: flex;
-  flex-wrap: nowrap;
   min-height: 100vh;
+  flex-wrap: nowrap;
   flex-direction: column;
+  margin-top: 20px;
 }
 .form-signup {
   /* padding-left: 25%; */
   flex-direction: row;
   justify-content: space-evenly;
   white-space: nowrap;
+  margin-top: 20px;
+  min-height: 100vh;
 }
 
 .google-signup {
@@ -430,7 +433,6 @@ form div {
   box-shadow: 1px 1px 1px grey;
 }
 
-
 .login-signup-container {
   width: 40rem;
   margin: 0 auto;
@@ -440,7 +442,7 @@ form div {
 .form-row {
   width: 90%;
   margin: 0 auto;
-  
+}
 /* Single Category Component */
 
 #categoryView {
