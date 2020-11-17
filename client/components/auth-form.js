@@ -72,67 +72,6 @@ const AuthForm = props => {
       </Form>
     </div>
   )
-  // return (
-  //   <div className="signup-container">
-  //     <form onSubmit={handleSubmit} name={name}>
-  //       {displayName === 'Sign Up' && (
-  //         <div>
-  //           <div className="form-group">
-  //             <label htmlFor="firstName">
-  //               <small>First Name</small>
-  //             </label>
-  //             <input
-  //               name="firstName"
-  //               type="text"
-  //               className="form-control"
-  //               placeholder="Enter first name"
-  //             />
-  //           </div>
-  //           <div className="form-group">
-  //             <label htmlFor="lastName">
-  //               <small>Last Name</small>
-  //             </label>
-  //             <input
-  //               name="lastName"
-  //               type="text"
-  //               className="form-control"
-  //               placeholder="Enter last name"
-  //             />
-  //           </div>
-  //         </div>
-  //       )}
-  //       <div className="form-group">
-  //         <label htmlFor="email">
-  //           <small>Email</small>
-  //         </label>
-  //         <input
-  //           name="email"
-  //           type="email"
-  //           className="form-control"
-  //           placeholder="Enter email"
-  //         />
-  //       </div>
-  //       <div className="form-group">
-  //         <label htmlFor="password">
-  //           <small>Password</small>
-  //         </label>
-  //         <input
-  //           name="password"
-  //           type="password"
-  //           className="form-control"
-  //           placeholder="Enter password"
-  //         />
-  //       </div>
-  //       <div>
-  //         <button type="submit">{displayName}</button>
-  //       </div>
-  //       {error && error.response && <div> {error.response.data} </div>}
-  //     </form>
-  //     <div className="google-signup">
-  //       <a href="/auth/google">{displayName} with Google</a>
-  //     </div>
-  //   </div>
-  // )
 }
 
 /**
