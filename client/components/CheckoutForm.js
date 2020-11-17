@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {Button, Jumbotron, Container, Form, Row, Col} from 'react-bootstrap'
-
+//improt placeOrderfunc dispatch
 export class CheckoutForm extends Component {
   componentDidMount() {
     this.props.getCartItems()
