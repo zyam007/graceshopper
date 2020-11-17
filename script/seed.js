@@ -1,6 +1,6 @@
 'use strict'
 
-const {db} = require('../server/db')
+const {db, OrderDetail} = require('../server/db')
 
 const User = require('../server/db/models/user')
 const Product = require('../server/db/models/product')
@@ -71,7 +71,7 @@ async function seed() {
       categoryId: 1
     },
     {
-      name: 'SWEET TOOTH',
+      name: 'SWEET',
       description:
         'THESE KEYCAPS TAKE THE CAKE. Transform your keyboard into a bona fide bake sale with these novelty keycaps, featuring different varieties of sweets atop a pink ABS plastic base. There are donuts, tarts, cupcakes, and slices of cake, all decked out in frosting, sprinkles, and whipped cream. As if that wasn’t sweet enough, on each base, you’ll also find a tiny fruit—like a citrus wedge, watermelon, or kiwi. Compatible with Cherry switches, these cute-as-can-be keycaps come in OEM profile.',
       price: 15.99,
@@ -85,7 +85,7 @@ async function seed() {
       categoryId: 1
     },
     {
-      name: 'SUMMER DRINK',
+      name: 'FRESH DRINK',
       description:
         'IF YOU LIKE COCKTAILS... And who doesn’t? Then you’ll love the Summer Drink artisan keycap from Cool Kit Studio. On tap in this run are six different cocktails, each poured over ice with a colorful straw and garnish. Made of durable and detailed resin, these artisans are a stiff pour. Every little glass of paradise is compatible with Cherry MX switches and clones.',
       price: 24.99,
@@ -99,7 +99,7 @@ async function seed() {
       categoryId: 1
     },
     {
-      name: 'DWARF WAFFLE',
+      name: 'WAFFLE',
       description:
         'NO SHAME IN GETTING SECONDS. You never thought your keyboard could make you hungry, did you? Think again. New from Dwarf Factory, these scrumptious handmade keycaps capture the satisfaction that only a great meal can deliver. Available in five unique styles—from waffles topped with butter and maple syrup to sandwiches stacked high with all the fixings—these artisans are like something off the menu at your favorite diner. Choose your favorite meal, or get all five to create a feast on your favorite keyboard. All options are made from resin and available in an open design or with an OEM cover to jive with your existing keycap profile.',
       price: 30.55,
@@ -113,7 +113,7 @@ async function seed() {
       categoryId: 1
     },
     {
-      name: 'SALMON SUSHI',
+      name: 'SUSHI',
       description:
         'Compatible with Cherry MX switches and related clones, this keycap is here to remind you of taking your lunch break and maybe ordering from your favorite Japanese restaurant.',
       price: 27.99,
@@ -140,7 +140,7 @@ async function seed() {
       categoryId: 2
     },
     {
-      name: 'POISON FROG',
+      name: 'TOAD',
       description:
         'A POISON DART FROG YOU CAN TOUCH. Poison dart frogs may be beautiful—but in the wild, the number one rule for these colorful amphibians is: look, don’t touch. On your keyboard, it’s a different story. New from Moon Key, the Luxury Poison Dart Frog artisan keycap is an opulent take on nature’s most dazzling hopper. If you thought dart frogs couldn’t get any more stunning, think again. This one is covered in studded gems and stands atop a metallic tree branch. Handmade and available in five different colorways, this artisan keycap is compatible with Cherry MX switches and clones.',
       price: 10.5,
@@ -168,7 +168,7 @@ async function seed() {
       categoryId: 2
     },
     {
-      name: 'PIGGY BANK',
+      name: 'PIGGY',
       description:
         'CLICKITY CLANK ON YOUR CLICKITY CLACK. You may never find a better opportunity to break out your leftover change. These chunky little ham hocks look just like a piggy bank—only now you can keep them on your favorite keyboard instead of your nightstand. They come in six colors, whether you want to go with a classic pink or blue, or you want to switch it up and try yellow, green, orange, or purple. Handmade from resin, the piggies have a surprised expression and big black eyes. Pop them onto your Cherry MX–compatible keyboard.',
       price: 21.99,
@@ -182,7 +182,7 @@ async function seed() {
       categoryId: 2
     },
     {
-      name: 'LUCKY CAT',
+      name: 'LUCKY',
       description:
         'LUCK BE A KITTY. Everybody could use a little luck. Known in Japan as Maneki Neko, the lucky cat is a symbol of good fortune and good blessings. Recreated in detailed fashion here, these keycaps are a great omen for anyone down on their luck. Handmade from resin, the caps are compatible with Cherry MX switches and clones. Put one on your escape key and let it cast good fortune over your entire board. Because the keycap is entirely made by hand, make sure to delicately remove the Lucky Cat with a keycap puller to prevent any unwanted damage.',
       price: 8.74,
@@ -210,7 +210,7 @@ async function seed() {
       categoryId: 3
     },
     {
-      name: 'EYEKEY ROSE',
+      name: 'ROSE',
       description:
         'ROSES: A KEYBOARD’S BEST FRIEND. Add a classy touch to your favorite keyboard with these dignified Eye Key Rose artisan keycaps. This run, the keycaps are even better than before. They feature brand-new colorways with smoother edges. Like last run, they come in your choice of SA or OEM profile. Each keycap is made from clay and resin and depicts a beautiful rose suspended in a storm of color. The exterior has a glassy, transparent look that complements the white base. Compatible with Cherry MX switches, the caps come in a wooden box if you want to gift one to a friend.',
       price: 13.22,
@@ -238,7 +238,7 @@ async function seed() {
       categoryId: 3
     },
     {
-      name: 'CHERRY BLOSSOM',
+      name: 'SAKURA',
       description:
         "Take your mechanical keyboard to Hanamura with this handcrafted cherry blossom keycap! This is a single key (1x) profiled for the Esc, Function, or number row. Each key is individually tested to function well on an original Cherry MX switch with an RGB LED. They should also function on exact clones like Gaterons, Kailh Speeds, Outemus, Zealios, Halos, Holy Pandas, etc. These keycaps will not fit on other switch types like ALPS, Matias, Topre, Razer Opto-mechanical (Huntsman), or Logitech Romer-G switches. SteelSeries Apex keyboards are incompatible due to unusually-shaped LEDs. Stems are calibrated to fit snug on a particularly narrow Cherry MX clone stem, or tightly on an original Cherry MX. These will likely take a little more force to mount than your stock keycaps--that's normal for artisan caps.",
       price: 5.55,
@@ -322,7 +322,7 @@ async function seed() {
       categoryId: 4
     },
     {
-      name: 'STAR WARS',
+      name: 'STARWARS',
       description:
         "Celebrate the fallen lord with this three-dimensional keycap. It depicts his helmet as it burns in the pyre, which will be cause for celebration for those who embrace good over evil. And for those who don’t, well, consider this keycap a piece to commemorate fear. This version, brought to you by WoB, depicts the leader in five new bright-neon colors. Made from resin, they're compatible with Cherry MX switches and clones and super bright when paired with backlit boards.",
       price: 32.3,
@@ -336,7 +336,7 @@ async function seed() {
       categoryId: 4
     },
     {
-      name: 'HANDHELD GAME',
+      name: 'HANDHELD',
       description:
         'STEP YOUR GAME UP. Take a trip back to simpler times, when your biggest source of stress was saving Princess Peach, or defeating the final trainer of the Elite Four. From M.7, the Handheld Gaming Aluminum Artisan Keycap looks just like the portable machine that took over many of our lives for years. Complete with two buttons, a directional pad, and a shine-through screen with a digital heart, this cap brings back all the nostalgia of the late ‘90s. Just like the device it’s based on, the keycap comes in a wide range of colors. Get one to match your favorite Cherry MX–compatible keyboard.',
       price: 30.25,
@@ -350,7 +350,7 @@ async function seed() {
       categoryId: 5
     },
     {
-      name: 'M.7 RETRO',
+      name: 'RETRO',
       description:
         'DRAW YOUR OWN LINES. From M.7, creator of the Spinning Core and Infinity Gems artisans, comes the Tetris artisan keycap. Whether you want to relive the classic game on a retro keyboard, or pair it with something more modern, the keycap comes in a wide variety of colors and styles for you to do so. The first option is the retro TV, which has a big play button on the screen and multicolored dials for tuning the channel. Next is the Tetris keycap, with all five classic Tetris shapes cascading down at once. Each resin keycap is compatible with Cherry MX switches and clones.',
       price: 10.99,
@@ -392,7 +392,7 @@ async function seed() {
       categoryId: 5
     },
     {
-      name: 'MARIO BROS',
+      name: 'MARIO',
       description:
         'Give your keyboard a super boost with this fun Cherry MX-compatible artisan. Made from  aluminum, the keycap features a pile of bricks with a cap on top in your choice of four colors—which may remind you of a certain cart-driving, party-loving, brawl-seeking brother with a mustache. The hat on top actually spins when you flick it, like your giving the keycap extra life. Hit the bricks and who knows, you might just find some treasure inside.',
       price: 16.99,
@@ -406,7 +406,7 @@ async function seed() {
       categoryId: 5
     },
     {
-      name: 'FESTIVITIES',
+      name: 'CELEBRATE',
       description:
         'YOUR KEYBOARD NEEDS A PRESENT, TOO. Nothing says Merry Christmas quite like a festive holiday keycap. New from the makers at MEMEDA, these Merry Christmas artisan keycaps are sure to put you in the right spirit. There are three fun options to choose from, each inside a frosty snowglobe: a reindeer with a sleigh full of presents, Santa Claus seated next to a decorated tree, and a snowman posted outside a log cabin. Made from resin, these jolly caps are compatible with Cherry MX switches and clones.',
       price: 16.55,
@@ -434,7 +434,7 @@ async function seed() {
       categoryId: 6
     },
     {
-      name: 'SCARY NIGHT',
+      name: 'SCARY',
       description:
         "YOUR KEYBOARD DESERVES A COSTUME TOO. If candy and costumes aren’t your jam, how about a spooky treat for your keyboard? Don’t leave your desktop companion out of the Halloween festivities. Deck it out in style with these detailed artisans from MEMEDA. Handmade from resin and compatible with Cherry MX switches and clones, these caps come in two styles. First is the pumpkin, a spooky take on a jack-o'-lantern with a vivid orange body and a deep green stem. Next is the skeleton, a menacing skull with a sinister smile and long tufts of hair poking out from the top of its cranium. Put one on your favorite board and we can’t promise your friends and coworkers won’t be intimidated.",
       price: 30.12,
@@ -511,7 +511,15 @@ async function seed() {
 
   await Order.create({
     totalAmount: 25.99,
-    isComplete: false
+    isComplete: false,
+    userId: 6
+  })
+
+  await OrderDetail.create({
+    productQuantity: 1,
+    total: 1,
+    productId: 1,
+    orderId: 1
   })
 
   console.log(`seeded successfully`)

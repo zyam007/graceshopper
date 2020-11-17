@@ -2,7 +2,7 @@
 
 Let's go ALL_CAPS!
 
-1.  Instructions on how to download and run our project: <<< DEPLOYMENT GOES HERE >>>
+1.  Instructions on how to download and run our project: <<< DEPLOYMENT GOES HERE >>> https://allcapsdeploy.herokuapp.com/
 
 2.  Blurb:
     "Look at your keyboard right now. Is it boring? That's what we thought! Just like the rest of your tech gear, keyboards should be as attractive as your desk, computer screen, sound system or mouse pad. Artisan keycaps exist to help your keyboard stand out!
@@ -47,6 +47,7 @@ Our dummy e-commerce website allows tech gear enthusiasts to browse inspiring ca
 
     3)Full-stack Applications
     • Node, Express, Sequelize, React, Redux practice & synthesis
+    • React-Reveal, Bootstrap, Styled.components, Faker, FA Icons (we chose to add these ourselves)
     • Schema design
     • Testing patterns
     • Visual design
@@ -57,40 +58,40 @@ Our dummy e-commerce website allows tech gear enthusiasts to browse inspiring ca
 ------REQUIREMENTS TIER 1 (OUR PRIORITY GOAL)------
 As a customer/visitor, I want to be able to:
 
-* [ ] access a deployed version of the website so I can browse and purchase products.
+* [x] access a deployed version of the website so I can browse and purchase products.
 * [x] view all available products so I can pick from a variety.
 * [x] view a single product so I can see more details.
 * [x] add a product to my cart so I can collect my desired products in one place.
 * [x] edit my cart if I change my mind:
 * [x] change the quantity of a product in my cart.
 * [x] remove a product in my cart.
-* [ ] No one else should be able to edit my cart except me.
-* [ ] "checkout" the items in my cart so I can purchase my desired goods.
-* [ ] create an account so I can have a logged-in experience. - (missing completed form for sign up: add sequelize for email field "is unique")
+* [x] No one else should be able to edit my cart except me.(specific to visitor user)
+* [ ] "checkout" the items in my cart so I can purchase my desired goods. (button added, almost there!)
+* [x] create an account so I can have a logged-in experience.
 
 As a logged-in customer, I want to be able to:
 
-* [ ] have a persistent cart so I can revisit and pick up where I left off:
+* [x] have a persistent cart so I can revisit and pick up where I left off:
 * [ ] Logged-in-user across multiple devices: I'm logged in on my mobile device and add some items to my cart. When I open the browser on my laptop and log in, I want to see those items in my cart.
-* [ ] No one else should be able to edit my cart except me.
+* [ ] No one else should be able to edit my cart except me. NOT SURE YET (may be true for logged in user)
 
 As an administrator, I want to be able to:
 
-* [ ] have validated data to ensure reliability. (add email is unique field)
+* [x] have validated data to ensure reliability.
 * [x] have full rights to make backend requests to add, edit, and remove products.
 * [ ] view user information. (almost there!)
 
 As an engineer, I want to:
 
 * [x] have a well-seeded database so that I am able to simulate a number of different scenarios for the user stories below.
-* [ ] user data to be secure so that no one can unrightfully manipulate information. (working on it!)
+* [x] user data to be secure so that no one can unrightfully manipulate information. (for the most part YES)
 
 ------REQUIREMENTS TIER 2 - E-COMMERCE ESSENTIALS------
 As a customer/visitor, I want to be able to:
 
-* [ ] see all products that belong to a certain category. (almost there!)
+* [x] see all products that belong to a certain category.
 * [x] explore an aesthetically pleasing website so I can easily navigate around and enjoy the experience (UI/UX).
-* [ ] have a persistent cart so I can revisit and pick up where I left off. There are two more experiences to consider here. Explore your favorite websites to see what the intended behavior is for the following:
+* [x] have a persistent cart so I can revisit and pick up where I left off. There are two more experiences to consider here. Explore your favorite websites to see what the intended behavior is for the following:
 * [x] Guest-only: I don't want to create an account, but I want my cart to persist between browser refreshes (Look into front-end storage for this one)
 * [ ] Guest-to-logged-in-user: Initially, I'm not logged in, and I add items to my cart. When I eventually log in, I want to see those same
       items I added when I was logged in still in my cart, in addition to the items I may have had in my cart from a previous logged in session.

@@ -6,8 +6,12 @@ import {
   DropdownButton,
   Dropdown,
   Carousel,
-  Spinner
+  Spinner,
+  Button,
+  Container,
+  Row
 } from 'react-bootstrap'
+import {addProduct} from '../store/reducers/cartManager'
 
 class SingleProduct extends React.Component {
   componentDidMount() {
@@ -19,35 +23,45 @@ class SingleProduct extends React.Component {
   render() {
     const product = this.props.product
     if (!product.name) return <Spinner animation="border" />
-    
-      return (
-        <div style={{display: 'flex', justifyContent: 'space-evenly'}} className="container-product">
-          <Carousel
-            style={{width: '40rem', padding: '1rem', alignSelf: 'center'}}
-          >
-            {product.imageUrl.map((url, i) => (
-              <Carousel.Item key={i} interval={2000}>
-                <img className="d-block w-100" src={url} alt={product.name} />
-              </Carousel.Item>
-            ))}
-          </Carousel>
-          <Card style={{width: '40rem', margin: '1rem'}} className="shadow-sm">
-            <Card.Body>
-              <Card.Title style={{fontSize: '2rem'}}>{product.name}</Card.Title>
-              <Card.Text>{product.description}</Card.Text>
-              <DropdownButton
-                id="dropdown-basic-button"
-                variant="dark"
-                title="Quantity"
-              >
-                <Dropdown.Item href="#/action-1">1</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">2</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">3</Dropdown.Item>
-              </DropdownButton>
-            </Card.Body>
-          </Card>
-        </div>
-      )
+
+    return (
+      <div
+        style={{display: 'flex', justifyContent: 'space-evenly'}}
+        className="container-product"
+      >
+        <Carousel
+          style={{width: '40rem', padding: '1rem', alignSelf: 'center'}}
+        >
+          {product.imageUrl.map((url, i) => (
+            <Carousel.Item key={i} interval={2000}>
+              <img className="d-block w-100" src={url} alt={product.name} />
+            </Carousel.Item>
+          ))}
+        </Carousel>
+        <Card style={{width: '40rem', margin: '1rem'}} className="shadow-sm">
+          <Card.Body>
+            <Card.Title style={{fontSize: '2rem'}}>{product.name}</Card.Title>
+            <Button
+              type="submit"
+              variant="primary"
+              onClick={() => this.props.addToCart(product)}
+            >
+              Add to Cart
+            </Button>
+            <Card.Text>{product.description}</Card.Text>
+            <DropdownButton
+              id="dropdown-basic-button"
+              variant="secondary"
+              title="Quantity"
+            >
+              <Dropdown.Item href="#/action-1">1</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">2</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">3</Dropdown.Item>
+            </DropdownButton>
+          </Card.Body>
+        </Card>
+      </div>
+    )
   }
 }
 
@@ -56,7 +70,8 @@ const mapState = state => ({
 })
 
 const mapDispatch = dispatch => ({
-  loadProduct: id => dispatch(fetchProduct(id))
+  loadProduct: id => dispatch(fetchProduct(id)),
+  addToCart: product => dispatch(addProduct(product))
 })
 
 export default connect(mapState, mapDispatch)(SingleProduct)

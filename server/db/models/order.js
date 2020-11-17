@@ -15,4 +15,12 @@ const Order = db.define('order', {
   }
 })
 
+Order.getPendingOrder = function(userId) {
+  return Order.findOrCreate({
+    where: {
+      userId,
+      isComplete: false
+    }
+  })
+}
 module.exports = Order
