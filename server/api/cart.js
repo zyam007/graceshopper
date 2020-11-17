@@ -7,7 +7,7 @@ const {OrderDetail, Order} = require('../db/index')
 //checked and
 router.get('/', async (req, res, next) => {
   try {
-    const userId = req.session.passport.user
+    const userId = req.user.id
     //get the cart
     const cartSession = await Order.getPendingOrder(userId)
     console.log('cart session', cartSession[0].dataValues.id)
@@ -27,7 +27,7 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     //find the user
-    const userId = req.session.passport.user
+    const userId = req.user.id
     //get the cart
     const cartSession = await Order.getPendingOrder(userId)
 
@@ -45,14 +45,15 @@ router.post('/', async (req, res, next) => {
 router.put('/', async (req, res, next) => {
   try {
     //find the user
-    const userId = req.session.passport.user
+    const userId = req.user.id
     //get the cart
     const cartSession = await Order.getPendingOrder(userId)
     const cartItem = await OrderDetail.updateCartItem(
-      req.params.id,
+      req.body.productQuantity,
+      req.body.productId,
       cartSession[0].id
     )
-    res.json(cartItem)
+    res.json(cartItem[1][0])
   } catch (err) {
     next(err)
   }
@@ -61,7 +62,7 @@ router.put('/', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
     //find the user
-    const userId = req.session.passport.user
+    const userId = req.user.id
     //get the cart
     const cartSession = await Order.getPendingOrder(userId)
     //find the product you are removing

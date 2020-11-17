@@ -16,7 +16,7 @@ export class AllProducts extends Component {
 
     return (
       <div id="productsView">
-        <h2 id="all-prod-text">All Products</h2>
+        <h1 id="all-prod-text">Our Products</h1>
         <Fade bottom cascade>
           {/* <Fade appear="true"> */}
           <div className="all-products">

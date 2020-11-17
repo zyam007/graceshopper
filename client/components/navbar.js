@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import {logout} from '../store'
 import {Nav, NavItem, Navbar as BootstrapNavbar} from 'react-bootstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
@@ -153,8 +153,8 @@ const mapDispatch = dispatch => {
     getLoggedInItems: () => dispatch(fetchLoggedInItems())
   }
 }
-
-export default connect(mapState, mapDispatch)(Navbar)
+const ConnectedNavbar = connect(mapState, mapDispatch)(Navbar)
+export default withRouter(ConnectedNavbar)
 
 /**
  * PROP TYPES

@@ -3,9 +3,18 @@ import {Card, Button, Container, Row, Col} from 'react-bootstrap'
 import {faTrash} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {Link} from 'react-router-dom'
+import {decreaseQuantity} from '../store/reducers/loggedInCart'
 
 const SingleCartItem = props => {
   const {item, increaseItem, decreaseItem, deleteCartItem} = props
+
+  function handleDecrement(currentItem) {
+    decreaseItem(currentItem.product, currentItem)
+  }
+
+  function handleIncrement(currentItem) {
+    increaseItem(currentItem.product, currentItem)
+  }
 
   return (
     <>
@@ -30,30 +39,47 @@ const SingleCartItem = props => {
                       {item.product.name}
                     </Link>
                   </Card.Text>
-                  <Card.Text>Price: ${item.product.price}</Card.Text>
+                  <Card.Text>
+                    <span style={{fontWeight: 'bold'}}>Price:</span> ${item.product.price.toFixed(
+                      2
+                    )}
+                  </Card.Text>
+                  <Card.Text>
+                    <span
+                      style={{
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      Total:
+                    </span>{' '}
+                    ${(item.productQuantity * item.product.price).toFixed(2)}
+                  </Card.Text>
                   <Row className="d-flex flex-wrap">
                     <Row className="mx-3">
                       <Button
                         type="button"
                         variant="danger"
-                        onClick={decreaseItem(item)}
+                        onClick={() => handleDecrement(item)}
                       >
                         -
                       </Button>
                       <div className="align-self-center mx-2">
                         <Card.Text>{item.productQuantity}</Card.Text>
                       </div>
-                      <Button type="button" variant="success">
+                      <Button
+                        type="button"
+                        variant="success"
+                        onClick={() => handleIncrement(item)}
+                      >
                         +
                       </Button>
                     </Row>
-                    <Button type="button" variant="secondary">
+                  </Row>
+                  <div style={{paddingTop: '.5rem', textAlign: 'right'}}>
+                    <Button type="button" variant="danger">
                       <FontAwesomeIcon icon={faTrash} />
                     </Button>
-                    <Card.Text>
-                      Total: ${item.productQuantity * item.product.price}
-                    </Card.Text>
-                  </Row>
+                  </div>
                 </Card.Body>
               </Col>
             </Row>

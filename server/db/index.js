@@ -12,7 +12,10 @@ const OrderDetail = db.define(
   {
     productQuantity: {
       type: Sequelize.INTEGER,
-      defaultValue: 1
+      defaultValue: 1,
+      validate: {
+        min: 0
+      }
     }
   },
   {timestamp: false}
@@ -31,13 +34,17 @@ OrderDetail.getCartItems = async function(orderId) {
   return cartItems
 }
 
-OrderDetail.updateCartItem = function(productId, orderId) {
-  return OrderDetail.findAll({
-    where: {
-      productId,
-      orderId
+OrderDetail.updateCartItem = function(productQuantity, productId, orderId) {
+  return OrderDetail.update(
+    {productQuantity: productQuantity},
+    {
+      where: {
+        productId,
+        orderId
+      },
+      returning: true
     }
-  })
+  )
 }
 
 User.hasMany(Order)

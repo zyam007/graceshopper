@@ -79,20 +79,26 @@ export const addItemToCart = cartItem => async dispatch => {
   }
 }
 
-export const increaseQuantity = product => async dispatch => {
+export const increaseQuantity = (product, productDetail) => async dispatch => {
   try {
-    const {data} = await axios.put('/api/cart', product)
+    const total = productDetail.productQuantity + 1
+    const {data} = await axios.put('/api/cart', {
+      productQuantity: total,
+      productId: product.id
+    })
     dispatch(increaseCart(data))
   } catch (error) {
     console.error(error)
   }
 }
 
-export const decreaseQuantity = product => async dispatch => {
+export const decreaseQuantity = (product, productDetail) => async dispatch => {
   try {
-    console.log('in the decrease thunk')
-    const {data} = await axios.put('/api/cart', product)
-    console.log('returned data', data)
+    const total = productDetail.productQuantity - 1
+    const {data} = await axios.put('/api/cart', {
+      productQuantity: total,
+      productId: product.id
+    })
     dispatch(decreaseCart(data))
   } catch (error) {
     console.error(error)
@@ -139,7 +145,7 @@ const loggedInCartReducer = (state = initialState, action) => {
         cartItems: [...state.cartItems, action.cartItem]
       }
     case INCREASE_CART:
-      state.cartItem.forEach(item => {
+      state.cartItems.forEach(item => {
         if (item.productId === action.updatedProduct.productId) {
           item.productQuantity += 1
         }
@@ -148,7 +154,7 @@ const loggedInCartReducer = (state = initialState, action) => {
         ...state
       }
     case DECREASE_CART:
-      state.cartItem.forEach(item => {
+      state.cartItems.forEach(item => {
         if (item.productId === action.updatedProduct.productId) {
           item.productQuantity -= 1
         }

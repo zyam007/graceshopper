@@ -64,9 +64,9 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   getCart: () => dispatch(fetchLoggedInItems),
-  increaseItem: product => dispatch(increaseQuantity),
-  decreaseItem: product => dispatch(decreaseQuantity),
-  deleteCartItem: id => dispatch(deleteItem)
+  increaseItem: (product, item) => dispatch(increaseQuantity(product, item)),
+  decreaseItem: (product, item) => dispatch(decreaseQuantity(product, item)),
+  deleteCartItem: product => dispatch(deleteItem)
 })
 
 export default connect(mapState, mapDispatch)(LoggedInCart)
