@@ -437,6 +437,8 @@ form div {
   width: 40rem;
   margin: 0 auto;
   padding-bottom: 20px;
+  min-height: 100vh;
+  padding-top: 40px;
 }
 
 .form-row {
