@@ -363,7 +363,7 @@ form div {
   flex-direction: column;
 }
 .form-signup {
-  padding-left: 25%;
+  /* padding-left: 25%; */
   flex-direction: row;
   justify-content: space-evenly;
   white-space: nowrap;
@@ -379,6 +379,17 @@ form div {
   box-shadow: 1px 1px 1px grey;
 }
 
+
+.login-signup-container {
+  width: 40rem;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+.form-row {
+  width: 90%;
+  margin: 0 auto;
+  
 /* Single Category Component */
 
 #categoryView {
