@@ -4,7 +4,9 @@ module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
+    console.log('in order', req.session)
     const user = req.session.passport.user
+
     const cartSession = await Order.getPendingOrder(user)
 
     res.json(cartSession[0])

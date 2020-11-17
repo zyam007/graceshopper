@@ -17,14 +17,8 @@ router.get('/', async (req, res, next) => {
 
     //now I want to send the cartItems
     const cartItems = await OrderDetail.getCartItems(orderId)
-    // ({
-    //   where: {
-    //     orderId
-    //   }
-    // })
-    console.log('cart items', cartItems)
 
-    res.json(cartItems[0])
+    res.json(cartItems)
   } catch (err) {
     next(err)
   }
@@ -37,7 +31,7 @@ router.post('/', async (req, res, next) => {
     //get the cart
     const cartSession = await Order.getPendingOrder(userId)
 
-    const newCartItem = await OrderDetails.create({
+    const newCartItem = await OrderDetail.create({
       orderId: cartSession[0].id,
       productId: req.body.id
     })
@@ -54,7 +48,7 @@ router.put('/', async (req, res, next) => {
     const userId = req.session.passport.user
     //get the cart
     const cartSession = await Order.getPendingOrder(userId)
-    const cartItem = await OrderDetails.updateCartItem(
+    const cartItem = await OrderDetail.updateCartItem(
       req.params.id,
       cartSession[0].id
     )
@@ -71,7 +65,7 @@ router.delete('/:id', async (req, res, next) => {
     //get the cart
     const cartSession = await Order.getPendingOrder(userId)
     //find the product you are removing
-    const cartItem = await OrderDetails.findOne({
+    const cartItem = await OrderDetail.findOne({
       where: {
         productId: req.params.id,
         orderId: cartSession[0].id

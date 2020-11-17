@@ -81,13 +81,8 @@ form div {
 }
 
 .image-products {
-  /* display: block; */
-  /* margin-left: auto; */
-  /* margin-right: auto; */
   width: 280px;
   height: 180px;
-  /* border-radius: 5px; */
-  /* object-fit: cover; */
 }
 .product-name {
   color: inherit;

@@ -11,22 +11,24 @@ const OrderDetail = db.define(
   'orderDetail',
   {
     productQuantity: {
-      type: Sequelize.INTEGER
-    },
-    total: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      defaultValue: 1
     }
   },
   {timestamp: false}
 )
 
-OrderDetail.getCartItems = function(orderId) {
+OrderDetail.getCartItems = async function(orderId) {
   console.log('in the model', orderId)
-  return OrderDetail.findOrCreate({
+  const items = await OrderDetail.findAll({
     where: {
-      orderId
-    }
+      orderId: orderId
+    },
+    include: Product
   })
+  console.log('in the model details', items.length)
+  const cartItems = items.length ? items : []
+  return cartItems
 }
 
 OrderDetail.updateCartItem = function(productId, orderId) {
@@ -44,6 +46,7 @@ Product.belongsToMany(Order, {through: OrderDetail})
 Order.belongsToMany(Product, {through: OrderDetail})
 Product.belongsTo(Category)
 Category.hasMany(Product)
+OrderDetail.belongsTo(Product)
 
 module.exports = {
   db,

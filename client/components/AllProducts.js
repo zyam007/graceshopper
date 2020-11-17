@@ -61,8 +61,6 @@ export class AllProducts extends Component {
   }
 }
 
-function handleClick() {}
-
 const mapState = state => {
   return {
     allProducts: state.allProducts

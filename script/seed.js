@@ -515,12 +515,18 @@ async function seed() {
     userId: 6
   })
 
-  await OrderDetail.create({
-    productQuantity: 1,
-    total: 1,
-    productId: 1,
-    orderId: 1
-  })
+  await OrderDetail.bulkCreate([
+    {
+      productQuantity: 1,
+      productId: 1,
+      orderId: 1
+    },
+    {
+      productQuantity: 2,
+      productId: 2,
+      orderId: 1
+    }
+  ])
 
   console.log(`seeded successfully`)
 }
