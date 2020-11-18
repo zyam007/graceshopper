@@ -8,7 +8,7 @@ import {Form, Button, Row, Col} from 'react-bootstrap'
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-  console.log(displayName, 'display')
+  
   return (
     <div className="login-signup-container">
       <h3 className="form-name">{displayName}</h3>

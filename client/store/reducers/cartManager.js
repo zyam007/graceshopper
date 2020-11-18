@@ -5,8 +5,16 @@ const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 const REDUCE_CART_ITEM = 'REDUCE_CART_ITEM'
 const INCREASE_CART_ITEM = 'INCREASE_CART_ITEM'
 const GET_ITEMS = 'GET_ITEMS'
-
+const PLACE_ORDER = 'PLACE_ORDER'
+const CLEAR_CART = 'CLEAR_CART'
 //ACTION CREATORS
+export const clearCart = () => ({
+  type: CLEAR_CART
+})
+
+export const placedOrder = () => ({
+  type: PLACE_ORDER
+})
 
 export const addProduct = product => ({
   type: ADD_TO_CART,
@@ -28,40 +36,17 @@ export const increaseProduct = product => ({
   product
 })
 
-//For logged in user
-
-const GET_USER = 'SET_USER'
-
-const ADD_TO_CART_LOGGIN = 'ADD_TO_CART_LOGGIN'
-
-const RESET_CART = 'RESET_CART'
-
-export const resetCart = () => ({
-  type: RESET_CART
-})
-
-export const setCart = orderId => ({
-  type: GET_USER,
-  orderId
-})
-
-export const fetchLoggedInCart = () => {
+//FOR guest user order
+//user has firstName, lastName, email
+//cart has everything in the cart state
+//userId is undefined
+export const placeOrderGuest = (userId, cart, user) => {
   return async dispatch => {
     try {
-      const {data} = await axios.get('api/order')
-      const orderId = data
-      console.log('in the thunk', orderId)
-      dispatch(setCart(orderId.id))
-      // if(orderId.id) {
-      //   const {data} = await axios.get('/api/cart')
-      //   const cartItems = data
-      //   console.log('in thunk for cart', cartItems)
-      //   dispatch({
-      //     type: ADD_TO_CART_LOGGIN,
-      //     product: cartItems
-      //   })
-
-      // }
+      if (userId === 0) {
+        const {data} = await axios.post('/api/order', {user, cart})
+        dispatch(clearCart())
+      }
     } catch (err) {
       console.log(err)
     }
@@ -138,7 +123,8 @@ export const cartReducer = (state = initialState, action) => {
 
       return {...state, total: Number(newTotal.toFixed(2))}
     }
-    case RESET_CART: {
+      
+    case CLEAR_CART: {
       return {
         cartItems: [],
         total: 0,
@@ -146,33 +132,6 @@ export const cartReducer = (state = initialState, action) => {
         orderId: 0
       }
     }
-    case GET_USER:
-      console.log('in the cart Get user')
-      return {
-        ...state,
-        orderId: action.orderId
-      }
-    // case ADD_TO_CART_LOGGIN: {
-    //   let product = action.product
-    //   let newTotal = 0
-    //   if(!state.quantity[product.productId]) {
-    //     state.quantity[product.productId] = product.productQuantity;
-    //     newTotal = state.total + action.product.total
-    //     return {
-    //       ...state,
-    //       cartItems: [...state.cartItems, action.product],
-    //       total: state.total + Number(newTotal.toFixed(2))
-    //     }
-    //   }else {
-    //      //adding the same product
-    //      state.quantity[product.product.id] += product.productQuantity
-    //      newTotal = state.total + action.product.total
-    //      return {
-    //        ...state,
-    //        total: Number(newTotal.toFixed(2))
-    //      }
-    //     }
-    // }
     default: {
       return state
     }

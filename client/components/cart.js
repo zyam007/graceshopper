@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import LoggedInCart from './LoggedInCart'
 
 import {
   removeProduct,
@@ -10,10 +11,11 @@ import {
 
 export class Cart extends Component {
   componentDidMount() {
-    this.props.getCartItems()
+    if (!this.props.user.id) this.props.getCartItems()
   }
 
   render() {
+    if (this.props.user.id) return <LoggedInCart />
     const cartItems = this.props.cart.cartItems || []
     const quantity = this.props.cart.quantity || {}
     if (!cartItems.length) {
@@ -68,9 +70,11 @@ export class Cart extends Component {
           <h4 className="cartTotalTitle">Cart Total</h4>
           <h4 className="cartTotal">{this.props.cart.total.toFixed(2)}</h4>
         </div>
-        <button type="submit" className="button-cart-checkout">
+        <Link to="/cart/checkout" className="button-cart-checkout">
+          {/* <button type="submit" className="button-cart-checkout"> */}
           CHECK OUT
-        </button>
+          {/* </button> */}
+        </Link>
       </div>
     )
   }
@@ -78,7 +82,8 @@ export class Cart extends Component {
 
 const mapState = state => {
   return {
-    cart: state.cart
+    cart: state.cart,
+    user: state.user
   }
 }
 

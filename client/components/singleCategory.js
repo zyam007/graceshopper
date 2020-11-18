@@ -44,7 +44,7 @@ export class SingleCategory extends Component {
                         {product.name}
                       </Link>
                     </Card.Text>
-                    <Card.Text>${product.price}</Card.Text>
+                    <Card.Text>${product.price.toFixed(2)}</Card.Text>
                     <Button
                       type="submit"
                       variant="secondary"

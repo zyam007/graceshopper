@@ -2,8 +2,11 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Fade from 'react-reveal/Fade'
 import {Link} from 'react-router-dom'
-
 import {fetchAllCategories} from '../store/reducers/allCategories'
+import {
+  fetchLoggedInCart,
+  fetchLoggedInItems
+} from '../store/reducers/loggedInCart'
 
 export class AllCategories extends Component {
   componentDidMount() {
@@ -12,6 +15,11 @@ export class AllCategories extends Component {
 
   render() {
     const allCategories = this.props.allCategories || []
+    const user = this.props.user
+    if (user.id) {
+      this.props.getCart(user.id)
+      this.props.getLoggedInItems()
+    }
 
     return (
       <div id="categoriesView">
@@ -44,13 +52,16 @@ export class AllCategories extends Component {
 
 const mapState = state => {
   return {
-    allCategories: state.allCategories
+    allCategories: state.allCategories,
+    user: state.user
   }
 }
 
 const mapDispatch = dispatch => {
   return {
-    getAllCategories: () => dispatch(fetchAllCategories())
+    getAllCategories: () => dispatch(fetchAllCategories()),
+    getCart: () => dispatch(fetchLoggedInCart()),
+    getLoggedInItems: () => dispatch(fetchLoggedInItems())
   }
 }
 

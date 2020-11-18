@@ -67,7 +67,9 @@ form div {
 #all-prod-text {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 40px;
 }
+
 .all-products {
   display: flex;
   flex-wrap: wrap;
@@ -135,7 +137,7 @@ form div {
   margin-left: 10px;
 }
 
-.button-cart-checkout {
+a.button-cart-checkout {
   background: #a84ae8;
   background-image: -webkit-linear-gradient(top, #a84ae8, #a84ae8);
   background-image: -moz-linear-gradient(top, #a84ae8, #a84ae8);
@@ -175,6 +177,7 @@ form div {
   -moz-border-radius: 10px;
   border-radius: 10px;
   text-decoration: none;
+  color: white;
 }
 
 /* FOOTER */
@@ -210,6 +213,12 @@ form div {
 }
 
 #all-cat-text {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 40px;
+}
+
+#cart-text {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 40px;
@@ -437,6 +446,8 @@ form div {
   width: 40rem;
   margin: 0 auto;
   padding-bottom: 20px;
+  min-height: 100vh;
+  padding-top: 40px;
 }
 
 .form-row {
@@ -527,4 +538,22 @@ form div {
 
 #price {
   margin-left: 10px;
+}
+/* CHECKOUT form */
+
+.checkout {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.checkout-form {
+  width: 50%;
+  margin: auto;
+}
+
+.contact-title {
+  text-align: center;
+}
+
+.button-place-order {
+  margin: 0 auto;
 }

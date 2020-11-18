@@ -10,32 +10,47 @@ const Category = require('./models/category')
 const OrderDetail = db.define(
   'orderDetail',
   {
-    productQuantity: {
-      type: Sequelize.INTEGER
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
     },
-    total: {
-      type: Sequelize.INTEGER
+    productQuantity: {
+      type: Sequelize.INTEGER,
+      defaultValue: 1,
+      validate: {
+        min: 0
+      }
     }
   },
   {timestamp: false}
 )
 
-OrderDetail.getCartItems = function(orderId) {
+OrderDetail.getCartItems = async function(orderId) {
   console.log('in the model', orderId)
-  return OrderDetail.findOrCreate({
+  const items = await OrderDetail.findAll({
     where: {
-      orderId
-    }
+      orderId: orderId
+    },
+    include: Product
   })
+  console.log('in the model details', items.length)
+  const cartItems = items.length ? items : []
+  return cartItems
 }
 
-OrderDetail.updateCartItem = function(productId, orderId) {
-  return OrderDetail.findAll({
-    where: {
-      productId,
-      orderId
+OrderDetail.updateCartItem = function(productQuantity, productId, orderId) {
+  return OrderDetail.update(
+    {productQuantity: productQuantity},
+    {
+      where: {
+        productId,
+        orderId
+      },
+      returning: true
     }
-  })
+  )
 }
 
 User.hasMany(Order)
@@ -44,6 +59,7 @@ Product.belongsToMany(Order, {through: OrderDetail})
 Order.belongsToMany(Product, {through: OrderDetail})
 Product.belongsTo(Category)
 Category.hasMany(Product)
+OrderDetail.belongsTo(Product)
 
 module.exports = {
   db,
