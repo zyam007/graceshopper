@@ -23,10 +23,12 @@ class SingleProduct extends React.Component {
   }
 
   componentDidMount() {
+    const id = this.props.match.params.id
+    this.props.loadProduct(id)
     if (this.props.user.id) {
       this.props.getCart(this.props.user.id)
       this.props.getLoggedInItems()
-    } else this.props.getAllProducts()
+    }
   }
 
   handleAddToCart(product) {
