@@ -29,6 +29,7 @@ export class AllProducts extends Component {
 
   render() {
     const allProducts = this.props.allProducts || []
+    console.log('What is going on here', allProducts)
 
     return (
       <div id="productsView">
@@ -57,7 +58,9 @@ export class AllProducts extends Component {
                         {product.name}
                       </Link>
                     </Card.Text>
-                    <Card.Text>${product.price.toFixed(2)}</Card.Text>
+                    <Card.Text>
+                      ${product.price.toFixed(2)}
+                    </Card.Text>
                     <Button
                       type="submit"
                       variant="secondary"
