@@ -1,10 +1,30 @@
 import React, {Component} from 'react'
+
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {Button, Container, Form, Row, Col} from 'react-bootstrap'
+import {Button, Container, Form, Row, Col, Modal} from 'react-bootstrap'
 import {placeOrderGuest} from '../store/reducers/cartManager'
 
 export class CheckoutForm extends Component {
+  constructor() {
+    super()
+    this.handleShow = this.handleShow.bind(this)
+    this.handleClose = this.handleClose.bind(this)
+
+    this.state = {
+      show: false
+    }
+  }
+
+  handleClose() {
+    this.setState({show: false})
+    this.props.history.push('/cart')
+  }
+
+  handleShow() {
+    this.setState({show: true})
+  }
+
   componentDidMount() {
     this.props.getCartItems()
   }
@@ -13,6 +33,7 @@ export class CheckoutForm extends Component {
     const cartItems = this.props.cart.cartItems || []
     const total = this.props.cart.total
     const qty = this.props.cart.quantity
+    console.log(this.props)
 
     const handleSubmit = evt => {
       evt.preventDefault()
@@ -27,9 +48,22 @@ export class CheckoutForm extends Component {
       }
       console.log(this.props.cart)
       this.props.placeOrder(0, this.props.cart, user)
+      this.handleShow()
     }
     return (
       <div className="checkout">
+        <Modal show={this.state.show} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Thank you for you Order</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Your order details</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+
         <Container>
           <Row>
             <Form className="checkout-form" onSubmit={handleSubmit}>
