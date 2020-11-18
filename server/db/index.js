@@ -7,18 +7,14 @@ const Order = require('./models/order')
 const Product = require('./models/product')
 const Category = require('./models/category')
 
-const OrderDetail = db.define(
-  'orderDetail',
-  {
-    productQuantity: {
-      type: Sequelize.INTEGER
-    },
-    total: {
-      type: Sequelize.INTEGER
-    }
+const OrderDetail = db.define('orderDetail', {
+  productQuantity: {
+    type: Sequelize.INTEGER
   },
-  {timestamp: false}
-)
+  total: {
+    type: Sequelize.FLOAT
+  }
+})
 
 OrderDetail.getCartItems = function(orderId) {
   console.log('in the model', orderId)

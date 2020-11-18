@@ -5,8 +5,13 @@ const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 const REDUCE_CART_ITEM = 'REDUCE_CART_ITEM'
 const INCREASE_CART_ITEM = 'INCREASE_CART_ITEM'
 const GET_ITEMS = 'GET_ITEMS'
+const PLACE_ORDER = 'PLACE_ORDER'
 
 //ACTION CREATORS
+
+export const placedOrder = () => ({
+  type: PLACE_ORDER
+})
 
 export const addProduct = product => ({
   type: ADD_TO_CART,
@@ -45,23 +50,17 @@ export const setCart = orderId => ({
   orderId
 })
 
-export const fetchLoggedInCart = () => {
+//FOR guest user order
+//user has firstName, lastName, email
+//cart has everything in the cart state
+//userId is undefined
+export const placeOrderGuest = (userId, cart, user) => {
   return async dispatch => {
     try {
-      const {data} = await axios.get('api/order')
-      const orderId = data
-      console.log('in the thunk', orderId)
-      dispatch(setCart(orderId.id))
-      // if(orderId.id) {
-      //   const {data} = await axios.get('/api/cart')
-      //   const cartItems = data
-      //   console.log('in thunk for cart', cartItems)
-      //   dispatch({
-      //     type: ADD_TO_CART_LOGGIN,
-      //     product: cartItems
-      //   })
-
-      // }
+      if (userId === 0) {
+        const {data} = await axios.post('/api/order', {user, cart})
+        dispatch(resetCart())
+      }
     } catch (err) {
       console.log(err)
     }
@@ -152,27 +151,7 @@ export const cartReducer = (state = initialState, action) => {
         ...state,
         orderId: action.orderId
       }
-    // case ADD_TO_CART_LOGGIN: {
-    //   let product = action.product
-    //   let newTotal = 0
-    //   if(!state.quantity[product.productId]) {
-    //     state.quantity[product.productId] = product.productQuantity;
-    //     newTotal = state.total + action.product.total
-    //     return {
-    //       ...state,
-    //       cartItems: [...state.cartItems, action.product],
-    //       total: state.total + Number(newTotal.toFixed(2))
-    //     }
-    //   }else {
-    //      //adding the same product
-    //      state.quantity[product.product.id] += product.productQuantity
-    //      newTotal = state.total + action.product.total
-    //      return {
-    //        ...state,
-    //        total: Number(newTotal.toFixed(2))
-    //      }
-    //     }
-    // }
+
     default: {
       return state
     }
