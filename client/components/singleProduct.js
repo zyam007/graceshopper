@@ -84,10 +84,8 @@ const mapDispatch = dispatch => ({
   loadProduct: id => dispatch(fetchProduct(id)),
 
   getCart: () => dispatch(fetchLoggedInCart()),
-  getLoggedInItems: () => dispatch(fetchLoggedInItems())
-
+  getLoggedInItems: () => dispatch(fetchLoggedInItems()),
   addToCart: product => dispatch(addProduct(product))
-
 })
 
 export default connect(mapState, mapDispatch)(SingleProduct)
