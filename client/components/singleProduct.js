@@ -26,7 +26,7 @@ class SingleProduct extends React.Component {
     if (this.props.user.id) {
       this.props.getCart(this.props.user.id)
       this.props.getLoggedInItems()
-    } else this.props.getAllProducts()
+    }
   }
 
   handleAddToCart(product) {
