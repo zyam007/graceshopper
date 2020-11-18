@@ -558,3 +558,11 @@ a.button-cart-checkout {
 .button-place-order {
   margin: 0 auto;
 }
+
+/* Loggedin Cart */
+
+.loggedincart {
+  min-height: 100vh;
+  min-height: 100vh;
+  padding-top: 40px;
+}
