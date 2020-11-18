@@ -6,12 +6,18 @@ import {
   DropdownButton,
   Dropdown,
   Carousel,
-  Spinner
+  Spinner,
+  Button,
+  Container,
+  Row
 } from 'react-bootstrap'
+
 import {
   fetchLoggedInCart,
   fetchLoggedInItems
 } from '../store/reducers/loggedInCart'
+
+import {addProduct} from '../store/reducers/cartManager'
 
 class SingleProduct extends React.Component {
   componentDidMount() {
@@ -45,10 +51,17 @@ class SingleProduct extends React.Component {
         <Card style={{width: '40rem', margin: '1rem'}} className="shadow-sm">
           <Card.Body>
             <Card.Title style={{fontSize: '2rem'}}>{product.name}</Card.Title>
+            <Button
+              type="submit"
+              variant="primary"
+              onClick={() => this.props.addToCart(product)}
+            >
+              Add to Cart
+            </Button>
             <Card.Text>{product.description}</Card.Text>
             <DropdownButton
               id="dropdown-basic-button"
-              variant="dark"
+              variant="secondary"
               title="Quantity"
             >
               <Dropdown.Item href="#/action-1">1</Dropdown.Item>
@@ -69,8 +82,12 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   loadProduct: id => dispatch(fetchProduct(id)),
+
   getCart: () => dispatch(fetchLoggedInCart()),
   getLoggedInItems: () => dispatch(fetchLoggedInItems())
+
+  addToCart: product => dispatch(addProduct(product))
+
 })
 
 export default connect(mapState, mapDispatch)(SingleProduct)
