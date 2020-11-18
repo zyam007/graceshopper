@@ -6,27 +6,34 @@ import {fetchAllProducts} from '../store/reducers/allProducts'
 import {Card, Button} from 'react-bootstrap'
 import {addProduct} from '../store/reducers/cartManager'
 import {
+  addItemToCart,
   fetchLoggedInCart,
   fetchLoggedInItems
 } from '../store/reducers/loggedInCart'
 
 export class AllProducts extends Component {
+  constructor() {
+    super()
+    this.handleAddToCart = this.handleAddToCart.bind(this)
+  }
   componentDidMount() {
-    this.props.getAllProducts()
+    if (this.props.user.id) {
+      this.props.getCart(this.props.user.id)
+      this.props.getLoggedInItems()
+    } else this.props.getAllProducts()
+  }
+
+  handleAddToCart(product) {
+    this.props.addItemToCart(product)
   }
 
   render() {
     const allProducts = this.props.allProducts || []
-    if (this.props.user.id) {
-      this.props.getCart(this.props.user.id)
-      this.props.getLoggedInItems()
-    }
 
     return (
       <div id="productsView">
         <h1 id="all-prod-text">Our Products</h1>
         <Fade bottom cascade>
-          {/* <Fade appear="true"> */}
           <div className="all-products">
             {allProducts.map(product => {
               return (
@@ -54,7 +61,11 @@ export class AllProducts extends Component {
                     <Button
                       type="submit"
                       variant="secondary"
-                      onClick={() => this.props.addToCart(product)}
+                      onClick={
+                        this.props.user.id
+                          ? () => this.handleAddToCart(product)
+                          : () => this.props.addToCart(product)
+                      }
                     >
                       add to cart
                     </Button>
@@ -72,7 +83,8 @@ export class AllProducts extends Component {
 const mapState = state => {
   return {
     allProducts: state.allProducts,
-    user: state.user
+    user: state.user,
+    state: state
   }
 }
 
@@ -81,7 +93,8 @@ const mapDispatch = dispatch => {
     getAllProducts: () => dispatch(fetchAllProducts()),
     addToCart: product => dispatch(addProduct(product)),
     getLoggedInItems: () => dispatch(fetchLoggedInItems()),
-    getCart: () => dispatch(fetchLoggedInCart())
+    getCart: () => dispatch(fetchLoggedInCart()),
+    addItemToCart: product => dispatch(addItemToCart(product))
   }
 }
 

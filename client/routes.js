@@ -11,11 +11,11 @@ import {
   SingleCategory,
   AllCategories,
   Cart,
-  CheckoutForm
+  CheckoutForm,
+  EditUser
 } from './components'
 import {me} from './store'
 
-//import AllProducts from './components/AllProducts'
 /**
  * COMPONENT
  */
@@ -35,10 +35,11 @@ class Routes extends Component {
         <Route exact path="/allproducts" component={AllProducts} />
         <Route exact path="/" component={AllCategories} />
         <Route exact path="/cart" component={Cart} />
-        <Route exact path="/listing" component={AllProducts} />
+        {/* <Route exact path="/listing" component={AllProducts} /> */}
         <Route exact path="/listing/:id" component={SingleProduct} />
-        <Route exact path="/:id" component={SingleCategory} />
         <Route exact path="/cart/checkout" component={CheckoutForm} />
+        <Route exact path="/admin/edit-user" component={EditUser} />
+        <Route exact path="/:id" component={SingleCategory} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

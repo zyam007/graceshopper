@@ -12,6 +12,7 @@ import {
   fetchLoggedInItems
 } from '../store/reducers/loggedInCart'
 import {UserHome} from './index'
+
 const cartStyle = {
   fontSize: '24px'
 }
@@ -40,11 +41,9 @@ export class Navbar extends React.Component {
     return (
       <>
         <BootstrapNavbar variant="dark" bg="dark" id="flex">
-          {/* <BootstrapNavbar.Brand className="logo"> */}
           <Link to="/">
             <img src="logo.png" alt="ALL_CAPS" className="logo" />
           </Link>
-          {/* </BootstrapNavbar.Brand> */}
           <Nav>
             {isLoggedIn ? (
               <div>
@@ -66,6 +65,18 @@ export class Navbar extends React.Component {
                       Logout
                     </Link>
                   </NavItem>
+
+                  {this.props.user.isAdmin ? (
+                    <>
+                      <NavItem>
+                        <Link to="/admin/edit-user" className="nav-name">
+                          Edit User
+                        </Link>
+                      </NavItem>
+                    </>
+                  ) : (
+                    ''
+                  )}
                   <NavItem className="center">
                     <Link to="/cart" className="nav-name">
                       <FontAwesomeIcon
@@ -74,7 +85,10 @@ export class Navbar extends React.Component {
                       />
                       <span className="badge badge-warning" id="lblCartCount">
                         {this.props.loggedInCart.cartItems.length
-                          ? this.props.loggedInCart.cartItems.length
+                          ? this.props.loggedInCart.cartItems.reduce(
+                              (acc, item) => acc + item.productQuantity,
+                              0
+                            )
                           : 0}
                       </span>
                     </Link>
@@ -135,7 +149,8 @@ const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
     cart: state.cart,
-    loggedInCart: state.loginCart
+    loggedInCart: state.loginCart,
+    user: state.user
   }
 }
 
