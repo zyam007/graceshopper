@@ -48,12 +48,13 @@ router.put('/', async (req, res, next) => {
     const userId = req.user.id
     //get the cart
     const cartSession = await Order.getPendingOrder(userId)
-    const cartItem = await OrderDetail.updateCartItem(
+    const result = await OrderDetail.updateCartItem(
       req.body.productQuantity,
       req.body.productId,
       cartSession[0].id
     )
-    res.json(cartItem[1][0])
+    let cartItem = result[1][0]
+    res.json(cartItem)
   } catch (err) {
     next(err)
   }
@@ -68,6 +69,7 @@ router.delete('/:id', async (req, res, next) => {
     //find the product you are removing
     const cartItem = await OrderDetail.findOne({
       where: {
+        id: req.params.id,
         productId: req.params.id,
         orderId: cartSession[0].id
       }

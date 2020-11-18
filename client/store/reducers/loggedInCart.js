@@ -39,9 +39,9 @@ const decreaseCart = updatedProduct => ({
   updatedProduct
 })
 
-const removeFromCart = productId => ({
+const removeFromCart = id => ({
   type: REMOVE_ITEM,
-  productId
+  id
 })
 
 //Thunk Creators
@@ -163,9 +163,7 @@ const loggedInCartReducer = (state = initialState, action) => {
         ...state
       }
     case REMOVE_ITEM: {
-      const updatedItems = state.cartItems.filter(
-        item => item.productId !== action.productId
-      )
+      const updatedItems = state.cartItems.filter(item => item.id !== action.id)
       return {
         ...state,
         cartItems: updatedItems

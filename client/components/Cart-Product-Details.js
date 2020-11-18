@@ -3,7 +3,6 @@ import {Card, Button, Container, Row, Col} from 'react-bootstrap'
 import {faTrash} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {Link} from 'react-router-dom'
-import {decreaseQuantity} from '../store/reducers/loggedInCart'
 
 const SingleCartItem = props => {
   const {item, increaseItem, decreaseItem, deleteCartItem} = props
@@ -16,9 +15,13 @@ const SingleCartItem = props => {
     increaseItem(currentItem.product, currentItem)
   }
 
+  function handleDelete(id) {
+    deleteCartItem(id)
+  }
+
   return (
     <>
-      <Row key={item.id} className="m-3">
+      <Row className="m-3">
         <Card>
           <Container>
             <Row>
@@ -27,6 +30,7 @@ const SingleCartItem = props => {
                   variant="top"
                   src={item.product.imageUrl[0]}
                   alt="test-img"
+                  className=""
                 />
               </Col>
               <Col>
@@ -64,7 +68,11 @@ const SingleCartItem = props => {
                         -
                       </Button>
                       <div className="align-self-center mx-2">
-                        <Card.Text>{item.productQuantity}</Card.Text>
+                        {item.productQuantity ? (
+                          <Card.Text>{item.productQuantity}</Card.Text>
+                        ) : (
+                          handleDelete(item.id)
+                        )}
                       </div>
                       <Button
                         type="button"
@@ -76,7 +84,11 @@ const SingleCartItem = props => {
                     </Row>
                   </Row>
                   <div style={{paddingTop: '.5rem', textAlign: 'right'}}>
-                    <Button type="button" variant="danger">
+                    <Button
+                      type="button"
+                      variant="danger"
+                      onClick={() => handleDelete(item.id)}
+                    >
                       <FontAwesomeIcon icon={faTrash} />
                     </Button>
                   </div>

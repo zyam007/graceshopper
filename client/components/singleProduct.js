@@ -8,6 +8,10 @@ import {
   Carousel,
   Spinner
 } from 'react-bootstrap'
+import {
+  fetchLoggedInCart,
+  fetchLoggedInItems
+} from '../store/reducers/loggedInCart'
 
 class SingleProduct extends React.Component {
   componentDidMount() {
@@ -18,6 +22,10 @@ class SingleProduct extends React.Component {
 
   render() {
     const product = this.props.product
+    if (this.props.user.id) {
+      this.props.getCart(this.props.user.id)
+      this.props.getLoggedInItems()
+    }
     if (!product.name) return <Spinner animation="border" />
 
     return (
@@ -55,11 +63,14 @@ class SingleProduct extends React.Component {
 }
 
 const mapState = state => ({
-  product: state.singleProduct
+  product: state.singleProduct,
+  user: state.user
 })
 
 const mapDispatch = dispatch => ({
-  loadProduct: id => dispatch(fetchProduct(id))
+  loadProduct: id => dispatch(fetchProduct(id)),
+  getCart: () => dispatch(fetchLoggedInCart()),
+  getLoggedInItems: () => dispatch(fetchLoggedInItems())
 })
 
 export default connect(mapState, mapDispatch)(SingleProduct)

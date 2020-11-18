@@ -1,13 +1,5 @@
 import React from 'react'
-import {
-  CardDeck,
-  Card,
-  Button,
-  Container,
-  Row,
-  Col,
-  Spinner
-} from 'react-bootstrap'
+import {CardDeck, Container, Row, Col} from 'react-bootstrap'
 import {
   fetchLoggedInItems,
   increaseQuantity,
@@ -19,27 +11,18 @@ import SingleCartItem from './Cart-Product-Details'
 
 const LoggedInCart = props => {
   console.log(props)
-  const {increaseItem, decreaseItem, deleteCartItem} = props
-  // const {loginCart} = props
+  const {increaseItem, decreaseItem, deleteCartItem, cart} = props
 
-  // let total = loginCart.cartItems.reduce(
-  //   (acc, item) => acc + item.product.price * item.quantity,
-  //   0).toFixed(2)
-  // {cart
-  //   ? cart.map(cartItem => (
-  //       <CartProductDetail
-  //         key={cartItem.productId}
-  //         cartItem={cartItem}
-  //         loadCart={this.props.loadCart}
-  //       />
-  //     ))
-  //   : `Your cart is currently empty`}
   if (!props.cart.cartItems.length)
     return <h1 style={{textAlign: 'center'}}>Your Cart Is Empty</h1>
 
+  let total = cart.cartItems
+    .reduce((acc, item) => acc + item.product.price * item.productQuantity, 0)
+    .toFixed(2)
+
   return (
     <>
-      <h1 style={{textAlign: 'center'}}>Your Items</h1>
+      <h1 id="cart-text">Your Items</h1>
       <CardDeck>
         <Container className="w-50">
           {props.cart.cartItems.map(item => (
@@ -49,10 +32,19 @@ const LoggedInCart = props => {
               increaseItem={increaseItem}
               decreaseItem={decreaseItem}
               deleteCartItem={deleteCartItem}
+              total={total}
             />
           ))}
         </Container>
       </CardDeck>
+      <div>
+        <h3 style={{fontWeight: 'bold', textAlign: 'center'}}>
+          Cart Total: ${total}
+        </h3>
+      </div>
+      <button type="submit" className="button-cart-checkout">
+        CHECK OUT
+      </button>
     </>
   )
 }
@@ -66,7 +58,7 @@ const mapDispatch = dispatch => ({
   getCart: () => dispatch(fetchLoggedInItems),
   increaseItem: (product, item) => dispatch(increaseQuantity(product, item)),
   decreaseItem: (product, item) => dispatch(decreaseQuantity(product, item)),
-  deleteCartItem: product => dispatch(deleteItem)
+  deleteCartItem: id => dispatch(deleteItem(id))
 })
 
 export default connect(mapState, mapDispatch)(LoggedInCart)

@@ -5,6 +5,10 @@ import {Link} from 'react-router-dom'
 import {fetchAllProducts} from '../store/reducers/allProducts'
 import {Card, Button} from 'react-bootstrap'
 import {addProduct} from '../store/reducers/cartManager'
+import {
+  fetchLoggedInCart,
+  fetchLoggedInItems
+} from '../store/reducers/loggedInCart'
 
 export class AllProducts extends Component {
   componentDidMount() {
@@ -13,6 +17,10 @@ export class AllProducts extends Component {
 
   render() {
     const allProducts = this.props.allProducts || []
+    if (this.props.user.id) {
+      this.props.getCart(this.props.user.id)
+      this.props.getLoggedInItems()
+    }
 
     return (
       <div id="productsView">
@@ -63,14 +71,17 @@ export class AllProducts extends Component {
 
 const mapState = state => {
   return {
-    allProducts: state.allProducts
+    allProducts: state.allProducts,
+    user: state.user
   }
 }
 
 const mapDispatch = dispatch => {
   return {
     getAllProducts: () => dispatch(fetchAllProducts()),
-    addToCart: product => dispatch(addProduct(product))
+    addToCart: product => dispatch(addProduct(product)),
+    getLoggedInItems: () => dispatch(fetchLoggedInItems()),
+    getCart: () => dispatch(fetchLoggedInCart())
   }
 }
 

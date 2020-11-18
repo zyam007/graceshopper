@@ -10,6 +10,12 @@ const Category = require('./models/category')
 const OrderDetail = db.define(
   'orderDetail',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
+    },
     productQuantity: {
       type: Sequelize.INTEGER,
       defaultValue: 1,

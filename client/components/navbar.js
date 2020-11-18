@@ -11,7 +11,7 @@ import {
   resetCart,
   fetchLoggedInItems
 } from '../store/reducers/loggedInCart'
-
+import {UserHome} from './index'
 const cartStyle = {
   fontSize: '24px'
 }
@@ -50,6 +50,7 @@ export class Navbar extends React.Component {
               <div>
                 <Nav>
                   {/* The navbar will show these links after you log in */}
+                  <UserHome />
                   <NavItem>
                     <Link to="/" className="nav-name">
                       Home
@@ -126,10 +127,6 @@ export class Navbar extends React.Component {
     )
   }
 }
-
-// const Navbar = ({handleClick, isLoggedIn}) => (
-
-// )
 
 /**
  * CONTAINER
