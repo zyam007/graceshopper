@@ -10,9 +10,6 @@ const Category = require('./models/category')
 const OrderDetail = db.define('orderDetail', {
   productQuantity: {
     type: Sequelize.INTEGER
-  },
-  total: {
-    type: Sequelize.FLOAT
   }
 })
 

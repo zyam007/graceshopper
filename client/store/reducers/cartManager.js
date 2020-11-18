@@ -6,8 +6,11 @@ const REDUCE_CART_ITEM = 'REDUCE_CART_ITEM'
 const INCREASE_CART_ITEM = 'INCREASE_CART_ITEM'
 const GET_ITEMS = 'GET_ITEMS'
 const PLACE_ORDER = 'PLACE_ORDER'
-
+const CLEAR_CART = 'CLEAR_CART'
 //ACTION CREATORS
+export const clearCart = () => ({
+  type: CLEAR_CART
+})
 
 export const placedOrder = () => ({
   type: PLACE_ORDER
@@ -39,12 +42,6 @@ const GET_USER = 'SET_USER'
 
 const ADD_TO_CART_LOGGIN = 'ADD_TO_CART_LOGGIN'
 
-const RESET_CART = 'RESET_CART'
-
-export const resetCart = () => ({
-  type: RESET_CART
-})
-
 export const setCart = orderId => ({
   type: GET_USER,
   orderId
@@ -59,7 +56,7 @@ export const placeOrderGuest = (userId, cart, user) => {
     try {
       if (userId === 0) {
         const {data} = await axios.post('/api/order', {user, cart})
-        dispatch(resetCart())
+        dispatch(clearCart())
       }
     } catch (err) {
       console.log(err)
@@ -137,7 +134,7 @@ export const cartReducer = (state = initialState, action) => {
 
       return {...state, total: Number(newTotal.toFixed(2))}
     }
-    case RESET_CART: {
+    case CLEAR_CART: {
       return {
         cartItems: [],
         total: 0,

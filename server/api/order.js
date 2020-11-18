@@ -49,12 +49,11 @@ router.post('/', async (req, res, next) => {
     const cartItems = cart.cartItems
     for (let i = 0; i < cartItems.length; i++) {
       let productQuantity = cart.quantity[cartItems[i].id]
-      let total = productQuantity * cartItems[i].price
+      //let total = productQuantity * cartItems[i].price
       let productId = cartItems[i].id
 
       await OrderDetail.create({
         productQuantity,
-        total,
         productId,
         orderId
       })
