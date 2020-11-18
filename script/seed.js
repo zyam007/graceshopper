@@ -6,8 +6,8 @@ const Product = require('../server/db/models/product')
 const Category = require('../server/db/models/category')
 const Order = require('../server/db/models/order')
 const Faker = require('faker')
-const adminPassword = require('../secrets.js')
-const adminPasswords = require('../secrets.js')
+//const adminPasswords = require('../secrets.js')
+
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
@@ -482,7 +482,7 @@ async function seed() {
     {
       firstName: 'Kade',
       lastName: 'Cahe',
-      password: adminPasswords.kade,
+      password: "1234567!",
       email: 'kadecahe@gmail.com',
       imageUrl: Faker.image.avatar(),
       isAdmin: true
@@ -490,7 +490,7 @@ async function seed() {
     {
       firstName: 'Virginie',
       lastName: 'Bonnet',
-      password: adminPasswords.virginie,
+      password: "123456",
       email: 'vb@gmail.com',
       imageUrl: Faker.image.avatar(),
       isAdmin: true
