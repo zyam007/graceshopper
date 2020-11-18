@@ -5,6 +5,10 @@ import {Link} from 'react-router-dom'
 import {fetchAllProducts} from '../store/reducers/allProducts'
 import {Card, Button} from 'react-bootstrap'
 import {addProduct} from '../store/reducers/cartManager'
+import {
+  fetchLoggedInCart,
+  fetchLoggedInItems
+} from '../store/reducers/loggedInCart'
 
 export class AllProducts extends Component {
   componentDidMount() {
@@ -13,10 +17,14 @@ export class AllProducts extends Component {
 
   render() {
     const allProducts = this.props.allProducts || []
+    if (this.props.user.id) {
+      this.props.getCart(this.props.user.id)
+      this.props.getLoggedInItems()
+    }
 
     return (
       <div id="productsView">
-        <h2 id="all-prod-text">All Products</h2>
+        <h1 id="all-prod-text">Our Products</h1>
         <Fade bottom cascade>
           {/* <Fade appear="true"> */}
           <div className="all-products">
@@ -61,18 +69,19 @@ export class AllProducts extends Component {
   }
 }
 
-function handleClick() {}
-
 const mapState = state => {
   return {
-    allProducts: state.allProducts
+    allProducts: state.allProducts,
+    user: state.user
   }
 }
 
 const mapDispatch = dispatch => {
   return {
     getAllProducts: () => dispatch(fetchAllProducts()),
-    addToCart: product => dispatch(addProduct(product))
+    addToCart: product => dispatch(addProduct(product)),
+    getLoggedInItems: () => dispatch(fetchLoggedInItems()),
+    getCart: () => dispatch(fetchLoggedInCart())
   }
 }
 

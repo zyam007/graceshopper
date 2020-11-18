@@ -8,6 +8,7 @@ import singleProductReducer from './reducers/singleproduct'
 import singleCategoryReducer from './reducers/singlecategory'
 import allCategoriesReducer from './reducers/allCategories'
 import cartReducer from './reducers/cartManager'
+import loggedInCartReducer from './reducers/loggedInCart'
 
 function saveToLocalStorage(state) {
   try {
@@ -35,7 +36,8 @@ const reducer = combineReducers({
   singleProduct: singleProductReducer,
   singleCategory: singleCategoryReducer,
   allCategories: allCategoriesReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  loginCart: loggedInCartReducer
 })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))

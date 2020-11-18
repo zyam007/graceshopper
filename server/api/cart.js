@@ -7,7 +7,7 @@ const {OrderDetail, Order} = require('../db/index')
 //checked and
 router.get('/', async (req, res, next) => {
   try {
-    const userId = req.session.passport.user
+    const userId = req.user.id
     //get the cart
     const cartSession = await Order.getPendingOrder(userId)
     console.log('cart session', cartSession[0].dataValues.id)
@@ -17,14 +17,8 @@ router.get('/', async (req, res, next) => {
 
     //now I want to send the cartItems
     const cartItems = await OrderDetail.getCartItems(orderId)
-    // ({
-    //   where: {
-    //     orderId
-    //   }
-    // })
-    console.log('cart items', cartItems)
 
-    res.json(cartItems[0])
+    res.json(cartItems)
   } catch (err) {
     next(err)
   }
@@ -33,11 +27,11 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     //find the user
-    const userId = req.session.passport.user
+    const userId = req.user.id
     //get the cart
     const cartSession = await Order.getPendingOrder(userId)
 
-    const newCartItem = await OrderDetails.create({
+    const newCartItem = await OrderDetail.create({
       orderId: cartSession[0].id,
       productId: req.body.id
     })
@@ -51,13 +45,15 @@ router.post('/', async (req, res, next) => {
 router.put('/', async (req, res, next) => {
   try {
     //find the user
-    const userId = req.session.passport.user
+    const userId = req.user.id
     //get the cart
     const cartSession = await Order.getPendingOrder(userId)
-    const cartItem = await OrderDetails.updateCartItem(
-      req.params.id,
+    const result = await OrderDetail.updateCartItem(
+      req.body.productQuantity,
+      req.body.productId,
       cartSession[0].id
     )
+    let cartItem = result[1][0]
     res.json(cartItem)
   } catch (err) {
     next(err)
@@ -67,12 +63,13 @@ router.put('/', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
     //find the user
-    const userId = req.session.passport.user
+    const userId = req.user.id
     //get the cart
     const cartSession = await Order.getPendingOrder(userId)
     //find the product you are removing
-    const cartItem = await OrderDetails.findOne({
+    const cartItem = await OrderDetail.findOne({
       where: {
+        id: req.params.id,
         productId: req.params.id,
         orderId: cartSession[0].id
       }

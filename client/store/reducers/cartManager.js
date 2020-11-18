@@ -36,17 +36,6 @@ export const increaseProduct = product => ({
   product
 })
 
-//For logged in user
-
-const GET_USER = 'SET_USER'
-
-const ADD_TO_CART_LOGGIN = 'ADD_TO_CART_LOGGIN'
-
-export const setCart = orderId => ({
-  type: GET_USER,
-  orderId
-})
-
 //FOR guest user order
 //user has firstName, lastName, email
 //cart has everything in the cart state
@@ -134,6 +123,7 @@ export const cartReducer = (state = initialState, action) => {
 
       return {...state, total: Number(newTotal.toFixed(2))}
     }
+      
     case CLEAR_CART: {
       return {
         cartItems: [],
@@ -142,13 +132,6 @@ export const cartReducer = (state = initialState, action) => {
         orderId: 0
       }
     }
-    case GET_USER:
-      console.log('in the cart Get user')
-      return {
-        ...state,
-        orderId: action.orderId
-      }
-
     default: {
       return state
     }

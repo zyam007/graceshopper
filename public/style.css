@@ -67,7 +67,9 @@ form div {
 #all-prod-text {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 40px;
 }
+
 .all-products {
   display: flex;
   flex-wrap: wrap;
@@ -211,6 +213,12 @@ a.button-cart-checkout {
 }
 
 #all-cat-text {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 40px;
+}
+
+#cart-text {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 40px;
@@ -438,6 +446,8 @@ a.button-cart-checkout {
   width: 40rem;
   margin: 0 auto;
   padding-bottom: 20px;
+  min-height: 100vh;
+  padding-top: 40px;
 }
 
 .form-row {
