@@ -59,7 +59,7 @@ export class AllProducts extends Component {
                       </Link>
                     </Card.Text>
                     <Card.Text>
-                      ${product.price.toFixed(2)} test{product.id}
+                      ${product.price.toFixed(2)}
                     </Card.Text>
                     <Button
                       type="submit"
