@@ -12,7 +12,7 @@ const Category = db.define('category', {
   imageUrl: {
     type: Sequelize.STRING,
     defaultValue:
-      'https://i.etsystatic.com/12037351/r/il/b50db7/1906584793/il_794xN.1906584793_c4zm.jpg'
+      'https://i.pinimg.com/originals/3d/e4/83/3de48376da0508994b5d9c0f9ee6c020.jpg'
   }
 })
 
