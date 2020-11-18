@@ -544,6 +544,7 @@ a.button-cart-checkout {
 .checkout {
   margin-top: 25px;
   margin-bottom: 25px;
+  min-height: 100vh;
 }
 .checkout-form {
   width: 50%;
