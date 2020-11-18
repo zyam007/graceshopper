@@ -123,7 +123,7 @@ export const cartReducer = (state = initialState, action) => {
 
       return {...state, total: Number(newTotal.toFixed(2))}
     }
-      
+
     case CLEAR_CART: {
       return {
         cartItems: [],
