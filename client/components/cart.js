@@ -70,9 +70,11 @@ export class Cart extends Component {
           <h4 className="cartTotalTitle">Cart Total</h4>
           <h4 className="cartTotal">{this.props.cart.total.toFixed(2)}</h4>
         </div>
-        <button type="submit" className="button-cart-checkout">
+        <Link to="/cart/checkout" className="button-cart-checkout">
+          {/* <button type="submit" className="button-cart-checkout"> */}
           CHECK OUT
-        </button>
+          {/* </button> */}
+        </Link>
       </div>
     )
   }

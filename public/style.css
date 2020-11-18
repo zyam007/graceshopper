@@ -137,7 +137,7 @@ form div {
   margin-left: 10px;
 }
 
-.button-cart-checkout {
+a.button-cart-checkout {
   background: #a84ae8;
   background-image: -webkit-linear-gradient(top, #a84ae8, #a84ae8);
   background-image: -moz-linear-gradient(top, #a84ae8, #a84ae8);
@@ -177,6 +177,7 @@ form div {
   -moz-border-radius: 10px;
   border-radius: 10px;
   text-decoration: none;
+  color: white;
 }
 
 /* FOOTER */
@@ -537,4 +538,22 @@ form div {
 
 #price {
   margin-left: 10px;
+}
+/* CHECKOUT form */
+
+.checkout {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.checkout-form {
+  width: 50%;
+  margin: auto;
+}
+
+.contact-title {
+  text-align: center;
+}
+
+.button-place-order {
+  margin: 0 auto;
 }
