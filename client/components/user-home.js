@@ -1,17 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {NavItem} from 'react-bootstrap'
 
 /**
  * COMPONENT
  */
 export const UserHome = props => {
-  const {email} = props
+  const {name} = props
 
   return (
-    <div>
-      <h3>Welcome, {email}</h3>
-    </div>
+    <>
+      <NavItem className="text-white d-flex align-items-center">
+        Hi, {name}
+      </NavItem>
+    </>
   )
 }
 
@@ -20,7 +23,7 @@ export const UserHome = props => {
  */
 const mapState = state => {
   return {
-    email: state.user.email
+    name: state.user.firstName
   }
 }
 

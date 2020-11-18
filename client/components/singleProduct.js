@@ -11,6 +11,12 @@ import {
   Container,
   Row
 } from 'react-bootstrap'
+
+import {
+  fetchLoggedInCart,
+  fetchLoggedInItems
+} from '../store/reducers/loggedInCart'
+
 import {addProduct} from '../store/reducers/cartManager'
 
 class SingleProduct extends React.Component {
@@ -22,6 +28,10 @@ class SingleProduct extends React.Component {
 
   render() {
     const product = this.props.product
+    if (this.props.user.id) {
+      this.props.getCart(this.props.user.id)
+      this.props.getLoggedInItems()
+    }
     if (!product.name) return <Spinner animation="border" />
 
     return (
@@ -66,12 +76,18 @@ class SingleProduct extends React.Component {
 }
 
 const mapState = state => ({
-  product: state.singleProduct
+  product: state.singleProduct,
+  user: state.user
 })
 
 const mapDispatch = dispatch => ({
   loadProduct: id => dispatch(fetchProduct(id)),
+
+  getCart: () => dispatch(fetchLoggedInCart()),
+  getLoggedInItems: () => dispatch(fetchLoggedInItems())
+
   addToCart: product => dispatch(addProduct(product))
+
 })
 
 export default connect(mapState, mapDispatch)(SingleProduct)
