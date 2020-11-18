@@ -4,7 +4,6 @@ import axios from 'axios'
 const SET_USER = 'SET_USER'
 const SET_CART_ITEMS = 'SET_CART_ITEMS'
 const RESET_CART = 'RESET_CART'
-const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART'
 const INCREASE_CART = 'INCREASE_CART'
 const DECREASE_CART = 'DECREASE_CART'
 const REMOVE_ITEM = 'REMOVE_ITEM'
@@ -22,11 +21,6 @@ export const setCart = orderId => ({
 export const setCartItems = cartItems => ({
   type: SET_CART_ITEMS,
   cartItems
-})
-
-const addToCart = cartItem => ({
-  type: ADD_ITEM_TO_CART,
-  cartItem
 })
 
 const increaseCart = updatedProduct => ({
@@ -62,7 +56,6 @@ export const fetchLoggedInItems = () => {
     try {
       const {data} = await axios.get('/api/cart')
       const cartItems = data
-      console.log('in thunk for cart', cartItems)
       dispatch(setCartItems(cartItems))
     } catch (err) {
       console.log(err)
@@ -72,8 +65,8 @@ export const fetchLoggedInItems = () => {
 
 export const addItemToCart = cartItem => async dispatch => {
   try {
-    const {data} = await axios.post('/api/cart', cartItem.id)
-    dispatch(addToCart(data))
+    await axios.post('/api/cart', {productId: cartItem.id})
+    dispatch(fetchLoggedInItems())
   } catch (error) {
     console.error(error)
   }
@@ -138,11 +131,6 @@ const loggedInCartReducer = (state = initialState, action) => {
       return {
         ...state,
         cartItems: action.cartItems
-      }
-    case ADD_ITEM_TO_CART:
-      return {
-        ...state,
-        cartItems: [...state.cartItems, action.cartItem]
       }
     case INCREASE_CART:
       state.cartItems.forEach(item => {

@@ -10,10 +10,8 @@ router.get('/', async (req, res, next) => {
     const userId = req.user.id
     //get the cart
     const cartSession = await Order.getPendingOrder(userId)
-    console.log('cart session', cartSession[0].dataValues.id)
     const orderId = cartSession[0].dataValues.id
     //this will show you the cart in the api route
-    // res.json(cartSession[0])
 
     //now I want to send the cartItems
     const cartItems = await OrderDetail.getCartItems(orderId)
@@ -33,7 +31,7 @@ router.post('/', async (req, res, next) => {
 
     const newCartItem = await OrderDetail.create({
       orderId: cartSession[0].id,
-      productId: req.body.id
+      productId: req.body.productId
     })
 
     res.status(201).json(newCartItem)
@@ -66,14 +64,13 @@ router.delete('/:id', async (req, res, next) => {
     const userId = req.user.id
     //get the cart
     const cartSession = await Order.getPendingOrder(userId)
+    console.log(
+      `userId ${userId}, orderId ${cartSession[0].id}, productId: ${
+        req.params.id
+      }`
+    )
     //find the product you are removing
-    const cartItem = await OrderDetail.findOne({
-      where: {
-        id: req.params.id,
-        productId: req.params.id,
-        orderId: cartSession[0].id
-      }
-    })
+    const cartItem = await OrderDetail.findByPk(req.params.id)
 
     if (!cartItem) return res.sendStatus(404)
     //destroy it
