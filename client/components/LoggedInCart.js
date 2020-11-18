@@ -13,8 +13,13 @@ import {Link} from 'react-router-dom'
 const LoggedInCart = props => {
   const {increaseItem, decreaseItem, deleteCartItem, cart} = props
 
-  if (!cart.cartItems.length)
-    return <h1 style={{textAlign: 'center'}}>Your Cart Is Empty</h1>
+
+  if (!props.cart.cartItems.length)
+    return (
+      <div className="loggedincart">
+        <h1 style={{textAlign: 'center'}}>Your Cart Is Empty</h1>
+      </div>
+    )
 
   let total = cart.cartItems
     .reduce((acc, item) => acc + item.product.price * item.productQuantity, 0)
