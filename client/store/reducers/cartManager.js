@@ -1,11 +1,20 @@
+import axios from 'axios'
 //ACTION TYPES
 const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 const REDUCE_CART_ITEM = 'REDUCE_CART_ITEM'
 const INCREASE_CART_ITEM = 'INCREASE_CART_ITEM'
 const GET_ITEMS = 'GET_ITEMS'
-
+const PLACE_ORDER = 'PLACE_ORDER'
+const CLEAR_CART = 'CLEAR_CART'
 //ACTION CREATORS
+export const clearCart = () => ({
+  type: CLEAR_CART
+})
+
+export const placedOrder = () => ({
+  type: PLACE_ORDER
+})
 
 export const addProduct = product => ({
   type: ADD_TO_CART,
@@ -27,7 +36,31 @@ export const increaseProduct = product => ({
   product
 })
 
-const initialState = {cartItems: [], total: 0, quantity: {}}
+//FOR guest user order
+//user has firstName, lastName, email
+//cart has everything in the cart state
+//userId is undefined
+export const placeOrderGuest = (userId, cart, user) => {
+  return async dispatch => {
+    try {
+      if (userId === 0) {
+        const {data} = await axios.post('/api/order', {user, cart})
+        dispatch(clearCart())
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
+
+//Initial State
+const initialState = {
+  cartItems: [],
+  total: 0,
+  quantity: {},
+  //added for checkout purposes-Kade
+  orderId: 0
+}
 
 export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -89,6 +122,15 @@ export const cartReducer = (state = initialState, action) => {
       let newTotal = state.total + action.product.price
 
       return {...state, total: Number(newTotal.toFixed(2))}
+    }
+      
+    case CLEAR_CART: {
+      return {
+        cartItems: [],
+        total: 0,
+        quantity: {},
+        orderId: 0
+      }
     }
     default: {
       return state

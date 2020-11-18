@@ -2,70 +2,74 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
-
+import {Form, Button, Row, Col} from 'react-bootstrap'
 /**
  * COMPONENT
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-  console.log('display name', displayName)
+  
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
+    <div className="login-signup-container">
+      <h3 className="form-name">{displayName}</h3>
+      <Form onSubmit={handleSubmit} className="form-signup2" name={name}>
         {displayName === 'Sign Up' && (
-          <div>
-            <div className="form-group">
-              <label htmlFor="firstName">
-                <small>First Name</small>
-              </label>
-              <input
+          <Form.Row className="form-row">
+            <Form.Group controlId="formGridFirstName">
+              <Form.Label>First Name</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="First Name"
                 name="firstName"
-                type="text"
-                className="form-control"
-                placeholder="Enter first name"
               />
-            </div>
-            <div className="form-group">
-              <label htmlFor="lastName">
-                <small>Last Name</small>
-              </label>
-              <input
+              <Form.Control.Feedback>Looks Good!</Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group controlId="formGridLastName">
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="Last name"
                 name="lastName"
-                type="text"
-                className="form-control"
-                placeholder="Enter last name"
               />
-            </div>
-          </div>
+              <Form.Control.Feedback>LooksGood!</Form.Control.Feedback>
+            </Form.Group>
+          </Form.Row>
         )}
-        <div className="form-group">
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input
-            name="email"
-            type="email"
-            className="form-control"
-            placeholder="Enter email"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input
-            name="password"
-            type="password"
-            className="form-control"
-            placeholder="Enter password"
-          />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
+
+        <Form.Row className="form-row">
+          <Form.Group controlId="formGridEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              required
+              type="email"
+              placeholder="Enter email"
+              name="email"
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formGridPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              required
+              type="password"
+              placeholder="Password"
+              aria-describedby="passwordHelpMsg"
+              name="password"
+            />
+            <Form.Text id="passwordHelpMsg" muted>
+              Must be 6-20 characters long.
+            </Form.Text>
+          </Form.Group>
+        </Form.Row>
+
+        <Button type="submit" variant="secondary" className="button-cart">
+          Submit
+        </Button>
         {error && error.response && <div> {error.response.data} </div>}
-      </form>
-      <a href="/auth/google">{displayName} with Google</a>
+      </Form>
     </div>
   )
 }
@@ -96,9 +100,15 @@ const mapSignup = state => {
 const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
+      const formName = evt.currentTarget.name
+
+      // if (form.checkvalidity() === false) {
+      //   evt.preventDefault()
+      //   evt.stopPropagation()
+      // }
+
       evt.preventDefault()
-      console.log('form name: ', evt.target.name)
-      const formName = evt.target.name
+      //const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
       if (formName === 'signup') {
@@ -107,6 +117,7 @@ const mapDispatch = dispatch => {
         console.log('dispatching')
         dispatch(auth(email, password, formName, firstName, lastName))
       } else {
+        console.log('not sign up')
         dispatch(auth(email, password, formName))
       }
     }

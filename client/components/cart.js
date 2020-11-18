@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import LoggedInCart from './LoggedInCart'
 
 import {
   removeProduct,
@@ -10,16 +11,17 @@ import {
 
 export class Cart extends Component {
   componentDidMount() {
-    this.props.getCartItems()
+    if (!this.props.user.id) this.props.getCartItems()
   }
 
   render() {
+    if (this.props.user.id) return <LoggedInCart />
     const cartItems = this.props.cart.cartItems || []
     const quantity = this.props.cart.quantity || {}
     if (!cartItems.length) {
       return (
         <div className="empty-cart">
-          <h3>Your Cart is empty</h3>
+          <h3>Your Cart is Empty.</h3>
           <Link to="/allproducts">continue shopping</Link>
         </div>
       )
@@ -28,9 +30,9 @@ export class Cart extends Component {
       <div className="container-products">
         <div className="product-header">
           <h5 className="product-title">PRODUCT</h5>
-          <h5 className="price sm-hide">PRICE</h5>
-          <h5 className="quantity">QUANTITY</h5>
-          <h5 className="total">TOTAL</h5>
+          <h5 className="price-title">PRICE</h5>
+          <h5 className="quantity-title">QUANTITY</h5>
+          <h5 className="total-title">TOTAL</h5>
         </div>
 
         {cartItems.map(product => {
@@ -41,7 +43,7 @@ export class Cart extends Component {
                   name="trash-outline"
                   onClick={() => this.props.deleteCartItem(product)}
                 />
-                <img src={product.imageUrl} />
+                <img src={product.imageUrl[0]} />
                 <span className="sm-hide">{product.name}</span>
               </div>
               <div className="price sm-hide">${product.price.toFixed(2)}</div>
@@ -59,15 +61,20 @@ export class Cart extends Component {
                 />
               </div>
               <div className="total">
-                ${Number(product.price * quantity[product.id]).toFixed(2)}
+                ${(product.price * quantity[product.id]).toFixed(2)}
               </div>
             </React.Fragment>
           )
         })}
         <div className="cartTotalContainer">
           <h4 className="cartTotalTitle">Cart Total</h4>
-          <h4 className="cartTotal">${this.props.cart.total.toFixed(2)}</h4>
+          <h4 className="cartTotal">{this.props.cart.total.toFixed(2)}</h4>
         </div>
+        <Link to="/cart/checkout" className="button-cart-checkout">
+          {/* <button type="submit" className="button-cart-checkout"> */}
+          CHECK OUT
+          {/* </button> */}
+        </Link>
       </div>
     )
   }
@@ -75,7 +82,8 @@ export class Cart extends Component {
 
 const mapState = state => {
   return {
-    cart: state.cart
+    cart: state.cart,
+    user: state.user
   }
 }
 
