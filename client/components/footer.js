@@ -18,6 +18,7 @@ const Footer = () => {
                   <a
                     href="https://github.com/all-caps-GraceShopper"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     GitHub
                   </a>
@@ -32,14 +33,16 @@ const Footer = () => {
                   <a
                     href="https://www.linkedin.com/in/yanna-skorokhodova/"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Yanna Skorokhodova
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://www.linkedin.com/in/kade-cahe-0b7b479b/"
+                    href="https://www.linkedin.com/in/kadecahe/"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Kade Cahe
                   </a>

@@ -4,23 +4,38 @@ import Fade from 'react-reveal/Fade'
 import {Link} from 'react-router-dom'
 import {fetchCategory} from '../store/reducers/singleCategory'
 import {Card, Button} from 'react-bootstrap'
+import {
+  addItemToCart,
+  fetchLoggedInCart,
+  fetchLoggedInItems
+} from '../store/reducers/loggedInCart'
 
 export class SingleCategory extends Component {
+  constructor() {
+    super()
+    this.handleAddToCart = this.handleAddToCart.bind(this)
+  }
+
   componentDidMount() {
     const id = this.props.match.params.id
-    console.log('checking ID', id)
     this.props.getSpecificProduct(id)
+    if (this.props.user.id) {
+      this.props.getCart(this.props.user.id)
+      this.props.getLoggedInItems()
+    }
+  }
+
+  handleAddToCart(product) {
+    this.props.addItemToCart(product)
   }
 
   render() {
-    // console.log("CHECKING",this.props.singleCategory)
     const allProducts = this.props.singleCategory.products || []
 
     return (
       <div id="categoryView">
         <h2 id="singlecat-text">Products From This Category:</h2>
         <Fade bottom cascade>
-          {/* <Fade appear="true"> */}
           <div className="singlecat">
             {allProducts.map(product => {
               return (
@@ -48,7 +63,11 @@ export class SingleCategory extends Component {
                     <Button
                       type="submit"
                       variant="secondary"
-                      onClick={() => this.props.addToCart(product)}
+                      onClick={
+                        this.props.user.id
+                          ? () => this.handleAddToCart(product)
+                          : () => this.props.addToCart(product)
+                      }
                     >
                       add to cart
                     </Button>
@@ -65,14 +84,18 @@ export class SingleCategory extends Component {
 
 const mapState = state => {
   return {
-    singleCategory: state.singleCategory
+    singleCategory: state.singleCategory,
+    user: state.user
   }
 }
 
 const mapDispatch = dispatch => {
   return {
     getSpecificProduct: id => dispatch(fetchCategory(id)),
-    addToCart: product => dispatch({type: 'ADD_TO_CART', product})
+    addToCart: product => dispatch({type: 'ADD_TO_CART', product}),
+    getCart: () => dispatch(fetchLoggedInCart()),
+    addItemToCart: product => dispatch(addItemToCart(product)),
+    getLoggedInItems: () => dispatch(fetchLoggedInItems())
   }
 }
 

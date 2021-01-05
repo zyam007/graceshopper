@@ -1,5 +1,5 @@
 import React from 'react'
-import {CardDeck, Container, Row, Col} from 'react-bootstrap'
+import {CardDeck, Container} from 'react-bootstrap'
 import {
   fetchLoggedInItems,
   increaseQuantity,
@@ -8,13 +8,18 @@ import {
 } from '../store/reducers/loggedInCart'
 import {connect} from 'react-redux'
 import SingleCartItem from './Cart-Product-Details'
+import {Link} from 'react-router-dom'
 
 const LoggedInCart = props => {
-  console.log(props)
   const {increaseItem, decreaseItem, deleteCartItem, cart} = props
 
+
   if (!props.cart.cartItems.length)
-    return <h1 style={{textAlign: 'center'}}>Your Cart Is Empty</h1>
+    return (
+      <div className="loggedincart">
+        <h1 style={{textAlign: 'center'}}>Your Cart Is Empty</h1>
+      </div>
+    )
 
   let total = cart.cartItems
     .reduce((acc, item) => acc + item.product.price * item.productQuantity, 0)
@@ -42,9 +47,11 @@ const LoggedInCart = props => {
           Cart Total: ${total}
         </h3>
       </div>
-      <button type="submit" className="button-cart-checkout">
-        CHECK OUT
-      </button>
+      <div className="m-2" style={{textAlign: 'center'}}>
+        <Link to="/cart/checkout" className="button-cart-checkout">
+          CHECK OUT
+        </Link>
+      </div>
     </>
   )
 }

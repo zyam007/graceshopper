@@ -7,31 +7,37 @@ import {
   Dropdown,
   Carousel,
   Spinner,
-  Button,
-  Container,
-  Row
+  Button
 } from 'react-bootstrap'
-
 import {
   fetchLoggedInCart,
-  fetchLoggedInItems
+  fetchLoggedInItems,
+  addItemToCart
 } from '../store/reducers/loggedInCart'
-
 import {addProduct} from '../store/reducers/cartManager'
 
 class SingleProduct extends React.Component {
-  componentDidMount() {
-    console.log('singleProduct did mount')
-    const id = this.props.match.params.id
-    this.props.loadProduct(id)
+  constructor() {
+    super()
+    this.handleAddToCart = this.handleAddToCart.bind(this)
   }
 
-  render() {
-    const product = this.props.product
+  componentDidMount() {
+    const id = this.props.match.params.id
+    this.props.loadProduct(id)
     if (this.props.user.id) {
       this.props.getCart(this.props.user.id)
       this.props.getLoggedInItems()
     }
+  }
+
+  handleAddToCart(product) {
+    this.props.addItemToCart(product)
+  }
+
+  render() {
+    const product = this.props.product
+
     if (!product.name) return <Spinner animation="border" />
 
     return (
@@ -54,7 +60,11 @@ class SingleProduct extends React.Component {
             <Button
               type="submit"
               variant="primary"
-              onClick={() => this.props.addToCart(product)}
+              onClick={
+                this.props.user.id
+                  ? () => this.handleAddToCart(product)
+                  : () => this.props.addToCart(product)
+              }
             >
               Add to Cart
             </Button>
@@ -85,7 +95,8 @@ const mapDispatch = dispatch => ({
 
   getCart: () => dispatch(fetchLoggedInCart()),
   getLoggedInItems: () => dispatch(fetchLoggedInItems()),
-  addToCart: product => dispatch(addProduct(product))
+  addToCart: product => dispatch(addProduct(product)),
+  addItemToCart: product => dispatch(addItemToCart(product))
 })
 
 export default connect(mapState, mapDispatch)(SingleProduct)

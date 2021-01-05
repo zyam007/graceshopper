@@ -1,22 +1,12 @@
 'use strict'
 
 const {db, OrderDetail} = require('../server/db')
-
 const User = require('../server/db/models/user')
 const Product = require('../server/db/models/product')
 const Category = require('../server/db/models/category')
 const Order = require('../server/db/models/order')
 const Faker = require('faker')
-
-// const categoryList = ['food', 'fauna', 'flora', 'movie_tv', 'games', 'holiday']
-// const categoryImage = [
-//   `${Faker.image.food()}`,
-//   `${Faker.image.animals()}`,
-//   `${Faker.image.nature()}`,
-//   `${Faker.image.abstract()}`,
-//   `${Faker.image.sports()}`,
-//   `${Faker.image.nightlife()}`
-// ]
+//const adminPasswords = require('../secrets.js')
 
 async function seed() {
   await db.sync({force: true})
@@ -492,7 +482,7 @@ async function seed() {
     {
       firstName: 'Kade',
       lastName: 'Cahe',
-      password: '1234567',
+      password: "1234567!",
       email: 'kadecahe@gmail.com',
       imageUrl: Faker.image.avatar(),
       isAdmin: true
@@ -500,7 +490,7 @@ async function seed() {
     {
       firstName: 'Virginie',
       lastName: 'Bonnet',
-      password: '1234567',
+      password: "123456",
       email: 'vb@gmail.com',
       imageUrl: Faker.image.avatar(),
       isAdmin: true
